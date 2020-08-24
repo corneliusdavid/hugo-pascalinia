@@ -21,7 +21,7 @@
     </div>
     <div id="links">
         {{ if .Site.Params.showRss | default true }}
-            {{- partial "nerdlink" ["RSS", "/index.xml"] -}}
+            {{- partial "nerdlink" (slice "RSS" "/index.xml") -}}
         {{ end }}
         {{ range .Site.Params.links }}
             {{- partial "nerdlink" . -}}

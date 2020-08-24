@@ -13,4 +13,8 @@
             </p>
         {{ end }}
     </article>
+    {{ if .Site.Params.commento }}
+        <script defer src="{{ .Site.Params.commento }}"></script>
+        <div id="commento"></div>
+    {{ end }}
 {{ end }}

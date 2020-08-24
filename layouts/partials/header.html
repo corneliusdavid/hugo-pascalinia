@@ -1,0 +1,27 @@
+<header>
+    <div id="titleContainer">
+        <img src='{{ .Site.Params.Logo | default "/img/icon.svg" }}' />
+        <div>
+            <h1>{{ .Site.Title | default "Ficurinia" }}</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/posts">Posts</a></li>
+                    {{ $pagesDir := .Site.Params.Pages | default (slice "pages") }}
+                    {{ $pagesList := where .Site.RegularPages "Section" "in" $pagesDir }}
+                    {{ range $pagesList }}
+                        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                    {{ if (.Site.Params.showTags | default true) }}
+                        <li><a href="/tags">Tags</a></li>
+                    {{ end }}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="links">
+        {{ range .Site.Params.links }}
+            {{- partial "nerdlink" . -}}
+        {{ end }}
+    </div>
+</header>

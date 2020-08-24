@@ -1,0 +1,18 @@
+{{ define "main" }}
+    <h2>
+        <span>
+        {{ $title := .Title }}
+        {{ $section := .Section | humanize }}
+        {{ if and (ne $section $title) (ne $section "Tags") }}
+            {{ $section }}:
+        {{ end }}
+        {{ if and (eq $section "Tags") (ne $section $title) }}#{{ end }}{{ $title }}
+        </span>
+    </h2>
+
+    <ul>
+        {{ range .Pages }}
+        <li><span class="date">{{ .Date.Format "2006-01-02" }}</span> <a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
+{{ end }}

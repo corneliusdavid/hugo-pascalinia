@@ -1,0 +1,47 @@
+{{ define "main" }}
+
+    {{/* get all the pages that are regular posts and not pages */}}
+    {{ $postsDir := .Site.Params.Posts | default (slice "posts") }}
+    {{ $postsList := where .Site.RegularPages "Section" "in" $postsDir }}
+
+    {{/* pagination */}}
+    {{ range (.Paginate $postsList).Pages }}
+        <div class="card">
+            <h3>
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </h3>
+            <p class="date">
+                {{ .Date.Format "2006-01-02" }}
+                {{ if .Params.tags }}
+                    <br />
+                    <small>{{ range .Params.tags }}#{{ . }} {{ end }}</small>
+                {{ end }}
+            </p>
+            <div class="articlePreview">
+                {{ .Summary }}
+                <a href="{{ .Permalink }}">Continue reading -></a>
+            </div>
+            <hr />
+        </div>
+    {{ end }}
+
+    {{ if gt .Paginator.TotalPages 1 }}
+        <div id="pageNavigation">
+            {{ if .Paginator.HasPrev }}
+                <a href="{{ .Paginator.Prev.URL }}" title="Previous page">&lt;&lt;&lt;</a>
+            {{ end }}
+            {{ $currentPage := .Paginator.PageNumber }}
+            {{ range .Paginator.Pagers }}
+                {{ if ne .PageNumber $currentPage }}
+                    <a href="{{ .URL }}">{{ .PageNumber }}</a>
+                {{ else }}
+                    <span>[{{ .PageNumber }}]</span>
+                {{ end }}
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+                <a href="{{ .Paginator.Next.URL }}" title="Next page">&gt;&gt;&gt;</a>
+            {{ end }}
+        </div>
+    {{ end }}
+
+{{ end }}

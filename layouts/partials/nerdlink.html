@@ -1,0 +1,31 @@
+<a
+    target="_blank"
+    class="nerdlink"
+    href="{{ index . 1 }}"
+    title="{{ index . 0 }}">
+    {{ if eq (lower (index . 0)) "gitlab" }}
+        &#xf296;
+    {{ else if eq (lower (index . 0)) "gnome" }}
+        &#xf7ab;
+    {{ else if eq (lower (index . 0)) "youtube" }}
+        &#xf16a;
+    {{ else if eq (lower (index . 0)) "email" }}
+        &#xf6ed;
+    {{ else if eq (lower (index . 0)) "twitter" }}
+        &#xf099;
+    {{ else if eq (lower (index . 0)) "instagram" }}
+        &#xf16d;
+    {{ else if eq (lower (index . 0)) "facebook" }}
+        &#xf09a;
+    {{ else if eq (lower (index . 0)) "github" }}
+        &#xf09b;
+    {{ else if eq (lower (index . 0)) "linkedin" }}
+        &#xf0e1;
+    {{ else if eq (lower (index . 0)) "telegram" }}
+        &#xf2c6;
+    {{ else if eq (lower (index . 0)) "phone" }}
+        &#xf095;
+    {{ else }}
+        {{ index . 0 }}
+    {{ end }}
+</a>

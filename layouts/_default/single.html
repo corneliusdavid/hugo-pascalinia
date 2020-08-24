@@ -1,0 +1,16 @@
+{{ define "main" }}
+    <article>
+        <h1>{{ .Title }}</h1>
+        <p class="date">{{ .Date.Format "2006-01-02" }}</p>
+        <div>{{ .Content }}</div>
+        {{ if .Params.tags }}
+            <hr />
+            <p>
+                <h4>Tags:</h4>
+                {{ range .Params.tags }}
+                    <a href="/tags/{{ . }}">#{{ . }}</a>
+                {{ end }}
+            </p>
+        {{ end }}
+    </article>
+{{ end }}

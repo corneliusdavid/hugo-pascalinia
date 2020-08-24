@@ -27,6 +27,9 @@ paginate = 5  # number of articles per page in the index
     showTags = true  # show the Tags menu item; default true
     showRss = true  # show the link for the RSS feed; default true
 
+    # enable comments support with commento using the script from your server
+    commento = "https://example.com/js/commento.js"
+
     # the links array shows links with icons (if explicitly supported)
     # it's an array of arrays containing two strings: name and link
     # the supported icons are:

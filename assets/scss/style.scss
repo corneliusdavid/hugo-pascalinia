@@ -181,3 +181,46 @@ ul {
         margin: 5px 0;
     }
 }
+
+#commento {
+    color: $fg_color;
+    font-family: "JetBrains Mono", monospace;
+    textarea, #commento-markdown-help-root {
+        background: rgba(255, 255, 255, .05);
+        color: $fg_color;
+        border-radius: 0;
+        border: none;
+        td, td>*, td>*>* {
+            color: $fg_color;
+            pre {
+                font-family: "JetBrains Mono", monospace;
+                color: $dim_fg_color;
+            }
+        }
+    }
+    #commento-submit-button-root {
+        background: $accent_color;
+        color: $fg_color;
+    }
+    .commento-name {
+        color: $dim_fg_color;
+    }
+    .commento-sort-policy-buttons {
+        a {
+            border-bottom: none;
+        }
+        .commento-sort-policy-button-selected {
+            color: $accent_color;
+        }
+    }
+    .commento-card {
+        border-top: none;
+        margin: 25px 0;
+    }
+    .commento-body {
+        >*, *>*, >*>*>*, >*>*>*>*, >*>*>*>*>* {
+            color: $fg_color;
+            font-family: "JetBrains Mono", monospace;
+        }
+    }
+}

@@ -14,7 +14,11 @@
         {{ end }}
     </article>
     {{ if .Site.Params.commento }}
-        <script defer src="{{ .Site.Params.commento }}"></script>
+        <script
+            defer
+            src="{{ .Site.Params.commento }}"
+            data-no-fonts="true"
+        ></script>
         <div id="commento"></div>
     {{ end }}
 {{ end }}

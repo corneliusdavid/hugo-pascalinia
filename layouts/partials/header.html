@@ -20,6 +20,9 @@
         </div>
     </div>
     <div id="links">
+        {{ if .Site.Params.showRss | default true }}
+            {{- partial "nerdlink" ["RSS", "/index.xml"] -}}
+        {{ end }}
         {{ range .Site.Params.links }}
             {{- partial "nerdlink" . -}}
         {{ end }}

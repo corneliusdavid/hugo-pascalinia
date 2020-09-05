@@ -167,10 +167,25 @@ h1, h2, h3, h4, h5, h6 {
     @extend .nerd;
     color: $fg_color;
     border-bottom: none;
+    position: relative;
+    span {
+        position: absolute;
+        top: 1.5em;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 2px;
+        border: 1px solid $stroke_color;
+        border-radius: 3px;
+        color: $fg_color;
+        display: none;
+    }
     &:hover {
         color: $accent_color;
         text-decoration: none;
         border-bottom: none;
+        span {
+            display: block;
+        }
     }
 }
 

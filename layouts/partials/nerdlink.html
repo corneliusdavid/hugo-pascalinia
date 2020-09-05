@@ -1,8 +1,7 @@
 <a
     target="_blank"
     class="nerdlink"
-    href="{{ index . 1 }}"
-    title="{{ index . 0 }}">
+    href="{{ index . 1 }}">
     {{ if eq (lower (index . 0)) "gitlab" }}
         &#xf296;
     {{ else if eq (lower (index . 0)) "gnome" }}
@@ -30,4 +29,7 @@
     {{ else }}
         {{ index . 0 }}
     {{ end }}
+    <span>
+        {{ index . 0 }}
+    </span>
 </a>

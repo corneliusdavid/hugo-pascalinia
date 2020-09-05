@@ -4,6 +4,11 @@ $dim_fg_color: {{ .Site.Params.dimForegroundColor | default "#bababa" }};
 $stroke_color: {{ .Site.Params.strokeColor | default "#4f4f4f" }};
 $accent_color: {{ .Site.Params.accentColor | default "#db5793" }};
 
+::selection, ::-moz-selection {
+    background: $accent_color;
+    color: $fg_color;
+}
+
 body, html {
     font-family: "JetBrains Mono", monospace;
     margin: 0;

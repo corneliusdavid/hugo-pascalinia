@@ -30,6 +30,10 @@ paginate = 5  # number of articles per page in the index
     # enable comments support with commento using the script from your server
     commento = "https://example.com/js/commento.js"
 
+    # enable analytics using Plausible
+    plausibleScriptUrl = "https://something.com/..."
+    plausibleDomain = "gabmus.org"
+
     # the links array shows links with icons (if explicitly supported)
     # it's an array of arrays containing two strings: name and link
     # the supported icons are:

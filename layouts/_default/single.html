@@ -7,7 +7,8 @@
         {{ if .Params.tags }}
             <hr />
             <p>
-                <h4>Tags:</h4>
+                <span> </span>
+                <strong>Tags:</strong>
                 {{ range .Params.tags }}
                     <a href="/tags/{{ . }}">#{{ . }}</a>
                 {{ end }}

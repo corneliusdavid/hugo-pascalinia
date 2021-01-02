@@ -1,4 +1,5 @@
 {{ define "main" }}
+    {{- partial "inject/content-before.html" . -}}
     <article>
         <h1>{{ .Title }}</h1>
         <p class="date">{{ .Date.Format "2006-01-02" }}</p>
@@ -13,6 +14,7 @@
             </p>
         {{ end }}
     </article>
+    {{- partial "inject/content-after.html" . -}}
     {{ if .Site.Params.commento }}
         <script
             defer

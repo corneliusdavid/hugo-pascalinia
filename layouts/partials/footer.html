@@ -1,5 +1,6 @@
 <footer>
     <hr />
+    {{- partial "inject/footer.html" . -}}
     <p><small>
         {{ now.Format "2006" }} &copy; {{ .Site.Copyright }}
     </small></p>

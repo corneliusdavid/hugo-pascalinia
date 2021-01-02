@@ -10,6 +10,8 @@ A prickly blog theme for Hugo
 
 # Customization
 
+## Configuration
+
 These are some parameters you can use in your `config.toml` to customize Ficurinia:
 
 ```toml
@@ -64,6 +66,18 @@ paginate = 5  # number of articles per page in the index
     strokeColor = "#4f4f4f"
     accentColor = "#db5793"
 ```
+
+## Inject custom content
+
+Ficurinia supports injecting custom content into the theme. There are several files you can create in `layouts/partials/inject` that will be included inside the theme in different places.
+
+| Partial | Placement |
+|---------|-----------|
+| `layouts/partials/inject/body.html` | Before closing the `body` tag |
+| `layouts/partials/inject/content-after.html` | After a post or page content |
+| `layouts/partials/inject/content-before.html` | Before a post or page content |
+| `layouts/partials/inject/footer.html` | At the beginning of the footer |
+| `layouts/partials/inject/head.html` | Before closing the `head` tag |
 
 # Does *Ficurinia* mean anything?
 

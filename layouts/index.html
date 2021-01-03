@@ -7,9 +7,9 @@
     {{/* pagination */}}
     {{ range (.Paginate $postsList).Pages }}
         <div class="card">
-            <h3>
+            <h2>
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
-            </h3>
+            </h2>
             <p class="date">
                 <span title="Date"> </span>
                 {{ .Date.Format "2006-01-02" }}

@@ -37,6 +37,9 @@ footer {
     a {
         color: $dim_fg_color;
     }
+    hr {
+        margin-top: 50px;
+    }
 }
 
 #titleContainer {
@@ -91,10 +94,6 @@ nav {
 
 #links {
     margin-top: 15px;
-}
-
-main {
-    margin: 60px 0;
 }
 
 article, .articlePreview {
@@ -192,6 +191,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .card {
     margin: 50px 0;
+    &:first-child {
+        margin-top: 0;
+    }
     hr {
         margin: 50px 0;
     }

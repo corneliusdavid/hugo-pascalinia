@@ -4,6 +4,8 @@
 
 A prickly blog theme for Hugo
 
+![](images/tn.png)
+
 # [Demo](https://gabmus.org)
 
 [Code for the demo website](https://gitlab.com/gabmus/gabmus.gitlab.io) (really my personal website)

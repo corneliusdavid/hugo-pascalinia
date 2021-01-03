@@ -1,4 +1,5 @@
 <header>
+    {{- partial "inject/header-before" -}}
     <div id="titleContainer">
         <img src='{{ .Site.Params.Logo | default "/img/icon.svg" }}' />
         <div>
@@ -27,4 +28,5 @@
             {{- partial "nerdlink" . -}}
         {{ end }}
     </div>
+    {{- partial "inject/header-after" -}}
 </header>

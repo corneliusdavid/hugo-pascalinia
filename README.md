@@ -80,6 +80,8 @@ Ficurinia supports injecting custom content into the theme. There are several fi
 | `layouts/partials/inject/content-before.html` | Before a post or page content |
 | `layouts/partials/inject/footer.html` | At the beginning of the footer |
 | `layouts/partials/inject/head.html` | Before closing the `head` tag |
+| `layouts/partials/inject/header-after.html` | Before closing the header |
+| `layouts/partials/inject/header-before.html` | At the beginning of the header |
 
 # Does *Ficurinia* mean anything?
 

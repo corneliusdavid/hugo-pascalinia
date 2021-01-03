@@ -11,10 +11,14 @@
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
             </h3>
             <p class="date">
+                <span title="Date"> </span>
                 {{ .Date.Format "2006-01-02" }}
                 {{ if .Params.tags }}
-                    <br />
-                    <small>{{ range .Params.tags }}#{{ . }} {{ end }}</small>
+                    | <!-- Pipe character as visual separator between date and tags-->
+                    <span title="Tags"> </span>
+                    {{ range .Params.tags }}
+                    <a href="/tags/{{ . }}">#{{ . }}</a>
+                    {{ end }}
                 {{ end }}
             </p>
             <div class="articlePreview">

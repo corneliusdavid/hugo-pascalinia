@@ -1,13 +1,11 @@
 {{ define "main" }}
     <h2>
-        <span>
         {{ $title := .Title }}
         {{ $section := .Section | humanize }}
         {{ if and (ne $section $title) (ne $section "Tags") }}
             {{ $section }}:
         {{ end }}
-        {{ if and (eq $section "Tags") (ne $section $title) }}#{{ end }}{{ $title }}
-        </span>
+        {{ if and (eq $section "Tags") (ne $section $title) }}Tag: #{{ end }}{{ $title }}
     </h2>
 
     <ul>

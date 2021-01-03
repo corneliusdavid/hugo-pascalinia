@@ -6,7 +6,7 @@ license = "AGPL3"
 licenselink = "https://gitlab.com/gabmus/hugo-ficurinia/-/blob/master/LICENSE"
 description = ""
 homepage = "https://gitlab.com/gabmus/hugo-ficurinia"
-tags = []
+tags = ["blog", "dark", "customizable", "simple"]
 features = ["posts", "shortcodes", "related content", "comments"]
 min_version = "0.41.0"
 

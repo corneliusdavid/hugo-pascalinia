@@ -10,7 +10,7 @@ $main_font: {{ .Site.Params.fontFamily | default "JetBrains Mono" }};
     color: $fg_color;
 }
 
-* {
+a {
     transition: all .15s ease-in-out;
 }
 

@@ -10,7 +10,7 @@ $accent_color: {{ .Site.Params.accentColor | default "#db5793" }};
 }
 
 body, html {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "Symbols Nerd Font", "JetBrains Mono", monospace;
     margin: 0;
     padding: 0;
     background-color: $bg_color;

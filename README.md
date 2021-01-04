@@ -32,6 +32,7 @@ paginate = 5  # number of articles per page in the index
     showRss = true  # show the link for the RSS feed; default true
 
     navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circle"
+    fontFamily = "JetBrains Mono"  # changes the font, default "JetBrains Mono"
 
     # enable comments support with commento using the script from your server
     commento = "https://example.com/js/commento.js"

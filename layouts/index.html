@@ -28,24 +28,6 @@
             <hr />
         </div>
     {{ end }}
-
-    {{ if gt .Paginator.TotalPages 1 }}
-        <div id="pageNavigation">
-            {{ if .Paginator.HasPrev }}
-                <a href="{{ .Paginator.Prev.URL }}" title="Previous page">&lt;&lt;&lt;</a>
-            {{ end }}
-            {{ $currentPage := .Paginator.PageNumber }}
-            {{ range .Paginator.Pagers }}
-                {{ if ne .PageNumber $currentPage }}
-                    <a href="{{ .URL }}">{{ .PageNumber }}</a>
-                {{ else }}
-                    <span>[{{ .PageNumber }}]</span>
-                {{ end }}
-            {{ end }}
-            {{ if .Paginator.HasNext }}
-                <a href="{{ .Paginator.Next.URL }}" title="Next page">&gt;&gt;&gt;</a>
-            {{ end }}
-        </div>
-    {{ end }}
+    {{- partial "paginator.html" . -}}
 
 {{ end }}

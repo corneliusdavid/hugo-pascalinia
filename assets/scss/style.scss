@@ -9,6 +9,10 @@ $accent_color: {{ .Site.Params.accentColor | default "#db5793" }};
     color: $fg_color;
 }
 
+* {
+    transition: all .15s ease-in-out;
+}
+
 body, html {
     font-family: "Symbols Nerd Font", "JetBrains Mono", monospace;
     margin: 0;
@@ -146,6 +150,31 @@ pre code {
     text-align: right;
     a {
         color: $accent_color;
+    }
+    &.nav-circles {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: center;
+        a, span {
+            margin: 5px;
+            text-align: center;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            padding: auto;
+            border-radius: 100%;
+            background-color: rgba($dim_fg_color, .4);
+            color: $fg_color;
+        }
+        span {
+            background-color: $accent_color;
+        }
+        a:hover {
+            background-color: $accent_color;
+        }
     }
 }
 

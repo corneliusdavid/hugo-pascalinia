@@ -235,6 +235,13 @@ ul {
     }
 }
 
+ul.list {
+    .date {
+        display: inline-block;
+        min-width: 100px;
+    }
+}
+
 #commento {
     color: $fg_color;
     font-family: $main_font, monospace;

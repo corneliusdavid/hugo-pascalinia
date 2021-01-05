@@ -6,7 +6,7 @@
 
     {{/* pagination */}}
     {{ range (.Paginate $postsList).Pages }}
-        <div class="card">
+        <div class="card {{ if .Site.Params.discreteCards }}discrete{{ end }}">
             <h2>
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
             </h2>

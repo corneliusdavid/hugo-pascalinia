@@ -4,6 +4,7 @@ $dim_fg_color: {{ .Site.Params.dimForegroundColor | default "#bababa" }};
 $stroke_color: {{ .Site.Params.strokeColor | default "#4f4f4f" }};
 $accent_color: {{ .Site.Params.accentColor | default "#db5793" }};
 $main_font: {{ .Site.Params.fontFamily | default "JetBrains Mono" }};
+$highlight_bg_color: {{ .Site.Params.highlightBgColor | default "#34363b" }};
 
 ::selection, ::-moz-selection {
     background: $accent_color;
@@ -20,6 +21,10 @@ body, html {
     padding: 0;
     background-color: $bg_color;
     color: $fg_color;
+}
+
+body {
+    min-height: 100vh;
 }
 
 a {
@@ -167,7 +172,7 @@ pre code {
             line-height: 40px;
             padding: auto;
             border-radius: 100%;
-            background-color: rgba($dim_fg_color, .4);
+            background-color: $highlight_bg_color;
             color: $fg_color;
         }
         span {
@@ -227,6 +232,19 @@ h1, h2, h3, h4, h5, h6 {
     hr {
         margin: 50px 0;
     }
+
+    &.discrete {
+        background: $highlight_bg_color;
+        border-radius: 10px;
+        padding: 20px;
+        padding-top: 1px;
+    }
+}
+
+// only hide hr in cards if they are in the article list
+// cards in list are divs, cards as in full-blown articles use the article tag
+div.card.discrete {
+        hr { display: none; }
 }
 
 ul {

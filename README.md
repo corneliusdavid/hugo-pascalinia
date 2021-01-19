@@ -73,6 +73,11 @@ paginate = 5  # number of articles per page in the index
     dimForegroundColor = "#bababa"
     strokeColor = "#4f4f4f"
     accentColor = "#db5793"
+
+    # redirect to baseURL if current URL host doesn't match
+    # useful if deploying in gitlab pages with custom domain and don't want
+    # the username.gitlab.io/website url to persist
+    forceRedirect = false
 ```
 
 ## Inject custom content

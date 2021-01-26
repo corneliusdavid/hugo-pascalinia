@@ -203,6 +203,17 @@ h1, h2, h3, h4, h5, h6 {
     color: $fg_color;
     border-bottom: none;
     position: relative;
+    width: 1em;
+    height: 1.2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    .pseudofont {
+        fill: $fg_color;
+        display: inline;
+        position: relative;
+        top: 1px;
+    }
     span {
         position: absolute;
         top: 1.5em;
@@ -215,6 +226,9 @@ h1, h2, h3, h4, h5, h6 {
         display: none;
     }
     &:hover {
+        .pseudofont {
+            fill: $accent_color;
+        }
         color: $accent_color;
         text-decoration: none;
         border-bottom: none;

@@ -2,13 +2,13 @@
     {{- partial "inject/content-before.html" . -}}
     <article class="card {{ if .Site.Params.discreteCards }}discrete{{ end }}">
         <h1>{{ .Title }}</h1>
-        {{ if .Params.Image }}
-        <img src="{{ .Params.Image }}" alt="" />
-        {{ end }}
         <p class="date">
             <span title="Date"> </span>
             {{ .Date.Format "2006-01-02" }}
         </p>
+        {{ if .Params.Image }}
+        <img src="{{ .Params.Image }}" alt="" />
+        {{ end }}
         <div>{{ .Content }}</div>
         {{ if .Params.tags }}
             <hr />

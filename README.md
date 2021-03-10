@@ -31,6 +31,8 @@ paginate = 5  # number of articles per page in the index
     favicon = "/images/myfavicon.png"
     showTags = true  # show the Tags menu item; default true
     showRss = true  # show the link for the RSS feed; default true
+    
+    imageInArticlePreview = false  # show images in article preview; default false
 
     navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circle"
     fontFamily = "JetBrains Mono"  # changes the font, default "JetBrains Mono"

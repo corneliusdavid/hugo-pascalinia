@@ -257,8 +257,26 @@ h1, h2, h3, h4, h5, h6 {
 
 // only hide hr in cards if they are in the article list
 // cards in list are divs, cards as in full-blown articles use the article tag
-div.card.discrete {
-        hr { display: none; }
+.postlistitem.card.discrete {
+    hr { display: none; }
+}
+
+.postlistitem.card {
+    img {
+        margin: 15px auto;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    .postlistitem.card {
+        img {
+            max-width: 250px;
+            float: left;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+        overflow: auto; // clearfix
+    }
 }
 
 ul {

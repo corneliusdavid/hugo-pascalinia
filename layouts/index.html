@@ -6,7 +6,7 @@
 
     {{/* pagination */}}
     {{ range (.Paginate $postsList).Pages }}
-        <div class="card {{ if .Site.Params.discreteCards }}discrete{{ end }}">
+        <article class="card postlistitem {{ if .Site.Params.discreteCards }}discrete{{ end }}">
             <h2>
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
             </h2>
@@ -21,12 +21,17 @@
                     {{ end }}
                 {{ end }}
             </p>
+            {{ if .Site.Params.imageInArticlePreview }}
+                {{ if .Params.Image }}
+                    <img src="{{ .Params.Image }}" />
+                {{ end }}
+            {{end}}
             <div class="articlePreview">
                 {{ .Summary }}
                 <a href="{{ .Permalink }}">Continue reading </a>
             </div>
             <hr />
-        </div>
+        </article>
     {{ end }}
     {{- partial "paginator.html" . -}}
 

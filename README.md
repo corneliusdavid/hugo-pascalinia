@@ -26,6 +26,7 @@ paginate = 5  # number of articles per page in the index
 
 
 [params]
+    author = "Gabriele Musco"
     logo = "/images/mylogo.png"
     favicon = "/images/myfavicon.png"
     showTags = true  # show the Tags menu item; default true

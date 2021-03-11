@@ -7,10 +7,11 @@
     {{/* pagination */}}
     {{ range (.Paginate $postsList).Pages }}
         <article class="card postlistitem {{ if .Site.Params.discreteCards }}discrete{{ end }}">
-            <h2>
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
-            </h2>
-            <p class="date">
+            <div>
+                <h2>
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h2>
+                <p class="date">
                 <span title="Date"> </span>
                 {{ .Date.Format "2006-01-02" }}
                 {{ if .Params.tags }}
@@ -20,15 +21,16 @@
                         <a href="/tags/{{ . }}">#{{ . }}</a>
                     {{ end }}
                 {{ end }}
-            </p>
-            {{ if .Site.Params.imageInArticlePreview }}
-                {{ if .Params.Image }}
-                    <img src="{{ .Params.Image }}" />
-                {{ end }}
-            {{end}}
-            <div class="articlePreview">
-                {{ .Summary }}
-                <a href="{{ .Permalink }}">Continue reading </a>
+                </p>
+                {{ if .Site.Params.imageInArticlePreview }}
+                    {{ if .Params.Image }}
+                        <img src="{{ .Params.Image }}" />
+                    {{ end }}
+                {{end}}
+                <div class="articlePreview">
+                    <p>{{ .Summary }}</p>
+                    <p><a href="{{ .Permalink }}">Continue reading </a></p>
+                </div>
             </div>
             <hr />
         </article>

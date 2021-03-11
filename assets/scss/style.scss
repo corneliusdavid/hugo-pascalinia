@@ -261,14 +261,14 @@ h1, h2, h3, h4, h5, h6 {
     hr { display: none; }
 }
 
-.postlistitem.card {
+.postlistitem.card div {
     img {
         margin: 15px auto;
     }
 }
 
 @media only screen and (min-width: 500px) {
-    .postlistitem.card {
+    .postlistitem.card > div {
         img {
             max-width: 250px;
             float: left;

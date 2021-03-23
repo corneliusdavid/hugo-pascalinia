@@ -28,20 +28,5 @@
     {{ $style := resources.Get "/scss/style.scss" | resources.ExecuteAsTemplate "/scss/style.scss" . | resources.ToCSS (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") | resources.Fingerprint "sha512" }}
     <link type=text/css rel=stylesheet href={{ $style.Permalink }} integrity="{{ $style.Data.Integrity }}" />
     {{- partial "inject/head.html" . -}}
-    <meta property="og:site_name" content='{{ .Site.Title | default "Ficurinia" }}' />
-    {{ if .IsPage }}
-        <meta property="og:title" content="{{ .Title }}" />
-        <meta property="og:type" content="article" />
-        
-        <meta property="article:author" content="{{ .Site.Params.Author }}" />
-        <meta property="article:published_time" content='{{ .Date.Format "2006-01-02T15:04:05Z-0700" }}' />
-        {{ range .Params.tags }}
-            <meta property="article:tag" content="{{ . }}" />
-        {{ end }}
-        <meta property="og:url" content="{{ .Permalink }}" />
-        <meta property="og:image" content='{{ if .Params.Image }}{{ .Params.Image | absURL }}{{ else }}{{ .Site.Params.Logo | default "/img/icon.svg" | absURL }}{{ end }}' />
-        <meta property="og:description" content="{{ .Summary }}" />
-    {{ else }}
-        <meta property="og:image" content='{{ .Site.Params.Logo | default "/img/icon.svg" | absURL }}' />
-    {{ end }}
+    {{- partial "head_meta_opengraph.html" . -}}
 </head>

@@ -5,6 +5,7 @@ $stroke_color: {{ .Site.Params.strokeColor | default "#4f4f4f" }};
 $accent_color: {{ .Site.Params.accentColor | default "#db5793" }};
 $main_font: {{ .Site.Params.fontFamily | default "JetBrains Mono" }};
 $highlight_bg_color: {{ .Site.Params.highlightBgColor | default "#34363b" }};
+$content_width: {{ .Site.Params.contentWidth | default "1000px" }}
 
 ::selection, ::-moz-selection {
     background: $accent_color;
@@ -37,7 +38,7 @@ a {
 }
 
 #content {
-    max-width: 1000px;
+    max-width: $content_width;
     padding: 15px;
     margin: auto;
 }
@@ -110,7 +111,8 @@ article, .articlePreview {
     img {
         margin: auto;
         display: block;
-        max-width: 80%;
+        max-width: 100%;
+        // max-height: 400px;
     }
 
     pre, code {
@@ -249,6 +251,20 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.postlist {
+        display: grid;
+        grid-gap: 25px;
+        margin-bottom: 25px;
+        grid-template-columns: 1fr;
+    &.gridView {
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        .card {
+            &.discrete {
+            }
+        }
+    }
+}
+
 // only hide hr in cards if they are in the article list
 // cards in list are divs, cards as in full-blown articles use the article tag
 .postlistitem.card.discrete {
@@ -257,21 +273,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .postlistitem.card div {
     img {
-        margin: 15px auto;
+        // margin: 15px auto;
+        height: 250px;
+        min-width: 100%;
+        object-fit: cover;
     }
 }
 
-@media only screen and (min-width: 500px) {
-    .postlistitem.card > div {
-        img {
-            max-width: 250px;
-            float: left;
-            margin-right: 15px;
-            margin-bottom: 15px;
-        }
-        overflow: auto; // clearfix
-    }
-}
+//@media only screen and (min-width: 500px) {
+//    .postlistitem.card > div {
+//        img {
+//            max-width: 250px;
+//            float: left;
+//            margin-right: 15px;
+//            margin-bottom: 15px;
+//        }
+//        overflow: auto; // clearfix
+//    }
+//}
 
 ul {
     li {
@@ -287,6 +306,7 @@ ul.list {
 }
 
 #commento {
+    margin-top: 25px;
     color: $fg_color;
     font-family: $main_font, monospace;
     textarea, #commento-markdown-help-root {

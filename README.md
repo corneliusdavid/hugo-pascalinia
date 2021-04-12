@@ -36,8 +36,10 @@ paginate = 5  # number of articles per page in the index
 
     navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circle"
     fontFamily = "JetBrains Mono"  # changes the font, default "JetBrains Mono"
+    contentWidth = "1000px"  # maximum width of the site content, css syntax
 
     discreteCards = false  # enable discrete card style; default false
+    gridView = false  # show post list as a grid. goes well with discreteCards
     highlightBgColor = "#34363b";  # card and circle navigation background color for discrete card mode
 
     # enable comments support with commento using the script from your server

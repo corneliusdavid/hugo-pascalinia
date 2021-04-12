@@ -5,7 +5,7 @@
     {{ $postsList := where .Site.RegularPages "Section" "in" $postsDir }}
 
     {{/* pagination */}}
-    <div class="postlist">
+    <div class="postlist {{ if .Site.Params.gridView }}gridView{{ end }}">
     {{ range (.Paginate $postsList).Pages }}
         <article class="card postlistitem {{ if .Site.Params.discreteCards }}discrete{{ end }}">
             <div>

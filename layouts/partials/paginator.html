@@ -1,22 +1,38 @@
 {{ if gt .Paginator.TotalPages 1 }}
+    {{ $navtype := .Site.Params.Navtype }}
     <div id="pageNavigation" class='
-            {{ if eq .Site.Params.Navtype "circles" }}
+            {{ if eq $navtype "circles" }}
                 nav-circles
             {{ end }}
     '>
         {{ if .Paginator.HasPrev }}
-            <a href="{{ .Paginator.Prev.URL }}" title="Previous page">&lt;&lt;&lt;</a>
+            <a href="{{ .Paginator.Prev.URL }}" title="Previous page">
+                {{ if eq $navtype "circles" }}
+                    ←
+                {{ else }}
+                    &lt;&lt;&lt;
+                {{ end }}
+            </a>
         {{ end }}
         {{ $currentPage := .Paginator.PageNumber }}
         {{ range .Paginator.Pagers }}
             {{ if ne .PageNumber $currentPage }}
                 <a href="{{ .URL }}">{{ .PageNumber }}</a>
             {{ else }}
-                <span>[{{ .PageNumber }}]</span>
+            <span>
+                {{ if eq $navtype "circles" }}{{ .PageNumber }}
+                {{ else }}[{{ .PageNumber }}]{{ end }}
+            </span>
             {{ end }}
         {{ end }}
         {{ if .Paginator.HasNext }}
-            <a href="{{ .Paginator.Next.URL }}" title="Next page">&gt;&gt;&gt;</a>
+            <a href="{{ .Paginator.Next.URL }}" title="Next page">
+                {{ if eq $navtype "circles" }}
+                    →
+                {{ else }}
+                    &gt;&gt;&gt;
+                {{ end }}
+            </a>
         {{ end }}
     </div>
 {{ end }}

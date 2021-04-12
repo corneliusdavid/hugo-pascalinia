@@ -5,6 +5,7 @@
     {{ $postsList := where .Site.RegularPages "Section" "in" $postsDir }}
 
     {{/* pagination */}}
+    <div class="postlist">
     {{ range (.Paginate $postsList).Pages }}
         <article class="card postlistitem {{ if .Site.Params.discreteCards }}discrete{{ end }}">
             <div>
@@ -35,6 +36,7 @@
             <hr />
         </article>
     {{ end }}
+    </div>
     {{- partial "paginator.html" . -}}
 
 {{ end }}

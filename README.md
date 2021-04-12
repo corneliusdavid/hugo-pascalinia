@@ -23,6 +23,7 @@ title = "My nice blog"
 copyright = "Some copyright notice"
 
 paginate = 5  # number of articles per page in the index
+summaryLength = 70  # number of words for article summaries
 
 
 [params]

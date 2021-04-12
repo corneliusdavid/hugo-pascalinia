@@ -112,7 +112,6 @@ article, .articlePreview {
         margin: auto;
         display: block;
         max-width: 100%;
-        // max-height: 400px;
     }
 
     pre, code {
@@ -273,24 +272,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .postlistitem.card div {
     img {
-        // margin: 15px auto;
         height: 250px;
         min-width: 100%;
         object-fit: cover;
     }
 }
-
-//@media only screen and (min-width: 500px) {
-//    .postlistitem.card > div {
-//        img {
-//            max-width: 250px;
-//            float: left;
-//            margin-right: 15px;
-//            margin-bottom: 15px;
-//        }
-//        overflow: auto; // clearfix
-//    }
-//}
 
 ul {
     li {

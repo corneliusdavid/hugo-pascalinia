@@ -4,6 +4,7 @@ $dim_fg_color: {{ .Site.Params.dimForegroundColor | default "#bababa" }};
 $stroke_color: {{ .Site.Params.strokeColor | default "#4f4f4f" }};
 $accent_color: {{ .Site.Params.accentColor | default "#db5793" }};
 $main_font: {{ .Site.Params.fontFamily | default "JetBrains Mono" }};
+$mono_font: {{ .Site.Params.monospaceFontFamily | default "JetBrains Mono" }};
 $highlight_bg_color: {{ .Site.Params.highlightBgColor | default "#34363b" }};
 $content_width: {{ .Site.Params.contentWidth | default "1000px" }}
 
@@ -125,7 +126,7 @@ article, .articlePreview {
 }
 
 code {
-    font-family: $main_font, monospace;
+    font-family: $mono_font, monospace;
     font-size: .8em;
     padding: 2px;
     border: 1px solid $stroke_color;
@@ -193,7 +194,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nerd {
-    font-family: "Symbols Nerd Font", $main_font;
+    font-family: "Symbols Nerd Font", $mono_font;
     font-size: 1.2em;
     margin: 5px;
     display: inline-block;
@@ -303,7 +304,7 @@ ul.list {
         td, td>*, td>*>* {
             color: $fg_color;
             pre {
-                font-family: $main_font, monospace;
+                font-family: $mono_font, monospace;
                 color: $dim_fg_color;
             }
         }

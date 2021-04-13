@@ -1,0 +1,28 @@
+{
+    {{ $postsDir := .Site.Params.Posts | default (slice "posts" "post") }}
+    {{ $postsList := where .Site.RegularPages "Section" "in" $postsDir }}
+    "page": "{{ .Paginator.PageNumber }}",
+    "next": {{ if .Paginator.HasNext }}
+        {{ .Paginator.Next.URL | absURL | jsonify }}
+    {{ else }}""{{ end }},
+    "articles": [
+        {{ range $i, $e := (.Paginate $postsList).Pages }}
+            {{ if $i }}, {{ end }}{
+                "title": {{ .Title | jsonify }},
+                "date": {{ .Date.Format "2006-01-02" | jsonify }},
+                "tags": {{ if .Params.tags }}
+                            {{ .Params.tags | jsonify }}
+                        {{ else }}
+                            []
+                        {{ end }},
+                "summary": {{ .Summary | jsonify }},
+                "link": "{{ .Permalink }}"
+                {{ if .Site.Params.imageInArticlePreview }}
+                    , "image": {{ if .Params.Image }}
+                            {{ .Params.Image | jsonify }}{{ else }}""
+                    {{ end }}
+                {{ end }}
+            }
+        {{ end }}
+    ]
+}

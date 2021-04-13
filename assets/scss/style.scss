@@ -244,7 +244,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 25px;
 
     &.discrete {
-        background: $highlight_bg_color;
+        background-color: $highlight_bg_color;
         border-radius: 10px;
         padding: 20px;
         padding-top: 1px;
@@ -368,5 +368,33 @@ ul.list {
     justify-content: space-between;
     .search {
         &, #searchbar {font-size: 1em;}
+    }
+}
+
+.featuredCardLink {
+    border: none;
+    padding: 0;
+    .featuredCard {
+        @extend .card;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        height: 250px;
+        .contentArea {
+            position: absolute;
+            bottom: 0;
+            padding: 15px;
+            h2 {
+                margin: 0;
+            }
+            .date {
+                margin: 0;
+            }
+        }
+        &.discrete {
+            border-radius: 10px;
+            padding: 0;
+        }
     }
 }

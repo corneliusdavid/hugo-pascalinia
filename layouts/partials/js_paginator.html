@@ -13,7 +13,6 @@
         return `<img src="${image}" />`
     }
     function renderSingleArticle(article) {
-        if (article.ignore) return '';
         return `
         <article class="card postlistitem {{ if .Site.Params.discreteCards }}discrete{{ end }}">
             <div>

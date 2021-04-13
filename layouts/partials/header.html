@@ -1,27 +1,35 @@
 <header>
     {{- partial "inject/header-before.html" . -}}
-    <div id="titleContainer">
-        <img src='{{ .Site.Params.Logo | default "/img/icon.svg" }}' />
-        <div>
-            <h1>{{ .Site.Title | default "Ficurinia" }}</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/posts">Posts</a></li>
-                    {{ $pagesDir := .Site.Params.Pages | default (slice "pages") }}
-                    {{ $pagesList := where .Site.RegularPages "Section" "in" $pagesDir }}
-                    {{ range $pagesList }}
-                        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-                    {{ end }}
-                    {{ if (.Site.Params.showTags | default true) }}
-                        <li><a href="/tags">Tags</a></li>
-                    {{ end }}
-                    {{ if (.Site.Params.enableSearch | default true) }}
-                        <li><a href="/search">Search</a></li>
-                    {{ end }}
-                </ul>
-            </nav>
+    <div class="titleAndSearchContainer">
+        <div id="titleContainer">
+            <img src='{{ .Site.Params.Logo | default "/img/icon.svg" }}' />
+            <div>
+                <h1>{{ .Site.Title | default "Ficurinia" }}</h1>
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/posts">Posts</a></li>
+                        {{ $pagesDir := .Site.Params.Pages | default (slice "pages") }}
+                        {{ $pagesList := where .Site.RegularPages "Section" "in" $pagesDir }}
+                        {{ range $pagesList }}
+                            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                        {{ end }}
+                        {{ if (.Site.Params.showTags | default true) }}
+                            <li><a href="/tags">Tags</a></li>
+                        {{ end }}
+                        {{ if and (.Site.Params.searchMenuLink | default false) (.Site.Params.enableSearch | default true) }}
+                            <li><a href="/search">Search</a></li>
+                        {{ end }}
+                    </ul>
+                </nav>
+            </div>
         </div>
+        {{ if and (.Site.Params.searchbarEverywhere | default true) (and (.Site.Params.enableSearch | default true) (not (eq .Title "Search"))) }}
+            {{- partial "searchbar.html" . -}}
+            <script>
+                document.getElementById('searchbar').
+            </script>
+        {{ end }}
     </div>
     <div id="links">
         {{ if .Site.Params.showRss | default true }}

@@ -45,6 +45,8 @@ summaryLength = 70  # number of words for article summaries
     highlightBgColor = "#34363b";  # card and circle navigation background color for discrete card mode
 
     enableSearch = true  # enable search page
+    searchbarEverywhere = true  # if the searchbar should be shown in every page; requires enableSearch
+    searchMenuLink = false  # add a search link to the navigation menu; requires enableSearch
 
     # enable comments support with commento using the script from your server
     commento = "https://example.com/js/commento.js"

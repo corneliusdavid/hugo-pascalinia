@@ -26,9 +26,6 @@
         </div>
         {{ if and (.Site.Params.searchbarEverywhere | default true) (and (.Site.Params.enableSearch | default true) (not (eq .Title "Search"))) }}
             {{- partial "searchbar.html" . -}}
-            <script>
-                document.getElementById('searchbar').
-            </script>
         {{ end }}
     </div>
     <div id="links">

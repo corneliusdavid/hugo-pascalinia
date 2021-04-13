@@ -85,6 +85,13 @@ summaryLength = 70  # number of words for article summaries
     # useful if deploying in gitlab pages with custom domain and don't want
     # the username.gitlab.io/website url to persist
     forceRedirect = false
+
+    infiniteScrolling = false  # activates infinite scrolling instead of regular pagination
+
+# this section is necessary if you want infinite scrolling
+# it allows to output the article list as paged JSON so that "pages" can be retrieved via javascript
+[outputs]
+    home = ["HTML", "JSON"]
 ```
 
 ## Inject custom content

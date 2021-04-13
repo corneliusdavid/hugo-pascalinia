@@ -1,3 +1,4 @@
+{{ define "main" }}
 {
     {{ $postsDir := .Site.Params.Posts | default (slice "posts" "post") }}
     {{ $postsList := where .Site.RegularPages "Section" "in" $postsDir }}
@@ -8,6 +9,7 @@
     "articles": [
         {{ range $i, $e := (.Paginate $postsList).Pages }}
             {{ if $i }}, {{ end }}{
+                "ignore": {{ not (in $postsDir .Section) | jsonify }},
                 "title": {{ .Title | jsonify }},
                 "date": {{ .Date.Format "2006-01-02" | jsonify }},
                 "tags": {{ if .Params.tags }}
@@ -26,3 +28,4 @@
         {{ end }}
     ]
 }
+{{ end }}

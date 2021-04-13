@@ -6,26 +6,18 @@
     "next": {{ if .Paginator.HasNext }}
         {{ .Paginator.Next.URL | absURL | jsonify }}
     {{ else }}""{{ end }},
-    "articles": [
-        {{ range $i, $e := (.Paginate $postsList).Pages }}
-            {{ if $i }}, {{ end }}{
-                "ignore": {{ not (in $postsDir .Section) | jsonify }},
-                "title": {{ .Title | jsonify }},
-                "date": {{ .Date.Format "2006-01-02" | jsonify }},
-                "tags": {{ if .Params.tags }}
-                            {{ .Params.tags | jsonify }}
-                        {{ else }}
-                            []
-                        {{ end }},
-                "summary": {{ .Summary | jsonify }},
-                "link": "{{ .Permalink }}"
-                {{ if .Site.Params.imageInArticlePreview }}
-                    , "image": {{ if .Params.Image }}
-                            {{ .Params.Image | jsonify }}{{ else }}""
-                    {{ end }}
-                {{ end }}
-            }
-        {{ end }}
-    ]
+    {{ $mscratch := newScratch }}
+    {{ $mscratch.Add "articles" slice }}
+    {{ range (.Paginate $postsList).Pages }}
+        {{ $mscratch.Add "articles" (dict
+            "ignore" (not (in $postsDir .Section))
+            "title" .Title
+            "date" (.Date.Format "2006-01-02")
+            "tags" (or .Params.tags slice)
+            "summary" .Summary
+            "link" .Permalink
+            "image" (or .Params.Image "")) }}
+    {{ end }}
+    "articles": {{ $mscratch.Get "articles" | jsonify }}
 }
 {{ end }}

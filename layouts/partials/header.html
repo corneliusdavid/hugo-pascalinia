@@ -16,6 +16,9 @@
                     {{ if (.Site.Params.showTags | default true) }}
                         <li><a href="/tags">Tags</a></li>
                     {{ end }}
+                    {{ if (.Site.Params.enableSearch | default true) }}
+                        <li><a href="/search">Search</a></li>
+                    {{ end }}
                 </ul>
             </nav>
         </div>

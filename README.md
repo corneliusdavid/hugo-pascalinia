@@ -44,6 +44,8 @@ summaryLength = 70  # number of words for article summaries
     gridView = false  # show post list as a grid. goes well with discreteCards
     highlightBgColor = "#34363b";  # card and circle navigation background color for discrete card mode
 
+    enableSearch = true  # enable search page
+
     # enable comments support with commento using the script from your server
     commento = "https://example.com/js/commento.js"
 

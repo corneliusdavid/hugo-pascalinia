@@ -33,7 +33,7 @@ a {
     color: $fg_color;
     text-decoration: none;
     border-bottom: 2px solid $fg_color;
-    &:hover {
+    &:hover, &:focus {
         border-color: $accent_color !important;
     }
 }
@@ -333,5 +333,29 @@ ul.list {
             color: $fg_color;
             font-family: $main_font, monospace;
         }
+    }
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    .nerdlink {
+        display: inline-block;
+        cursor: pointer;
+    }
+    #searchbar {
+        @extend a;
+        width: 100%;
+        display: inline-block;
+        background-color: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        padding: 6px 0;
+        font-family: $main_font;
+        font-size: 1.3em;
+        outline: none;
     }
 }

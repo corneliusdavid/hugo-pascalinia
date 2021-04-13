@@ -1,0 +1,26 @@
+{{ define "main" }}
+{
+    "pages": [
+        {{ range $i, $e := .Site.RegularPages }}
+        {{ if $i }},{{ end }}
+        {
+            "title": {{ .Title | jsonify }},
+            "date": {{ .Date.Format "2006-01-02" | jsonify }},
+            "tags": {{ if .Params.tags }}
+                        {{ .Params.tags | jsonify }}
+                    {{ else }}
+                        []
+                    {{ end }},
+            "summary": {{ .Summary | jsonify }},
+            "text": {{ lower .Plain | jsonify }},
+            "link": "{{ .Permalink }}"
+            {{ if .Site.Params.imageInArticlePreview }}
+                , "image": {{ if .Params.Image }}
+                        {{ .Params.Image | jsonify }}{{ else }}""
+                {{ end }}
+            {{ end }}
+        }
+        {{ end }}
+    ]
+}
+{{ end }}

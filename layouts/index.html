@@ -5,13 +5,16 @@
     {{ $allPostsList := where .Site.RegularPages "Section" "in" $postsDir }}
     {{ $featuredPostsList := slice }}
     {{ $postsList := $allPostsList }}
-    {{ $pagination := (.Paginate $postsList).Pages }}
+    {{ $pagination := slice }}
     {{ if .Site.Params.enableFeatured | default false }}
         {{ $featuredPostsList = where $allPostsList "Params.featured" true }}
         {{ $postsList = union (where $allPostsList "Params.featured" false) (where $allPostsList "Params.featured" nil) }}
+        {{ $pagination = (.Paginate $postsList).Pages }}
         {{ if eq .Paginator.PageNumber 1 }}
             {{- partial "featured_articles.html" $featuredPostsList -}}
         {{ end }}
+    {{ else }}
+        {{ $pagination = (.Paginate $postsList).Pages }}
     {{ end }}
 
     {{/* pagination */}}

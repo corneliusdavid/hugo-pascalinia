@@ -12,7 +12,9 @@
                         {{ $pagesDir := .Site.Params.Pages | default (slice "pages") }}
                         {{ $pagesList := where .Site.RegularPages "Section" "in" $pagesDir }}
                         {{ range $pagesList }}
-                            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            <li><a href="{{ .Permalink }}">
+                                {{ or .Params.Button .Title }}
+                            </a></li>
                         {{ end }}
                         {{ range .Site.Menus.main }}
                             <li><a href="{{ .URL }}">{{ .Name }}</a></li>

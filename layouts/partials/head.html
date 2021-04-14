@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href='{{ .Site.Params.favicon | default "/img/favicon.png" }}' type="image/x-icon" />
 
     <title>
-        {{ if ne .Title .Site.Title }}
+        {{ if and (.Title) (ne .Title .Site.Title) }}
             {{ .Title }}  &ndash;
         {{ end }}
         {{ .Site.Title | default "Ficurinia" }}

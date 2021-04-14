@@ -1,0 +1,29 @@
+<div class="featured postlist gridView">
+{{ range . }}
+    <a class="featuredCardLink" href="{{ .Permalink }}">
+        <article class="featuredCard {{ if .Site.Params.discreteCards }}discrete{{ end }}"
+            style="
+                background-image: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0) 0%,
+                    rgba(0, 0, 0, 0) 59%,
+                    rgba(0, 0, 0, 0.7) 100%
+                ), url('{{ .Params.Image }}');
+        ">
+            <div class="contentArea">
+                <h2>{{ .Title }}</h2>
+                <p class="date">
+                    <span title="Date"> </span>
+                    {{ .Date.Format "2006-01-02" }}
+                    {{ if .Params.tags }}
+                    <br />
+                    <span title="Tags"> </span>
+                    {{ range .Params.tags }}
+                        #{{ . }}
+                    {{ end }}
+                {{ end }}
+                </p>
+            </div>
+        </article>
+    </a>
+{{ end }}
+</div>

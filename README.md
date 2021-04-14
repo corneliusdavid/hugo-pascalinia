@@ -42,7 +42,7 @@ summaryLength = 70  # number of words for article summaries
 
     discreteCards = false  # enable discrete card style; default false
     gridView = false  # show post list as a grid. goes well with discreteCards
-    highlightBgColor = "#34363b";  # card and circle navigation background color for discrete card mode
+    highlightBgColor = "#34363b"  # card and circle navigation background color for discrete card mode
 
     enableSearch = true  # enable search page
     searchbarEverywhere = true  # if the searchbar should be shown in every page; requires enableSearch

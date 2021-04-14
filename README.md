@@ -35,7 +35,7 @@ summaryLength = 70  # number of words for article summaries
 
     imageInArticlePreview = false  # show images in article preview; default false
 
-    navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circle"
+    navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circles"
     fontFamily = "JetBrains Mono"  # changes the font, default "JetBrains Mono"
     monospaceFontFamily = "JetBrains Mono"  # changes the monospace font for code, default "JetBrains Mono"
     contentWidth = "1000px"  # maximum width of the site content, css syntax

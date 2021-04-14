@@ -226,6 +226,7 @@ h1, h2, h3, h4, h5, h6 {
         border-radius: 3px;
         color: $fg_color;
         display: none;
+        background-color: $bg_color;
     }
     &:hover {
         .pseudofont {

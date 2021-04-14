@@ -32,7 +32,7 @@ summaryLength = 70  # number of words for article summaries
     favicon = "/images/myfavicon.png"
     showTags = true  # show the Tags menu item; default true
     showRss = true  # show the link for the RSS feed; default true
-    
+
     imageInArticlePreview = false  # show images in article preview; default false
 
     navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circle"
@@ -72,12 +72,15 @@ summaryLength = 70  # number of words for article summaries
     #    telegram
     #    phone
     #    rss
-    links = [
-        ["GitLab", "https://gitlab.com/gabmus"],
-        ["GNOME", "https://gitlab.gnome.org/gabmus"],
-        ["YouTube", "https://youtube.com/TechPillsNet"],
-        ["Email", "mailto:gabmus@disroot.org"]
-    ]
+
+
+    # WARNING: deprecated! Use [[menu.icons]] instead, look below
+    # links = [
+    #     ["GitLab", "https://gitlab.com/gabmus"],
+    #     ["GNOME", "https://gitlab.gnome.org/gabmus"],
+    #     ["YouTube", "https://youtube.com/TechPillsNet"],
+    #     ["Email", "mailto:gabmus@disroot.org"]
+    # ]
 
     # you can customize all of the colors in this theme
     # the values shown are the defaults
@@ -93,6 +96,28 @@ summaryLength = 70  # number of words for article summaries
     forceRedirect = false
 
     infiniteScrolling = false  # activates infinite scrolling instead of regular pagination
+
+[menu]
+    # these links will be added to the main navigation menu, sorted by weight
+    # other elements in this menu are added automatically from the "pages" folder
+    # the folder it will look into can be customized with the pages variable
+    # in params above
+    [[menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about/"
+        weight = 10
+    # these links (menu.icons) will be added as icon links below the main nav
+    [[menu.icons]]
+        identifier = "gitlab"
+        name = "GitLab"
+        url = "https://gitlab.com/gabmus"
+        weight = 10
+    [[menu.icons]]
+        identifier = "gnome"
+        name = "GNOME GitLab"
+        url = "https://gitlab.gnome.org/gabmus"
+        weight = 20
 
 # this section is necessary if you want infinite scrolling
 # it allows to output the article list as paged JSON so that "pages" can be retrieved via javascript

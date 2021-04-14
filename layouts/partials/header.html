@@ -14,6 +14,9 @@
                         {{ range $pagesList }}
                             <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
                         {{ end }}
+                        {{ range .Site.Menus.main }}
+                            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                        {{ end }}
                         {{ if (.Site.Params.showTags | default true) }}
                             <li><a href="/tags">Tags</a></li>
                         {{ end }}
@@ -30,10 +33,13 @@
     </div>
     <div id="links">
         {{ if .Site.Params.showRss | default true }}
-            {{- partial "nerdlink" (slice "RSS" "/index.xml") -}}
+            {{- partial "iconlink" (dict "Identifier" "rss" "Name" "RSS" "URL" "/index.xml") -}}
         {{ end }}
         {{ range .Site.Params.links }}
             {{- partial "nerdlink" . -}}
+        {{ end }}
+        {{ range .Site.Menus.icons }}
+            {{- partial "iconlink" . -}}
         {{ end }}
     </div>
     {{- partial "inject/header-after.html" . -}}

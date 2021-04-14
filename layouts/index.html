@@ -5,15 +5,18 @@
     {{ $allPostsList := where .Site.RegularPages "Section" "in" $postsDir }}
     {{ $featuredPostsList := slice }}
     {{ $postsList := $allPostsList }}
+    {{ $pagination := (.Paginate $postsList).Pages }}
     {{ if .Site.Params.enableFeatured | default false }}
         {{ $featuredPostsList = where $allPostsList "Params.featured" true }}
         {{ $postsList = union (where $allPostsList "Params.featured" false) (where $allPostsList "Params.featured" nil) }}
-        {{- partial "featured_articles.html" $featuredPostsList -}}
+        {{ if eq .Paginator.PageNumber 1 }}
+            {{- partial "featured_articles.html" $featuredPostsList -}}
+        {{ end }}
     {{ end }}
 
     {{/* pagination */}}
     <div class="postlist {{ if .Site.Params.gridView }}gridView{{ end }}" id="postlist">
-    {{ range (.Paginate $postsList).Pages }}
+    {{ range $pagination }}
         <article class="card postlistitem {{ if .Site.Params.discreteCards }}discrete{{ end }}">
             <div>
                 <h2>

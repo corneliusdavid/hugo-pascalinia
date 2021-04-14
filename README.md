@@ -83,6 +83,7 @@ summaryLength = 70  # number of words for article summaries
     forceRedirect = false
 
     infiniteScrolling = false  # activates infinite scrolling instead of regular pagination
+    enableFooterColumns = false  # activates footer columns, as described below
 
 [menu]
     # these links will be added to the main navigation menu, sorted by weight
@@ -133,6 +134,30 @@ For the `[[menu.icons]]` menu. They match identifier, name and url can be whatev
 - mastodon
 - phone
 - rss
+
+## Footer columns
+
+You can add various columns of links in the footer using the `data/footer_columns.yml` file.
+
+Following is an example configuration:
+
+```yaml
+- title: My other projects
+  links:
+    - title: HydraPaper
+      link: https://hydrapaper.gabmus.org
+    - title: Ada UI
+      link: https://gitlab.com/gabmus/ada-ui
+- title: About me
+  links:
+    - title: My personal website
+      link: https://gabmus.org
+    - title: My GitLab
+      link: https://gitlab.com/gabmus
+    - title: My GNOME GitLab
+      link: https://gitlab.gnome.org/gabmus
+```
+
 
 ## Inject custom content
 

@@ -57,29 +57,11 @@ summaryLength = 70  # number of words for article summaries
     plausibleScriptUrl = "https://something.com/..."
     plausibleDomain = "gabmus.org"
 
-    # the links array shows links with icons (if explicitly supported)
-    # it's an array of arrays containing two strings: name and link
-    # the supported icons are:
-    #    gitlab
-    #    gnome
-    #    youtube
-    #    email
-    #    twitter
-    #    instagram
-    #    facebook
-    #    github
-    #    linkedin
-    #    telegram
-    #    phone
-    #    rss
-
-
     # WARNING: deprecated! Use [[menu.icons]] instead, look below
     # links = [
     #     ["GitLab", "https://gitlab.com/gabmus"],
     #     ["GNOME", "https://gitlab.gnome.org/gabmus"],
-    #     ["YouTube", "https://youtube.com/TechPillsNet"],
-    #     ["Email", "mailto:gabmus@disroot.org"]
+    #     ["YouTube", "https://youtube.com/TechPillsNet"]
     # ]
 
     # you can customize all of the colors in this theme
@@ -124,6 +106,28 @@ summaryLength = 70  # number of words for article summaries
 [outputs]
     home = ["HTML", "JSON"]
 ```
+
+### Supported icons
+
+For the `[[menu.icons]]` menu. They match identifier, name and url can be whatever. Here's a list of supported identifiers:
+
+- gitlab
+- gnome
+- youtube
+- email
+- twitter
+- instagram
+- facebook
+- github
+- linkedin
+- telegram
+- xmpp
+- pleroma
+- peertube
+- matrix
+- mastodon
+- phone
+- rss
 
 ## Inject custom content
 

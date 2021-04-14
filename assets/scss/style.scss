@@ -388,6 +388,7 @@ ul.list {
             position: absolute;
             bottom: 0;
             padding: 15px;
+            &, h2, .date {color: white;}
             h2 {
                 margin: 0;
             }

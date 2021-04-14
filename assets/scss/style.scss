@@ -416,3 +416,20 @@ ul.list {
         }
     }
 }
+
+.loadMoreButton {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    &.buttonLike {
+        a {
+            border-radius: 10px;
+            background-color: $highlight_bg_color;
+            padding: 15px;
+            border-bottom: none;
+            &:hover, &:focus {
+                background-color: $accent_color;
+            }
+        }
+    }
+}

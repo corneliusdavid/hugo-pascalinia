@@ -17,10 +17,14 @@ A prickly blog theme for Hugo
 These are some parameters you can use in your `config.toml` to customize Ficurinia:
 
 ```toml
+baseURL = "https://example.com/"
 theme = "hugo-ficurinia"
-
 title = "My nice blog"
-copyright = "Some copyright notice"
+
+# this will be included in the footer after the current year the site is last
+# built, followed by the (c) symbol
+# you can use markdown inside this field
+copyright = "Some copyright notice - [my license](https://example.com/license)"
 
 paginate = 5  # number of articles per page in the index
 summaryLength = 70  # number of words for article summaries
@@ -55,7 +59,7 @@ summaryLength = 70  # number of words for article summaries
 
     # enable analytics using Plausible
     plausibleScriptUrl = "https://something.com/..."
-    plausibleDomain = "gabmus.org"
+    plausibleDomain = "example.com"
 
     # WARNING: deprecated! Use [[menu.icons]] instead, look below
     # links = [
@@ -75,6 +79,7 @@ summaryLength = 70  # number of words for article summaries
     # redirect to baseURL if current URL host doesn't match
     # useful if deploying in gitlab pages with custom domain and don't want
     # the username.gitlab.io/website url to persist
+    # this requires you to set baseURL (see above)
     forceRedirect = false
 
     infiniteScrolling = false  # activates infinite scrolling instead of regular pagination

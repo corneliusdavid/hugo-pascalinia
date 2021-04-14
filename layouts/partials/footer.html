@@ -2,7 +2,7 @@
     <hr />
     {{- partial "inject/footer.html" . -}}
     <p><small>
-        {{ now.Format "2006" }} &copy; {{ .Site.Copyright }}
+        {{ now.Format "2006" }} &copy; {{ .Site.Copyright | markdownify }}
     </small></p>
     <p><small>
         <a href="https://gitlab.com/gabmus/hugo-ficurinia">Ficurinia theme</a> for <a href="https://gohugo.io">Hugo</a> by <a href="https://gabmus.org">Gabriele Musco</a>.

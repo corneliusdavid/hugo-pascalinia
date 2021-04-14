@@ -6,7 +6,8 @@ $accent_color: {{ .Site.Params.accentColor | default "#db5793" }};
 $main_font: {{ .Site.Params.fontFamily | default "JetBrains Mono" }};
 $mono_font: {{ .Site.Params.monospaceFontFamily | default "JetBrains Mono" }};
 $highlight_bg_color: {{ .Site.Params.highlightBgColor | default "#34363b" }};
-$content_width: {{ .Site.Params.contentWidth | default "1000px" }}
+$content_width: {{ .Site.Params.contentWidth | default "1000px" }};
+$border_radius: 10px;
 
 ::selection, ::-moz-selection {
     background: $accent_color;
@@ -262,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
 
     &.discrete {
         background-color: $highlight_bg_color;
-        border-radius: 10px;
+        border-radius: $border_radius;
         padding: 20px;
         padding-top: 1px;
     }
@@ -411,7 +412,7 @@ ul.list {
             }
         }
         &.discrete {
-            border-radius: 10px;
+            border-radius: $border_radius;
             padding: 0;
         }
     }
@@ -423,7 +424,7 @@ ul.list {
     font-weight: bold;
     &.buttonLike {
         a {
-            border-radius: 10px;
+            border-radius: $border_radius;
             background-color: $highlight_bg_color;
             padding: 15px;
             border-bottom: none;

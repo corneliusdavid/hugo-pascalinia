@@ -1,40 +1,16 @@
 {{ if and (.Site.Params.enableRelatedArticles | default false) .Params.tags }}
+    {{ $postsList :=
+        where (
+            where site.RegularPages "Params.tags" "!=" nil
+        ) "Params.tags" "intersect" .Params.tags
+    }}
     <div class="relatedArticlesContainer">
         <hr />
         <h2>More posts like this</h2>
-        <div id="relatedArticles"></div>
+        <div class="postlist {{ if .Site.Params.gridView }}gridView{{ end }}">
+            {{ range first (.Site.Params.relatedArticlesNum | default 2) $postsList }}
+                {{- partial "article_card.html" . -}}
+            {{ end }}
+        </div>
     </div>
-    {{- partial "js_paginator.html" . -}}
-    <script>
-        function hasAnyTags(articleTags, targetTags) {
-            for (let atag of articleTags) {
-                if (targetTags.includes(atag)) return true;
-            }
-            return false;
-        }
-        function getRelatedArticles() {
-            let currentTags = {{ .Params.tags }};
-            let targetContainer = document.getElementById('relatedArticles');
-            targetContainer.innerHTML = '';
-            fetch('/search/index.json').then(res => res.json())
-            .then(res => {
-                let candidates = res.pages.filter(
-                            a => hasAnyTags(a.tags, currentTags) && a.link != "{{ .Permalink }}"
-                );
-                let targetNum = Math.min(
-                    {{ .Site.Params.relatedArticlesNum | default 2 }},
-                    candidates.length
-                );
-                if (candidates.length <= 0) {
-                    Array.from(
-                        document.getElementsByClassName('relatedArticlesContainer')
-                    ).map(e => e.style.display = 'none');
-                }
-                for (let i=0; i<targetNum; i++) {
-                    targetContainer.innerHTML += renderSingleArticle(candidates[i]);
-                }
-            });
-        }
-        getRelatedArticles();
-    </script>
 {{ end }}

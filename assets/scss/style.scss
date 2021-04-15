@@ -434,3 +434,9 @@ ul.list {
         }
     }
 }
+
+.relatedArticlesContainer {
+    #relatedArticles .postlistitem {
+        @extend .featuredCard;
+    }
+}

@@ -84,6 +84,10 @@ summaryLength = 70  # number of words for article summaries
 
     infiniteScrolling = false  # activates infinite scrolling instead of regular pagination
     enableFooterColumns = false  # activates footer columns, as described below
+    # related articles will be selected randomly based on tags and shown at
+    # the bottom of the article, after the comments
+    enableRelatedArticles = false
+    relatedArticlesNum = 2  # how many related articles to show
 
 [menu]
     # these links will be added to the main navigation menu, sorted by weight

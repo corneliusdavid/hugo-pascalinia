@@ -88,6 +88,7 @@ summaryLength = 70  # number of words for article summaries
     # the bottom of the article, after the comments
     enableRelatedArticles = false
     relatedArticlesNum = 2  # how many related articles to show
+    randomRelated = false  # sorts related articles in random order (randomized at built time)
 
 [menu]
     # these links will be added to the main navigation menu, sorted by weight

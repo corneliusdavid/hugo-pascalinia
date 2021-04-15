@@ -6,6 +6,9 @@
             ) "Params.tags" "intersect" .Params.tags
         ) "Permalink" "ne" .Permalink
     }}
+    {{ if site.Params.randomRelated | default false }}
+        {{ $postsList = shuffle $postsList }}
+    {{ end }}
     <div class="relatedArticlesContainer">
         <hr />
         <h2>More posts like this</h2>

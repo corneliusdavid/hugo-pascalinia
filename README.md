@@ -122,23 +122,24 @@ summaryLength = 70  # number of words for article summaries
 
 For the `[[menu.icons]]` menu. They match identifier, name and url can be whatever. Here's a list of supported identifiers:
 
-- gitlab
-- gnome
-- youtube
 - email
-- twitter
-- instagram
 - facebook
 - github
+- gitlab
+- gnome
+- instagram
 - linkedin
-- telegram
-- xmpp
-- pleroma
-- peertube
-- matrix
 - mastodon
+- matrix
+- peertube
 - phone
+- pleroma
 - rss
+- steam
+- telegram
+- twitter
+- xmpp
+- youtube
 
 ## Footer columns
 

@@ -6,16 +6,18 @@
             ) "Params.tags" "intersect" .Params.tags
         ) "Permalink" "ne" .Permalink
     }}
-    {{ if site.Params.randomRelated | default false }}
-        {{ $postsList = shuffle $postsList }}
-    {{ end }}
-    <div class="relatedArticlesContainer">
-        <hr />
-        <h2>More posts like this</h2>
-        <div class="postlist {{ if .Site.Params.gridView }}gridView{{ end }}">
-            {{ range first (.Site.Params.relatedArticlesNum | default 2) $postsList }}
-                {{- partial "article_card.html" . -}}
-            {{ end }}
+    {{ if $postsList }}
+        {{ if site.Params.randomRelated | default false }}
+            {{ $postsList = shuffle $postsList }}
+        {{ end }}
+        <div class="relatedArticlesContainer">
+            <hr />
+            <h2>More posts like this</h2>
+            <div class="postlist {{ if .Site.Params.gridView }}gridView{{ end }}">
+                {{ range first (.Site.Params.relatedArticlesNum | default 2) $postsList }}
+                    {{- partial "article_card.html" . -}}
+                {{ end }}
+            </div>
         </div>
-    </div>
+    {{ end }}
 {{ end }}

@@ -10,6 +10,8 @@ A prickly blog theme for Hugo
 
 [Code for the demo website](https://gitlab.com/gabmus/gabmus.gitlab.io) (really my personal website)
 
+[Screenshot gallery](https://gabmus.gitlab.io/hugo-ficurinia-screenshots/) showcasing 256 of the possible configurations that Ficurinia offers.
+
 # Customization
 
 ## Configuration

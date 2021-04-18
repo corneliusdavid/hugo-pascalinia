@@ -176,6 +176,7 @@ Following is an example configuration:
 | `tags` | An array of tags, useful for searching similar articles |
 | `description` | A brief description of the post, useful for SEO optimization |
 | `featured` | Boolean, indicate if the post should be shown as featured |
+| `image` | The main image representing the article |
 
 ## Inject custom content
 

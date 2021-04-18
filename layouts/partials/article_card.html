@@ -10,7 +10,7 @@
             | <!-- Pipe character as visual separator between date and tags-->
             <span title="Tags"> </span>
             {{ range .Params.tags }}
-                <a href="/tags/{{ . }}">#{{ . }}</a>
+                <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
             {{ end }}
         {{ end }}
         </p>

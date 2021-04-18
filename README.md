@@ -34,6 +34,8 @@ summaryLength = 70  # number of words for article summaries
 
 [params]
     author = "Gabriele Musco"
+    description = "A description for my website"  # this will be added as metadata
+
     logo = "/images/mylogo.png"
     favicon = "/images/myfavicon.png"
     showTags = true  # show the Tags menu item; default true
@@ -166,6 +168,13 @@ Following is an example configuration:
       link: https://gitlab.gnome.org/gabmus
 ```
 
+## Params supported in a post frontmatter
+
+| Param | Description |
+|-------|-------------|
+| `tags` | An array of tags, useful for searching similar articles |
+| `description` | A brief description of the post, useful for SEO optimization |
+| `featured` | Boolean, indicate if the post should be shown as featured |
 
 ## Inject custom content
 

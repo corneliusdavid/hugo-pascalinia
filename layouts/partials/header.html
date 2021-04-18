@@ -4,9 +4,19 @@
         <div id="titleContainer">
             <img src='{{ .Site.Params.Logo | default "/img/icon.svg" }}' />
             <div>
-                <h1>{{ .Site.Title | default "Ficurinia" }}</h1>
+                <div class="titleAndHamburger">
+                    <h1>{{ .Site.Title | default "Ficurinia" }}</h1>
+                    {{ if .Site.Params.mobileHamburgerNav | default false }}
+                        <label id="hamburger-menu" for="main-nav-toggler">
+                            &#xf85b;
+                        </label>
+                    {{ end }}
+                </div>
                 <nav>
-                    <ul>
+                    {{ if .Site.Params.mobileHamburgerNav | default false }}
+                        <input type="checkbox" id="main-nav-toggler" />
+                    {{ end }}
+                    <ul id="main-nav">
                         <li><a href="/">Home</a></li>
                         <li><a href="/posts">Posts</a></li>
                         {{ $pagesDir := .Site.Params.Pages | default (slice "pages") }}

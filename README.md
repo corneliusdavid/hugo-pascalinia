@@ -55,6 +55,7 @@ summaryLength = 70  # number of words for article summaries
     enableSearch = true  # enable search page
     searchbarEverywhere = true  # if the searchbar should be shown in every page; requires enableSearch
     searchMenuLink = false  # add a search link to the navigation menu; requires enableSearch
+    mobileHamburgerNav = false  # alternative hamburger menu layout for the main nav menu when screen is small
 
     enableFeatured = false  # enable a particular view for articles marked as featured (featured: true in the article frontmatter)
 

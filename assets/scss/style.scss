@@ -69,56 +69,6 @@ footer {
     }
 }
 
-#titleContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-
-    h1 {
-        font-weight: normal;
-        font-size: 1.6em;
-        margin: 0;
-    }
-
-    img {
-        margin-right: 10px;
-        width: 50px;
-        max-height: 50px;
-        border-radius: 5px;
-    }
-}
-
-nav, #links {
-    ul {
-        list-style-type: none;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 0;
-        margin: 0;
-    }
-}
-
-nav {
-    font-size: .9em;
-    ul {
-        li {
-            border-right: 1px solid $accent_color;
-            &:last-child {
-                border-right: none;
-            }
-            a {
-                padding: 2px 20px;
-                color: $accent_color;
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-        }
-    }
-}
-
 #links {
     padding: 5px 0 40px 0;
 }
@@ -216,6 +166,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nerdlink {
+    transition: all .15s ease-in-out;
     @extend .nerd;
     color: $fg_color;
     border-bottom: none;
@@ -226,6 +177,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     .pseudofont {
+        transition: all .15s ease-in-out;
         fill: $fg_color;
         display: inline;
         position: relative;
@@ -384,7 +336,11 @@ ul.list {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    #titleContainer {
+        flex-grow: 99;
+    }
     .search {
+        flex-grow: 1;
         &, #searchbar {font-size: 1em;}
     }
 }
@@ -440,3 +396,108 @@ ul.list {
         @extend .featuredCard;
     }
 }
+
+#titleContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    align-self: flex-start;
+
+    h1 {
+        font-weight: normal;
+        font-size: 1.6em;
+        margin: 0;
+    }
+
+    img {
+        margin-right: 10px;
+        margin-top: 7px;
+        align-self: flex-start;
+        width: 50px;
+        max-height: 50px;
+        border-radius: 5px;
+    }
+}
+
+nav, #links {
+    ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+header {
+    .titleAndHamburger {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        align-self: flex-start
+    }
+    nav {
+        font-size: .9em;
+        ul {
+            li {
+                border-right: 1px solid $accent_color;
+                &:last-child {
+                    border-right: none;
+                }
+                a {
+                    padding: 2px 20px;
+                    color: $accent_color;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+{{ if .Site.Params.mobileHamburgerNav | default false }}
+header {
+    #hamburger-menu {
+        @extend .nerdlink;
+        display: none !important;
+    }
+    #main-nav-toggler {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    header {
+        #hamburger-menu {
+            display: block !important;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-align: center;
+            margin: 0;
+            padding: 12px;
+            width: 35px;
+        }
+        nav {
+            ul#main-nav {
+                display: none;
+                flex-direction: column;
+                li {
+                    border-right: none !important;
+                    display: block;
+                    text-align: right;
+                    a {
+                        padding-left: 0;
+                    }
+                }
+            }
+            #main-nav-toggler:checked ~ #main-nav {
+                display: flex;
+            }
+        }
+    }
+}
+{{ end }}

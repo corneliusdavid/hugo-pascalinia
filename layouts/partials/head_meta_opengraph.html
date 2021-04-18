@@ -28,7 +28,7 @@
     <meta property="og:title"
         content='{{ .Site.Title | default "Ficurinia" }}' />
     {{ if .Site.Params.description }}
-        <meta name="og:description" content="{{ .Site.Params.description }}" />
+        <meta property="og:description" content="{{ .Site.Params.description }}" />
     {{ end }}
     <meta property="og:type" content="blog" />
     <meta property="og:image"

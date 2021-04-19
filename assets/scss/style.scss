@@ -221,6 +221,14 @@ h1, h2, h3, h4, h5, h6 {
         padding: 20px;
         padding-top: 1px;
     }
+
+    &.single {
+        {{ if (.Site.Params.bigArticleTitle | default false) }}
+            h1 {
+                font-size: 2.2em;
+            }
+        {{ end }}
+    }
 }
 
 .postlist {

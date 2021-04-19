@@ -58,6 +58,7 @@ summaryLength = 70  # number of words for article summaries
     tagsInArticlePreview = true  # enable tags list in the article preview card
     gridView = false  # show post list as a grid. goes well with discreteCards
     highlightBgColor = "#34363b"  # card and circle navigation background color for discrete card mode
+    bigArticleTitle = false  # makes the title in the single article view bigger
 
     enableSearch = true  # enable search page
     searchbarEverywhere = true  # if the searchbar should be shown in every page; requires enableSearch

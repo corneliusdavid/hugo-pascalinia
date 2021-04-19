@@ -1,6 +1,6 @@
 {{ define "main" }}
     {{- partial "inject/content-before.html" . -}}
-    <article class="card {{ if .Site.Params.discreteCards }}discrete{{ end }}">
+    <article class="card {{ if .Site.Params.discreteCards }}discrete{{ end }} single">
         <h1>{{ .Title }}</h1>
         <p class="date">
             <span title="Date"> </span>

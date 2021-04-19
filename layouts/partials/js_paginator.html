@@ -1,11 +1,11 @@
 <script>
     function renderTags(tags) {
-            if (tags.length <= 0) return '';
-            let res = '| <span title="tags"> </span>';
-            for (let tag of tags) {
-                res += `<a href="/tags/${tag}">#${tag}</a>`;
-            }
-            return res;
+        if (tags.length <= 0) return '';
+        let res = '| <span title="tags"> </span>';
+        for (let tag of tags) {
+            res += `<a href="/tags/${tag}">#${tag}</a>`;
+        }
+        return res;
     }
     function renderImage(image) {
         if (!image) return '';

@@ -14,7 +14,7 @@
                 <p class="date">
                     <span title="Date"> </span>
                     {{ .Date.Format "2006-01-02" }}
-                    {{ if .Params.tags }}
+                    {{ if and (site.Params.tagsInArticlePreview | default true) .Params.tags }}
                     <br />
                     <span title="Tags"> </span>
                     {{ range .Params.tags }}

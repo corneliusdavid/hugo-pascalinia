@@ -379,7 +379,8 @@ ul.list {
     display: inline-block;
     border-radius: $border_radius;
     background-color: $highlight_bg_color;
-    padding: 15px;
+    padding: ($content_spacing / 2);
+    margin: ($content_spacing / 6) 0;
     border-bottom: none;
     &:hover, &:focus {
         background-color: $accent_color;

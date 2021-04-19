@@ -3,7 +3,7 @@
     <div class="titleAndSearchContainer">
         <div id="titleContainer">
             <img src='{{ .Site.Params.Logo | default "/logo.svg" }}' />
-            <div>
+            <div style="width: 100%">
                 <div class="titleAndHamburger">
                     <h1>{{ .Site.Title | default "Ficurinia" }}</h1>
                     {{ if .Site.Params.mobileHamburgerNav | default false }}

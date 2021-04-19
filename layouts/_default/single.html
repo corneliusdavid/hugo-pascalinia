@@ -10,17 +10,21 @@
         <img src="{{ .Params.Image }}" alt="" />
         {{ end }}
         <div>{{ .Content }}</div>
-        {{ if .Params.tags }}
-            <hr />
-            <p>
-                <span> </span>
-                <strong>Tags:</strong>
-                {{ range .Params.tags }}
-                    <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
-                {{ end }}
-            </p>
-        {{ end }}
     </article>
+    {{ if .Params.tags }}
+        {{ if not .Site.Params.discreteCards }}<hr />{{ end }}
+        <p class="articleTagsContainer">
+            <span> </span>
+            <strong>Tags:</strong>
+            {{ range .Params.tags }}
+                <a
+                    {{ if site.Params.discreteTags | default false }}
+                    class="discreteTag"
+                    {{ end }}
+                    href="/tags/{{ . | urlize }}">#{{ . }}</a>
+            {{ end }}
+        </p>
+    {{ end }}
     {{- partial "inject/content-after.html" . -}}
     {{ if .Site.Params.commento }}
         <script

@@ -8,6 +8,7 @@ $mono_font: {{ .Site.Params.monospaceFontFamily | default "JetBrains Mono" }};
 $highlight_bg_color: {{ .Site.Params.highlightBgColor | default "#34363b" }};
 $content_width: {{ .Site.Params.contentWidth | default "1000px" }};
 $border_radius: 10px;
+$content_spacing: 25px;
 
 ::selection, ::-moz-selection {
     background: $accent_color;
@@ -51,7 +52,7 @@ footer {
         color: $dim_fg_color;
     }
     hr {
-        margin-top: 50px;
+        margin-top: (2 * $content_spacing);
     }
     .footerColumns {
         font-size: .9rem;
@@ -59,7 +60,7 @@ footer {
         flex-direction: row;
         flex-wrap: wrap;
         ul {
-            margin: 12px;
+            margin: ($content_spacing / 2);
             list-style-type: none;
             padding: 0;
             li > strong {
@@ -70,7 +71,7 @@ footer {
 }
 
 #links {
-    padding: 5px 0 40px 0;
+    padding: 5px 0;
 }
 
 article, .articlePreview {
@@ -224,7 +225,7 @@ h1, h2, h3, h4, h5, h6 {
 .postlist {
         display: grid;
         grid-gap: 25px;
-        margin-bottom: 25px;
+        margin-bottom: $content_spacing;
         grid-template-columns: 1fr;
     &.gridView {
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -374,24 +375,30 @@ ul.list {
     }
 }
 
+@mixin buttonLikeLink {
+    display: inline-block;
+    border-radius: $border_radius;
+    background-color: $highlight_bg_color;
+    padding: 15px;
+    border-bottom: none;
+    &:hover, &:focus {
+        background-color: $accent_color;
+    }
+}
+
 .loadMoreButton {
     text-align: center;
     font-size: 1.2rem;
     font-weight: bold;
     &.buttonLike {
         a {
-            border-radius: $border_radius;
-            background-color: $highlight_bg_color;
-            padding: 15px;
-            border-bottom: none;
-            &:hover, &:focus {
-                background-color: $accent_color;
-            }
+            @include buttonLikeLink;
         }
     }
 }
 
 .relatedArticlesContainer {
+    margin: $content_spacing 0;
     #relatedArticles .postlistitem {
         @extend .featuredCard;
     }
@@ -411,7 +418,7 @@ ul.list {
     }
 
     img {
-        margin-right: 10px;
+        margin-right: ($content_spacing / 2);
         margin-top: 7px;
         align-self: flex-start;
         width: 50px;
@@ -432,12 +439,13 @@ nav, #links {
 }
 
 header {
+    margin-bottom: $content_spacing;
     .titleAndHamburger {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: flex-start;
-        align-self: flex-start
+        justify-content: space-between;
     }
     nav {
         font-size: .9em;
@@ -459,6 +467,14 @@ header {
     }
 }
 
+.articleTagsContainer {
+    margin: $content_spacing 0;
+}
+
+a.discreteTag {
+    @include buttonLikeLink;
+}
+
 {{ if .Site.Params.mobileHamburgerNav | default false }}
 header {
     #hamburger-menu {
@@ -478,8 +494,8 @@ header {
             cursor: pointer;
             text-align: center;
             margin: 0;
-            padding: 12px;
-            width: 35px;
+            padding: ($content_spacing / 4);
+            align-self: center;
         }
         nav {
             ul#main-nav {
@@ -491,6 +507,7 @@ header {
                     text-align: right;
                     a {
                         padding-left: 0;
+                        padding-right: ($content_spacing / 4);
                     }
                 }
             }

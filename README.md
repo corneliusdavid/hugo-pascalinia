@@ -1,4 +1,4 @@
-![logo](static/img/icon.svg)
+![logo](static/logo.svg)
 
 # Ficurinia
 
@@ -36,8 +36,13 @@ summaryLength = 70  # number of words for article summaries
     author = "Gabriele Musco"
     description = "A description for my website"  # this will be added as metadata
 
-    logo = "/images/mylogo.png"
-    favicon = "/images/myfavicon.png"
+    # It's best to put these icons in the "static" folder of your site
+    logo = "/logo.svg"
+    favicon = "/favicon.png"
+    faviconIco = "/favicon.ico"
+    appletouch = "/apple-touch-icon.png"
+    svgicon = "/logo.svg"
+
     showTags = true  # show the Tags menu item; default true
     showRss = true  # show the link for the RSS feed; default true
 
@@ -177,6 +182,27 @@ Following is an example configuration:
 | `description` | A brief description of the post, useful for SEO optimization |
 | `featured` | Boolean, indicate if the post should be shown as featured |
 | `image` | The main image representing the post |
+
+## Generate icons
+
+It's best to use the provided `generate_icons.sh` script to generate all necessary icons for your website. This script requires ImageMagick, that you will need to install separately.
+
+For the best results, place your logo in svg format inside the `static` directory of your website, rename it to `logo.svg` and then call `./themes/hugo-ficurinia/generate_icons.sh static/logo.svg`.
+
+The script will take care of generating all the icons you need.
+
+Finally, make sure to edit your config.toml to include the following:
+
+```toml
+# ...
+[params]
+    logo = "/logo.svg"
+    favicon = "/favicon.png"
+    faviconIco = "/favicon.ico"
+    appletouch = "/apple-touch-icon.png"
+    svgicon = "/logo.svg"
+    # ...
+```
 
 ## Inject custom content
 

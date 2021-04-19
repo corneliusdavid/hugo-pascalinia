@@ -15,7 +15,7 @@
         {{ end }}
     {{ end }}
 
-    <link rel="shortcut icon" href='{{ .Site.Params.favicon | default "/img/favicon.png" }}' type="image/x-icon" />
+    {{- partial "head_icons.html" . -}}
 
     <title>
         {{ if and (.Title) (ne .Title .Site.Title) }}

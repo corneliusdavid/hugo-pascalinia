@@ -1,4 +1,4 @@
-<header>
+<header class="{{ if .IsHome }}jumbotronContainer{{ end }}">
     {{- partial "inject/header-before.html" . -}}
     <div class="titleAndSearchContainer">
         <div id="titleContainer">
@@ -55,4 +55,5 @@
         {{ end }}
     </div>
     {{- partial "inject/header-after.html" . -}}
+    {{- partial "jumbotron.html" . -}}
 </header>

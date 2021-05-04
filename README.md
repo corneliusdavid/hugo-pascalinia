@@ -97,6 +97,7 @@ summaryLength = 70  # number of words for article summaries
 
     infiniteScrolling = false  # activates infinite scrolling instead of regular pagination
     enableFooterColumns = false  # activates footer columns, as described below
+    enableJumbotron = false  # enables jumbotron, as described below
     # related articles will be selected randomly based on tags and shown at
     # the bottom of the article, after the comments
     enableRelatedArticles = false
@@ -175,6 +176,23 @@ Following is an example configuration:
       link: https://gitlab.com/gabmus
     - title: My GNOME GitLab
       link: https://gitlab.gnome.org/gabmus
+```
+
+## Jumbotron
+
+You can add a jumbotron at the beginning of the home page using the `data/jumbotron.yml` file.
+
+Following is an example configuration:
+
+```yaml
+title: My awesome website
+subtitle: Some fancy subtitle 
+background: /img/jumbotron_bg.png
+links:
+  - title: About me
+    link: /pages/about
+  - title: Read my blog
+    link: /posts
 ```
 
 ## Params supported in a post frontmatter

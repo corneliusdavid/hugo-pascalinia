@@ -1,0 +1,13 @@
+{{ if (and (.Site.Params.enableJumbotron | default false) .Site.Data.jumbotron) }}
+    <div class="jumbotron">
+        <h1>{{ .Site.Data.jumbotron.title }}</h1>
+        <h2>{{ .Site.Data.jumbotron.subtitle }}</h2>
+    {{ if .Site.Data.jumbotron.links }}
+        <ul>
+            {{ range .Site.Data.jumbotron.links }}
+                <li><a href="{{ .link }}">{{ .title }}</a></li>
+            {{ end }}
+        </ul>
+    {{ end }}
+    </div>
+{{ end }}

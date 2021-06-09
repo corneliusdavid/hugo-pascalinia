@@ -38,9 +38,9 @@ summaryLength = 70  # number of words for article summaries
 
     # It's best to put these icons in the "static" folder of your site
     logo = "/logo.svg"
-    favicon = "/favicon.png"
-    faviconIco = "/favicon.ico"
-    appletouch = "/apple-touch-icon.png"
+    favicon = "/favicon.png"  # 32x32
+    faviconIco = "/favicon.ico"  # 32x32
+    appletouch = "/apple-touch-icon.png"  # 180x180
     svgicon = "/logo.svg"
 
     showTags = true  # show the Tags menu item; default true

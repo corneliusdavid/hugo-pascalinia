@@ -4,6 +4,7 @@ $dim_fg_color: {{ .Site.Params.dimForegroundColor | default "#bababa" }};
 $stroke_color: {{ .Site.Params.strokeColor | default "#4f4f4f" }};
 $accent_color: {{ .Site.Params.accentColor | default "#db5793" }};
 $main_font: {{ .Site.Params.fontFamily | default "JetBrains Mono" }};
+$title_font: {{ .Site.Params.titleFontFamily | default "JetBrains Mono" }};
 $mono_font: {{ .Site.Params.monospaceFontFamily | default "JetBrains Mono" }};
 $highlight_bg_color: {{ .Site.Params.highlightBgColor | default "#34363b" }};
 $content_width: {{ .Site.Params.contentWidth | default "1000px" }};
@@ -158,6 +159,7 @@ pre code {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: $title_font;
     a {
         color: $accent_color;
         border-bottom: none;

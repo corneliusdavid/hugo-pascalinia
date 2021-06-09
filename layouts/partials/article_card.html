@@ -19,10 +19,12 @@
                 <img src="{{ .Params.Image }}" />
             {{ end }}
         {{end}}
-        <div class="articlePreview">
-            <p>{{ .Summary }}</p>
-            <p><a href="{{ .Permalink }}">Continue reading </a></p>
-        </div>
+        {{ if (site.Params.articleSummary | default true) }}
+            <div class="articlePreview">
+                <p>{{ .Summary }}</p>
+                <p><a href="{{ .Permalink }}">Continue reading </a></p>
+            </div>
+        {{ end }}
     </div>
     <hr />
 </article>

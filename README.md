@@ -50,6 +50,7 @@ summaryLength = 70  # number of words for article summaries
     showRss = true  # show the link for the RSS feed; default true
 
     imageInArticlePreview = false  # show images in article preview; default false
+    fitImageInArticlePreview = false  # make article preview images fit the article preview instead of getting cropped
     articleSummary = true  # show a summary in article preview; default true
 
     navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circles"

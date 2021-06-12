@@ -262,7 +262,12 @@ h1, h2, h3, h4, h5, h6 {
     img {
         height: 250px;
         min-width: 100%;
-        object-fit: cover;
+        object-fit:
+            {{ if .Site.Params.FitImageInArticlePreview }}
+                contain
+            {{ else }}
+                cover
+            {{ end }};
     }
 }
 

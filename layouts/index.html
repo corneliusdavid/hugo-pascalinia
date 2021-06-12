@@ -2,28 +2,7 @@
 
     {{/* get all the pages that are regular posts and not pages */}}
     {{ $postsDir := .Site.Params.Posts | default (slice "posts" "post") }}
-    {{ $allPostsList := where .Site.RegularPages "Section" "in" $postsDir }}
-    {{ $featuredPostsList := slice }}
-    {{ $postsList := $allPostsList }}
-    {{ $pagination := slice }}
-    {{ if .Site.Params.enableFeatured | default false }}
-        {{ $featuredPostsList = where $allPostsList "Params.featured" true }}
-        {{ $postsList = union (where $allPostsList "Params.featured" false) (where $allPostsList "Params.featured" nil) }}
-        {{ $pagination = (.Paginate $postsList).Pages }}
-        {{ if eq .Paginator.PageNumber 1 }}
-            {{- partial "featured_articles.html" $featuredPostsList -}}
-        {{ end }}
-    {{ else }}
-        {{ $pagination = (.Paginate $postsList).Pages }}
-    {{ end }}
-
-    {{/* pagination */}}
-    <div class="postlist {{ if .Site.Params.gridView }}gridView{{ end }}" id="postlist">
-    {{ range $pagination }}
-        {{- partial "article_card.html" . -}}
-    {{ end }}
-    </div>
-    <div id="getNextBtnContainer"></div>
-    {{- partial "paginator.html" . -}}
+    {{ $allPostsList := where site.RegularPages "Section" "in" $postsDir }}
+    {{- partial "home_post_list.html" (dict "Ctx" . "AllPostsList" $allPostsList) -}}
 
 {{ end }}

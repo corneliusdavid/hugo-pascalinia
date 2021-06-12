@@ -19,6 +19,9 @@
                     <ul id="main-nav">
                         <li><a href="/">Home</a></li>
                         <li><a href="/posts">Posts</a></li>
+                        {{ range site.Params.extraContentDirs }}
+                            <li><a href="/{{ . }}">{{ . | humanize }}</a></li>
+                        {{ end }}
                         {{ $pagesDir := .Site.Params.Pages | default (slice "pages") }}
                         {{ $pagesList := where .Site.RegularPages "Section" "in" $pagesDir }}
                         {{ range $pagesList }}

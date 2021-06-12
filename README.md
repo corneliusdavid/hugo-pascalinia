@@ -36,6 +36,9 @@ summaryLength = 70  # number of words for article summaries
     author = "Gabriele Musco"
     description = "A description for my website"  # this will be added as metadata
 
+    posts = "posts"  # content directory where to find home page posts; default searches in "posts" and "post"
+    extraContentDirs = []  # other content directories to render similarly to the home page
+
     # It's best to put these icons in the "static" folder of your site
     logo = "/logo.svg"
     favicon = "/favicon.png"  # 32x32

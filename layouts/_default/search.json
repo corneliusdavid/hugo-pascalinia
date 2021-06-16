@@ -6,7 +6,7 @@
         {{ $mscratch.Add "articles" (dict
             "title" .Title
             "date" (.Date.Format "2006-01-02")
-            "tags" (or .Params.tags slice)
+            "tags" (sort (or .Params.tags slice))
             "summary" .Summary
             "text" (lower .Plain)
             "link" .Permalink

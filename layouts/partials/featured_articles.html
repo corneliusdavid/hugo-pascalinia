@@ -17,7 +17,7 @@
                     {{ if and (site.Params.tagsInArticlePreview | default true) .Params.tags }}
                     <br />
                     <span title="Tags"> </span>
-                    {{ range .Params.tags }}
+                    {{ range sort .Params.tags }}
                         #{{ . }}
                     {{ end }}
                 {{ end }}

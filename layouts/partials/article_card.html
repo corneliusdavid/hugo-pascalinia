@@ -6,10 +6,10 @@
         <p class="date">
         <span title="Date"> </span>
         {{ .Date.Format "2006-01-02" }}
-        {{ if and (site.Params.tagsInArticlePreview | default true) .Params.tags  }}
+        {{ if and (site.Params.tagsInArticlePreview | default true) .Params.tags }}
             | <!-- Pipe character as visual separator between date and tags-->
             <span title="Tags"> </span>
-            {{ range .Params.tags }}
+            {{ range sort .Params.tags }}
                 <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
             {{ end }}
         {{ end }}

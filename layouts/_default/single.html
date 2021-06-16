@@ -16,7 +16,7 @@
         <p class="articleTagsContainer">
             <span> </span>
             <strong>Tags:</strong>
-            {{ range .Params.tags }}
+            {{ range sort .Params.tags }}
                 <a
                     {{ if site.Params.discreteTags | default false }}
                     class="discreteTag"

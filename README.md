@@ -78,7 +78,7 @@ summaryLength = 70  # number of words for article summaries
 
     # enable comments support with cactus comments (cactus.chat)
     cactusCommentsSiteName = "example.com"
-    cactusCommentsServerName = "https://matrix.cactus.chat:8448"
+    cactusCommentsServerName = "cactus.chat"
     cactusCommentsHomeserver = "https://matrix.cactus.chat:8448"
 
     # enable analytics using Plausible

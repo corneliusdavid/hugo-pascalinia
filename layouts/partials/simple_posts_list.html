@@ -7,7 +7,20 @@
     {{ if and (eq $section "Tags") (ne $section $title) }}Tag: #{{ end }}{{ $title }}
 </h2>
 <ul class="list">
-    {{ range .Pages }}
-    <li><span class="date">{{ .Date.Format "2006-01-02" }}</span> <a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ if and (eq $section "Tags") (eq $section $title) }}
+        {{/* if we're in the Tags section, sort alphabetically and don't show the date */}}
+        {{ range (sort .Pages "Title") }}
+            <li>
+                <a href="{{ .Permalink }}">#{{ .Title }}</a>
+            </li>
+        {{ end }}
+    {{ else }}
+        {{ range .Pages }}
+            <li>
+                <span class="date">
+                    {{ .Date.Format "2006-01-02" }}
+                </span> <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </li>
+        {{ end }}
     {{ end }}
 </ul>

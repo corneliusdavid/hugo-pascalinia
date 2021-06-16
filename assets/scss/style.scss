@@ -4,7 +4,7 @@ $dim_fg_color: {{ .Site.Params.dimForegroundColor | default "#bababa" }};
 $stroke_color: {{ .Site.Params.strokeColor | default "#4f4f4f" }};
 $accent_color: {{ .Site.Params.accentColor | default "#db5793" }};
 $main_font: {{ .Site.Params.fontFamily | default "JetBrains Mono" }};
-$title_font: {{ .Site.Params.titleFontFamily | default "JetBrains Mono" }};
+$title_font: {{ .Site.Params.titleFontFamily | default "$main_font" }};
 $mono_font: {{ .Site.Params.monospaceFontFamily | default "JetBrains Mono" }};
 $highlight_bg_color: {{ .Site.Params.highlightBgColor | default "#34363b" }};
 $content_width: {{ .Site.Params.contentWidth | default "1000px" }};

@@ -26,13 +26,7 @@
         </p>
     {{ end }}
     {{- partial "inject/content-after.html" . -}}
-    {{ if .Site.Params.commento }}
-        <script
-            defer
-            src="{{ .Site.Params.commento }}"
-            data-no-fonts="true"
-        ></script>
-        <div id="commento"></div>
-    {{ end }}
+    {{- partial "commento.html" . -}}
+    {{- partial "cactus_chat.html" . -}}
     {{- partial "related_articles.html" . -}}
 {{ end }}

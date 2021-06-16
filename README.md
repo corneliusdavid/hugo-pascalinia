@@ -76,6 +76,11 @@ summaryLength = 70  # number of words for article summaries
     # enable comments support with commento using the script from your server
     commento = "https://example.com/js/commento.js"
 
+    # enable comments support with cactus comments (cactus.chat)
+    cactusCommentsSiteName = "example.com"
+    cactusCommentsServerName = "https://matrix.cactus.chat:8448"
+    cactusCommentsHomeserver = "https://matrix.cactus.chat:8448"
+
     # enable analytics using Plausible
     plausibleScriptUrl = "https://something.com/..."
     plausibleDomain = "example.com"

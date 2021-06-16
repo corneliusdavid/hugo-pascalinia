@@ -1,0 +1,16 @@
+{{ if site.Params.cactusCommentsSiteName }}
+<script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+<link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+
+<div id="ficurinia-cactus-comments"></div>
+
+<script>
+initComments({
+    node: document.getElementById("ficurinia-cactus-comments"),
+    defaultHomeserverUrl: '{{ site.Params.cactusCommentsHomeserver | default "https://matrix.cactus.chat:8448" }}',
+    serverName: '{{ site.Params.cactusCommentsServerName | default "cactus.chat" }}',
+    siteName: "{{ site.Params.cactusCommentsSiteName }}",
+    commentSectionId: "{{ .File.UniqueID }}"
+})
+</script>
+{{ end }}

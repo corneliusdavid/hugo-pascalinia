@@ -514,6 +514,7 @@ input {
             background-color: $highlight_bg_color;
         }
     {{ end }}
+    font-family: $main_font;
     background-color: $highlight_bg_color;
     padding: 12px;
     color: $fg_color;

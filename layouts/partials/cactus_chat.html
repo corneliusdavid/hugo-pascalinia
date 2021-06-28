@@ -1,4 +1,4 @@
-{{ if site.Params.cactusCommentsSiteName }}
+{{ if and site.Params.cactusCommentsSiteName (.Params.comments | default true) }}
 <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
 <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
 

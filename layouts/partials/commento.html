@@ -1,4 +1,4 @@
-{{ if .Site.Params.commento }}
+{{ if and .Site.Params.commento (.Params.comments | default true) }}
     <script
         defer
         src="{{ .Site.Params.commento }}"

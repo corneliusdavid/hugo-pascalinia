@@ -252,6 +252,16 @@ Ficurinia supports injecting custom content into the theme. There are several fi
 | `layouts/partials/inject/header-after.html` | Before closing the header |
 | `layouts/partials/inject/header-before.html` | At the beginning of the header |
 
+# Post parameters
+
+Every post can have various parameters in the frontmatter, here are some that you may find useful
+
+- `title`: the title of the article
+- `date`: usually automatically populated, holds the date and time of the post creation
+- `tags`: a list of tags for your post
+- `image`: a link to a feature image for the article, shown in the preview as well
+- `comments`: boolean, if true it enables comments for the current post, if false it disables them (default is true)
+
 # Does *Ficurinia* mean anything?
 
 It's Sicilian for Indian fig, also known as prickly pear cactus.

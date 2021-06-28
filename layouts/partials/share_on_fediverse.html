@@ -28,11 +28,16 @@
             return 'https://' + url;
         }
         function shareOnFedi() {
-            let instance = fixURL(fediInstanceInput.value);
+            let instance = fediInstanceInput.value.trim();
+            if (!instance) {
+                return;
+            }
+            instance = fixURL(instance);
             window.open(
                 `${instance}/share?text=${articleTitle}%20${articleLink}`,
                 '__blank'
             );
+            closeFediInstanceDialog();
         }
     </script>
 {{ end }}

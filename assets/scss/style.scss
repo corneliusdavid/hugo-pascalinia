@@ -499,6 +499,81 @@ a.discreteTag {
     @include buttonLikeLink;
 }
 
+.shareBtn {
+    {{ if eq (site.Params.navType | default "standard") "circles" }}
+        @include buttonLikeLink;
+    {{ end }}
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+input {
+    {{ if or (site.Params.discreteCards | default false) (eq (site.Params.navType | default "standard") "circles") }}
+        @include buttonLikeLink;
+        &:hover, &:focus, &:active {
+            background-color: $highlight_bg_color;
+        }
+    {{ end }}
+    background-color: $highlight_bg_color;
+    padding: 12px;
+    color: $fg_color;
+    border: 2px solid transparent;
+    transition: .15s border ease-in-out;
+    &:focus, &:active {
+        border: 2px solid $accent_color;
+        outline: none;
+    }
+}
+
+#fediInstanceDialog {
+    display: none;
+    position: fixed;
+    top: 0; bottom: 0; left: 0; right: 0;
+    
+    .dialog {
+        position: absolute;
+        display: flex; flex-direction: column;
+        top: 24px;
+        left: 50%; transform: translateX(-50%);
+        z-index: 9999;
+        background-color: $bg_color;
+        width: 450px;
+        max-width: 100%;
+        padding: 24px;
+        {{ if site.Params.discreteCards }}
+            border-radius: $border_radius;
+        {{ end }}
+        h1, h2, h3, h4 {
+            margin: 0;
+        }
+        h2 {
+            margin-bottom: 24px;
+        }
+        input {
+            display: block;
+        }
+        .buttons {
+            margin: 12px 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: end;
+            > * {
+                margin-left: 24px;
+            }
+        }
+    }
+    .bg {
+        z-index: 99;
+        position: absolute;
+        top: 0; bottom: 0; left: 0; right: 0;
+        background-color: rgba(0, 0, 0, .4);
+        cursor: pointer;
+    }
+    &.open {
+        display: block;
+    }
+}
+
 {{ if .Site.Params.mobileHamburgerNav | default false }}
 header {
     #hamburger-menu {

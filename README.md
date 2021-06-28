@@ -85,6 +85,8 @@ summaryLength = 70  # number of words for article summaries
     plausibleScriptUrl = "https://something.com/..."
     plausibleDomain = "example.com"
 
+    enableShareOnFediverse = false  # enable a button at the end of an article to share it on the fediverse
+
     # WARNING: deprecated! Use [[menu.icons]] instead, look below
     # links = [
     #     ["GitLab", "https://gitlab.com/gabmus"],

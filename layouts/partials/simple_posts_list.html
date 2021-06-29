@@ -17,9 +17,14 @@
     {{ else }}
         {{ range .Pages }}
             <li>
-                <span class="date">
-                    {{ .Date.Format "2006-01-02" }}
-                </span> <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <div>
+                    <span class="date">
+                        {{ .Date.Format "2006-01-02" }}
+                    </span>
+                    <span>
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </span>
+                </div>
             </li>
         {{ end }}
     {{ end }}

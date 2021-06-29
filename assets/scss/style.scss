@@ -282,6 +282,10 @@ ul.list {
         display: inline-block;
         min-width: 100px;
     }
+    > li > div {
+        display: grid;
+        grid-template-columns: 100px auto;
+    }
 }
 
 #commento {

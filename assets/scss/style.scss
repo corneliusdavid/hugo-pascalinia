@@ -647,16 +647,91 @@ header.jumbotronContainer {
     {{ else }}
         background-color: rgba(0, 0, 0, .3);
     {{ end }}
+    {{ if (.Site.Data.jumbotron.fullscreen | default false) }}
+        height: 100vh;
+        {{ if (.Site.Data.jumbotron.downArrow | default false) }}
+            .arrow {
+                cursor: pointer;
+                &, svg {
+                    height: 64px;
+                    width: 64px;
+                }
+                opacity: .7;
+                border-radius: 100%;
+                border: 2px solid $fg_color;
+                padding: 3px;
+                // display: flex; flex-direction: row; justify-content: center;
+                background-color: transparent;
+                transition: background-color .15s ease-in-out;
+                svg {
+                    margin-top: 5px;
+                    &, * {
+                        fill: $fg_color;
+                        transition: fill .15s ease-in-out;
+                    }
+                    @keyframes bounce {
+                        0% {
+                            transform: translateY(3px);
+                        }
+                        100% {
+                            transform: translateY(-3px);
+                        }
+                    }
+                    animation: bounce 2s infinite ease-in-out alternate both;
+
+                }
+                &:hover, &:focus, &:active {
+                    background-color: $fg_color;
+                    svg, svg * {
+                        fill: $bg_color;
+                    }
+                }
+            }
+        {{ end }}
+    {{ end }}
 }
 .jumbotron {
     width: 100%;
-    min-height: 40vh;
-    flex-direction: column;
+    {{ if (.Site.Data.jumbotron.fullscreen | default false) }}
+        height: 80vh;
+    {{ else }}
+        min-height: 40vh;
+    {{ end }}
+    flex-wrap: no-wrap;
     text-align: center;
     justify-content: center;
     align-items: center;
+    {{ $jumbotronImagePosition := (.Site.Data.jumbotron.imagePosition | default "left") }}
+    {{ if (eq $jumbotronImagePosition "left") }}
+        flex-direction: row;
+    {{ else if (eq $jumbotronImagePosition "right") }}
+        flex-direction: row-reverse;
+    {{ else if (eq $jumbotronImagePosition "top") }}
+        flex-direction: column;
+    {{ else if (eq $jumbotronImagePosition "bottom") }}
+        flex-direction: column-reverse;
+    {{ end }}
+    .main_box {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        flex-basis: 55%;
+        flex-grow: 1;
+    }
+    img {
+        flex-basis: 45%;
+        flex-grow: 1;
+        max-width: 100%;
+        min-width: 300px;
+    }
     h1 {
         font-weight: 300;
+        &.huge {
+            font-size: 4em;
+            margin: 24px;
+        }
     }
     ul {
         list-style: none;
@@ -674,6 +749,11 @@ header.jumbotronContainer {
                 {{ end }}
             }
         }
+    }
+}
+@media only screen and (max-width: 520px) {
+    .jumbotron {
+        flex-wrap: wrap;
     }
 }
 {{ end }}

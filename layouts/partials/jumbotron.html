@@ -1,13 +1,40 @@
 {{ if (and (.Site.Params.enableJumbotron | default false) .Site.Data.jumbotron) }}
     <div class="jumbotron">
-        <h1>{{ .Site.Data.jumbotron.title }}</h1>
-        <h2>{{ .Site.Data.jumbotron.subtitle }}</h2>
-    {{ if .Site.Data.jumbotron.links }}
-        <ul>
-            {{ range .Site.Data.jumbotron.links }}
-                <li><a href="{{ .link }}">{{ .title }}</a></li>
+        {{ if .Site.Data.jumbotron.image }}
+            <img src="{{ .Site.Data.jumbotron.image }}" />
+        {{ end }}
+        <div class="main_box">
+            <h1 class="
+                {{ if (.Site.Data.jumbotron.hugeTitle | default false) }}
+                    huge
+                {{ end }}
+            ">{{ .Site.Data.jumbotron.title }}</h1>
+            <h2>{{ .Site.Data.jumbotron.subtitle }}</h2>
+            {{ if .Site.Data.jumbotron.links }}
+                <ul>
+                    {{ range .Site.Data.jumbotron.links }}
+                        <li><a href="{{ .link }}">{{ .title }}</a></li>
+                    {{ end }}
+                </ul>
             {{ end }}
-        </ul>
-    {{ end }}
+        </div>
     </div>
+    {{ if (
+        and
+            (.Site.Data.jumbotron.fullscreen | default false)
+            (.Site.Data.jumbotron.downArrow | default false)
+    ) }}
+        <div class="arrow" onclick="jumpdown();">
+            <svg version="1.1" viewBox="0 0 33.867 33.867" xmlns="http://www.w3.org/2000/svg">
+             <path transform="scale(.26459)" d="m16 34.346v8c0 2.3545 1.0067 4.4663 2.6152 5.9277l45.385 45.385 45.385-45.385c1.6086-1.4614 2.6152-3.5732 2.6152-5.9277v-8h-8c-2.335 0-4.4287 0.99084-5.8887 2.5762l-0.037109 0.039063-34.074 34.074-34.074-34.074c-0.012103-0.013323-0.024917-0.025824-0.037109-0.039063-1.4599-1.5853-3.5537-2.5762-5.8887-2.5762h-8z" />
+            </svg>
+        </div>
+        <script>
+            function jumpdown() {
+                window.scrollTo({
+                    top: window.innerHeight, left: 0, behavior: 'smooth'
+                });
+            }
+        </script>
+    {{ end }}
 {{ end }}

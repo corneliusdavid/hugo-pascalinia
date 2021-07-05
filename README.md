@@ -199,8 +199,13 @@ Following is an example configuration:
 
 ```yaml
 title: My awesome website
-subtitle: Some fancy subtitle 
+hugeTitle: false
+subtitle: Some fancy subtitle
+image: /jumbotron_image.svg
+imagePosition: left  # values: left, right, top, bottom
 background: /img/jumbotron_bg.png
+fullscreen: false
+downArrow: false
 links:
   - title: About me
     link: /pages/about

@@ -633,6 +633,11 @@ header {
     }
 }
 header.jumbotronContainer {
+    > *:first-child {
+        padding-top: 15px;
+    }
+    padding-bottom: 0;
+    padding-top: 0;
     .jumbotron { display: flex; }
     {{ if .Site.Data.jumbotron.background }}
         background:

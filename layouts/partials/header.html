@@ -18,7 +18,9 @@
                     {{ end }}
                     <ul id="main-nav">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/posts">Posts</a></li>
+                        {{ if (.Site.Params.showPostsLink | default true) }}
+                            <li><a href="/posts">Posts</a></li>
+                        {{ end }}
                         {{ range site.Params.extraContentDirs }}
                             <li><a href="/{{ . }}">{{ . | humanize }}</a></li>
                         {{ end }}

@@ -98,7 +98,7 @@ article, .articlePreview {
 }
 
 code {
-    font-family: $mono_font, monospace;
+    font-family: "Symbols Nerd Font", $mono_font, monospace;
     font-size: .8em;
     padding: 2px;
     border: 1px solid $stroke_color;
@@ -159,7 +159,7 @@ pre code {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: $title_font;
+    font-family: "Symbols Nerd Font", $title_font;
     a {
         color: $accent_color;
         border-bottom: none;
@@ -291,7 +291,7 @@ ul.list {
 #commento {
     margin-top: 25px;
     color: $fg_color;
-    font-family: $main_font, monospace;
+    font-family: "Symbols Nerd Font", $main_font, monospace;
     textarea, #commento-markdown-help-root {
         background: rgba(255, 255, 255, .05);
         color: $fg_color;
@@ -300,7 +300,7 @@ ul.list {
         td, td>*, td>*>* {
             color: $fg_color;
             pre {
-                font-family: $mono_font, monospace;
+                font-family: "Symbols Nerd Font", $mono_font, monospace;
                 color: $dim_fg_color;
             }
         }
@@ -327,7 +327,7 @@ ul.list {
     .commento-body {
         >*, *>*, >*>*>*, >*>*>*>*, >*>*>*>*>* {
             color: $fg_color;
-            font-family: $main_font, monospace;
+            font-family: "Symbols Nerd Font", $main_font, monospace;
         }
     }
 }
@@ -352,7 +352,7 @@ ul.list {
         border-right: none;
         border-radius: 0;
         padding: 6px 0;
-        font-family: $main_font;
+        font-family: "Symbols Nerd Font", $main_font;
         font-size: 1.3em;
         outline: none;
     }
@@ -519,7 +519,7 @@ input {
             background-color: $highlight_bg_color;
         }
     {{ end }}
-    font-family: $main_font;
+    font-family: "Symbols Nerd Font", $main_font;
     background-color: $highlight_bg_color;
     padding: 12px;
     color: $fg_color;

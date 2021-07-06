@@ -204,10 +204,11 @@ subtitle: Some fancy subtitle
 image: /jumbotron_image.svg
 imagePosition: left  # values: left, right, top, bottom
 background: /img/jumbotron_bg.png
-backgroundVideo: /img/jumbotron_video.webm  # will replace the background image
+backgroundVideo: /jumbotron_video.webm  # will replace the background image
 textShadow: false
 fullscreen: false
 downArrow: false
+whiteText: false  # force white text in the jumbotron
 links:
   - title: About me
     link: /pages/about

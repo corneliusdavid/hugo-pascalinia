@@ -654,6 +654,11 @@ header {
     }
 }
 header.jumbotronContainer {
+    {{ if (.Site.Data.jumbotron.whiteText | default false) }}
+        &, *, > * {
+            color: white !important;
+        }
+    {{ end }}
     {{ if (.Site.Data.jumbotron.textShadow | default false) }}
         &, * {
             text-shadow: 0 0 5px rgba(0, 0, 0, .7);

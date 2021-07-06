@@ -1,4 +1,19 @@
 {{ if and .IsHome (and (.Site.Params.enableJumbotron | default false) .Site.Data.jumbotron) }}
+    {{
+        $jumbo_fullscreen := (or 
+            (.Site.Data.jumbotron.fullscreen | default false)
+            (.Site.Data.jumbotron.backgroundVideo)
+        )
+    }}
+    {{ if .Site.Data.jumbotron.backgroundVideo }}
+        <div class="video_container">
+            <video
+                class="jumbotron_video"
+                src="{{ .Site.Data.jumbotron.backgroundVideo }}"
+                autoplay mute loop>
+            </video>
+        </div>
+    {{ end }}
     <div class="jumbotron">
         {{ if .Site.Data.jumbotron.image }}
             <img src="{{ .Site.Data.jumbotron.image }}" />
@@ -21,7 +36,7 @@
     </div>
     {{ if (
         and
-            (.Site.Data.jumbotron.fullscreen | default false)
+            $jumbo_fullscreen
             (.Site.Data.jumbotron.downArrow | default false)
     ) }}
         <div class="arrow" onclick="jumpdown();">

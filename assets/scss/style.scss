@@ -505,7 +505,7 @@ a.discreteTag {
 }
 
 .shareBtn {
-    {{ if eq (site.Params.navType | default "standard") "circles" }}
+    {{ if eq (site.Params.navtype | default "standard") "circles" }}
         @include buttonLikeLink;
     {{ end }}
     font-size: 1.2em;
@@ -513,7 +513,7 @@ a.discreteTag {
 }
 
 input {
-    {{ if or (site.Params.discreteCards | default false) (eq (site.Params.navType | default "standard") "circles") }}
+    {{ if or (site.Params.discreteCards | default false) (eq (site.Params.navtype | default "standard") "circles") }}
         @include buttonLikeLink;
         &:hover, &:focus, &:active {
             background-color: $highlight_bg_color;
@@ -593,6 +593,9 @@ header {
 
 @media only screen and (max-width: 520px) {
     header {
+        .titleAndSearchContainer {
+            z-index: 9999999 !important;
+        }
         #hamburger-menu {
             display: block !important;
             font-size: 1.2rem;
@@ -604,15 +607,27 @@ header {
         }
         nav {
             ul#main-nav {
+                &, li, li a {text-shadow: none !important;}
                 display: none;
+                position: absolute;
+                z-index: 99999;
+                right: 6px;
+                padding: 12px;
+                width: 120px;
+                {{ if eq .Site.Params.navtype "circles" }}
+                    border-radius: $border_radius;
+                {{ end }}
+                border: 2px solid $accent_color;
+                background-color: $highlight_bg_color;
                 flex-direction: column;
                 li {
                     border-right: none !important;
                     display: block;
-                    text-align: right;
+                    text-align: center;
                     a {
-                        padding-left: 0;
-                        padding-right: ($content_spacing / 4);
+                        display: block;
+                        width: 100%;
+                        padding: 0;
                     }
                 }
             }
@@ -625,6 +640,12 @@ header {
 {{ end }}
 
 {{ if (and (.Site.Params.enableJumbotron | default false) .Site.Data.jumbotron) }}
+{{
+    $jumbo_fullscreen := (or 
+        (.Site.Data.jumbotron.fullscreen | default false)
+        (.Site.Data.jumbotron.backgroundVideo)
+    )
+}}
 header {
     .jumbotron { display: none; }
     max-width: 100%;
@@ -633,13 +654,18 @@ header {
     }
 }
 header.jumbotronContainer {
+    {{ if (.Site.Data.jumbotron.textShadow | default false) }}
+        &, * {
+            text-shadow: 0 0 5px rgba(0, 0, 0, .7);
+        }
+    {{ end }}
     > *:first-child {
         padding-top: 15px;
     }
     padding-bottom: 0;
     padding-top: 0;
     .jumbotron { display: flex; }
-    {{ if .Site.Data.jumbotron.background }}
+    {{ if and .Site.Data.jumbotron.background (not .Site.Data.jumbotron.backgroundVideo) }}
         background:
             linear-gradient(
                 transparentize($bg_color, 0.2),
@@ -649,13 +675,43 @@ header.jumbotronContainer {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+    {{ else if .Site.Data.jumbotron.backgroundVideo }}
+        background: transparent;
+        > * {
+            position: relative;
+            z-index: 9999;
+        }
+        overflow: hidden;
+        .video_container {
+            overflow: hidden;
+            position: absolute;
+            min-height: 100%;
+            min-width: 100%;
+            top: 0; bottom: 0; left: 0; right: 0;
+            z-index: 0;
+            .jumbotron_video {
+                position: absolute;
+                z-index: 0;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                overflow: hidden;
+                min-height: 100%;
+                min-width: 100%;
+                height: 100vh;
+            }
+        }
     {{ else }}
         background-color: rgba(0, 0, 0, .3);
     {{ end }}
-    {{ if (.Site.Data.jumbotron.fullscreen | default false) }}
+    {{ if $jumbo_fullscreen }}
         height: 100vh;
         {{ if (.Site.Data.jumbotron.downArrow | default false) }}
+            margin-bottom: 100px;
             .arrow {
+                position: absolute;
+                bottom: 24px;
+                left: 50%; transform: translateX(-50%);
                 cursor: pointer;
                 &, svg {
                     height: 64px;
@@ -697,7 +753,7 @@ header.jumbotronContainer {
 }
 .jumbotron {
     width: 100%;
-    {{ if (.Site.Data.jumbotron.fullscreen | default false) }}
+    {{ if $jumbo_fullscreen }}
         height: 80vh;
     {{ else }}
         min-height: 40vh;
@@ -706,6 +762,7 @@ header.jumbotronContainer {
     text-align: center;
     justify-content: center;
     align-items: center;
+    align-content: center;
     {{ $jumbotronImagePosition := (.Site.Data.jumbotron.imagePosition | default "left") }}
     {{ if (eq $jumbotronImagePosition "left") }}
         flex-direction: row;
@@ -728,15 +785,17 @@ header.jumbotronContainer {
     img {
         flex-basis: 45%;
         flex-grow: 1;
-        max-width: 100%;
-        min-width: 300px;
+        max-width: 100vw;
+        min-width: 200px;
     }
     h1 {
         font-weight: 300;
         &.huge {
             font-size: 4em;
-            margin: 24px;
         }
+    }
+    h1, h2 {
+        margin: 12px;
     }
     ul {
         list-style: none;
@@ -748,7 +807,7 @@ header.jumbotronContainer {
         li {
             margin: 3px;
             a {
-                {{ if eq .Site.Params.navType "circles" }}
+                {{ if eq .Site.Params.navtype "circles" }}
                     @include buttonLikeLink;
                     background-color: transparentize($highlight_bg_color, .3);
                 {{ end }}
@@ -759,6 +818,20 @@ header.jumbotronContainer {
 @media only screen and (max-width: 520px) {
     .jumbotron {
         flex-wrap: wrap;
+        h1.huge {
+            font-size: 3em !important;
+        }
+        h1, h2 {
+            margin: 6px;
+        }
+    }
+}
+@media only screen and (max-height: 800px) {
+    .jumbotron {
+        height: auto;
+        img {
+            max-height: 120px;
+        }
     }
 }
 {{ end }}

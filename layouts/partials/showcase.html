@@ -1,0 +1,17 @@
+{{ if .Site.Params.showcaseDir }}
+{{ $showcasePosts := where site.RegularPages "Section" "in" .Site.Params.showcaseDir }}
+    {{ range (sort $showcasePosts "File.LogicalName") }}
+        {{ if in .Dir .Site.Params.showcaseDir }}
+            <div class="showcaseCard {{if .Site.Params.discreteCards }}discrete{{ end }}">
+                <div>
+                    <h1>{{ .Title }}</h1>
+                    <div>{{ .Content }}</div>
+                </div>
+                {{ if .Params.image }}
+                    <img src="{{ .Params.image }}" />
+                {{ end }}
+            </div>
+        {{ end }}
+    {{ end }}
+    <hr />
+{{ end }}

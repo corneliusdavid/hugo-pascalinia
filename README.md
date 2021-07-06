@@ -39,6 +39,7 @@ summaryLength = 70  # number of words for article summaries
     posts = "posts"  # content directory where to find home page posts; default searches in "posts" and "post"
     showPostsLink = true  # show or hide the link to the simple post list
     extraContentDirs = []  # other content directories to render similarly to the home page
+    showcaseDir = "showcase"  # create a content directory that shows a special showcase section in the home page
 
     # It's best to put these icons in the "static" folder of your site
     logo = "/logo.svg"

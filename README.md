@@ -272,6 +272,7 @@ Every post can have various parameters in the frontmatter, here are some that yo
 - `tags`: a list of tags for your post
 - `image`: a link to a feature image for the article, shown in the preview as well
 - `comments`: boolean, if true it enables comments for the current post, if false it disables them (default is true)
+- `showDate`: boolean, true by default, if false hides the date. Useful for non-article pages where the date isn't important
 
 # Does *Ficurinia* mean anything?
 

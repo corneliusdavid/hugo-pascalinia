@@ -2,10 +2,12 @@
     {{- partial "inject/content-before.html" . -}}
     <article class="card {{ if .Site.Params.discreteCards }}discrete{{ end }} single">
         <h1>{{ .Title }}</h1>
-        <p class="date">
-            <span title="Date"> </span>
-            {{ .Date.Format "2006-01-02" }}
-        </p>
+        {{ if (.Params.showDate | default true) }}
+            <p class="date">
+                <span title="Date"> </span>
+                {{ .Date.Format "2006-01-02" }}
+            </p>
+        {{ end }}
         {{ if .Params.Image }}
         <img src="{{ .Params.Image }}" alt="" />
         {{ end }}

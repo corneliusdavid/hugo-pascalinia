@@ -658,6 +658,12 @@ header.jumbotronContainer {
         &, *, > * {
             color: white !important;
         }
+        #main-nav a {
+            color: $accent_color !important;
+        }
+        #searchbar {
+            border-color: white;
+        }
     {{ end }}
     {{ if (.Site.Data.jumbotron.textShadow | default false) }}
         &, * {

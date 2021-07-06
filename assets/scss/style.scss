@@ -868,28 +868,3 @@ header.jumbotronContainer {
     }
 }
 {{ end }}
-
-.showcaseCard {
-    @extend article;
-    @extend .card;
-    margin-bottom: 24px;
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 12px !important;
-
-    > img {
-        flex-basis: 30%;
-        width: 300px;
-        height: 250px;
-        object-fit: cover;
-        margin: 12px;
-        {{ if eq .Site.Params.navtype "circles" }}
-            border-radius: $border_radius;
-        {{ end }}
-    }
-    > div {
-        flex-basis: 60%;
-    }
-}

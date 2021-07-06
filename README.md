@@ -205,6 +205,7 @@ image: /jumbotron_image.svg
 imagePosition: left  # values: left, right, top, bottom
 background: /img/jumbotron_bg.png
 backgroundVideo: /jumbotron_video.webm  # will replace the background image
+videoOpacity: 1.0
 textShadow: false
 fullscreen: false
 downArrow: false

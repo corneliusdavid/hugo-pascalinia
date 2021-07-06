@@ -28,7 +28,11 @@
             {{ if .Site.Data.jumbotron.links }}
                 <ul>
                     {{ range .Site.Data.jumbotron.links }}
-                        <li><a href="{{ .link }}">{{ .title }}</a></li>
+                        <li>
+                            <a class="{{ if .huge }}huge{{ end }}" href="{{ .link }}">
+                                {{ .title }}
+                            </a>
+                        </li>
                     {{ end }}
                 </ul>
             {{ end }}

@@ -658,16 +658,32 @@ header.jumbotronContainer {
         &, *, > * {
             color: white !important;
         }
-        #main-nav a {
+        #main-nav a, .nerdlink:hover {
             color: $accent_color !important;
         }
+        .nerdlink span {
+            color: $fg_color !important;
+            text-shadow: none;
+        }
         #searchbar {
-            border-color: white;
+            border-color: white !important;
+        }
+        .arrow {
+            border-color: white !important;
+            svg , svg * {
+                fill: white !important;
+            }
+            &:hover, &:focus, &:active {
+                background-color: rgba(0, 0, 0, .7);
+                svg, svg * {
+                    fill: white !important;
+                }
+            }
         }
     {{ end }}
     {{ if (.Site.Data.jumbotron.textShadow | default false) }}
         &, * {
-            text-shadow: 0 0 5px rgba(0, 0, 0, .7);
+            text-shadow: 0 0 5px transparentize($fg_color, .3);
         }
     {{ end }}
     > *:first-child {
@@ -700,7 +716,9 @@ header.jumbotronContainer {
             min-width: 100%;
             top: 0; bottom: 0; left: 0; right: 0;
             z-index: 0;
+            background-color: black;
             .jumbotron_video {
+                opacity: {{ .Site.Data.jumbotron.videoOpacity | default 1.0 }};
                 position: absolute;
                 z-index: 0;
                 left: 50%;
@@ -818,9 +836,13 @@ header.jumbotronContainer {
         li {
             margin: 3px;
             a {
+                &.huge {
+                    font-size: 1.5em;
+                }
                 {{ if eq .Site.Params.navtype "circles" }}
                     @include buttonLikeLink;
-                    background-color: transparentize($highlight_bg_color, .3);
+                    background-color: transparent;
+                    border: 2px solid $accent_color;
                 {{ end }}
             }
         }

@@ -32,7 +32,7 @@
                             </a></li>
                         {{ end }}
                         {{ range .Site.Menus.main }}
-                            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                            <li><a href="{{ .URL | safeURL }}">{{ .Name }}</a></li>
                         {{ end }}
                         {{ if (.Site.Params.showTags | default true) }}
                             <li><a href="/tags">Tags</a></li>

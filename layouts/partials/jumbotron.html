@@ -9,6 +9,7 @@
         <div class="video_container">
             <video
                 class="jumbotron_video"
+                id="jumbotron_video"
                 src="{{ .Site.Data.jumbotron.backgroundVideo }}"
                 autoplay mute loop>
             </video>
@@ -25,6 +26,28 @@
                 {{ end }}
             ">{{ .Site.Data.jumbotron.title }}</h1>
             <h2>{{ .Site.Data.jumbotron.subtitle }}</h2>
+            {{ if .Site.Data.jumbotron.backgroundVideo }}
+                <ul id="play_button_container" style="display: none">
+                    <li>
+                        <a title="Play" style="border-radius: 100%; width: 32px; height: 32px; display: flex; justify-content: center; align-items: center;" class="shareBtn" onclick="playvideo();">  </a>
+                    </li>
+                </ul>
+                <script>
+                    var jumbotron_video = document.getElementById('jumbotron_video');
+                    var play_button_container = document.getElementById('play_button_container');
+                    window.onload = function() {
+                        setTimeout(function() {
+                            if (jumbotron_video.paused) {
+                                play_button_container.style.display = 'block';
+                            }
+                        }, 1000);
+                    };
+                    function playvideo() {
+                        jumbotron_video.play();
+                        play_button_container.style.display = 'none';
+                    }
+                </script>
+            {{ end }}
             {{ if .Site.Data.jumbotron.links }}
                 <ul>
                     {{ range .Site.Data.jumbotron.links }}

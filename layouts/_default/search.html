@@ -25,7 +25,7 @@
             ));
             if (articles.length > 0) renderArticles(articles);
             else document.getElementById('postlist').innerHTML = `
-                <h3>No results found</h3>
+                <h3>{{ i18n "noResultsFound" | safeJS }}</h3>
             `;
         });
     }

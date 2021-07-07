@@ -4,8 +4,8 @@
         <h1>{{ .Title }}</h1>
         {{ if (.Params.showDate | default true) }}
             <p class="date">
-                <span title="Date"> </span>
-                {{ .Date.Format "2006-01-02" }}
+                <span title='{{ i18n "date" }}'> </span>
+                {{- partial "date.html" .Date -}}
             </p>
         {{ end }}
         {{ if .Params.Image }}
@@ -17,7 +17,7 @@
         {{ if not .Site.Params.discreteCards }}<hr />{{ end }}
         <p class="articleTagsContainer">
             <span> </span>
-            <strong>Tags:</strong>
+            <strong>{{ i18n "tagsColumn" }}</strong>
             {{ range sort .Params.tags }}
                 <a
                     {{ if site.Params.discreteTags | default false }}

@@ -12,7 +12,7 @@
         {{ end }}
         <div class="relatedArticlesContainer">
             <hr />
-            <h2>More posts like this</h2>
+            <h2>{{ i18n "morePostsLikeThis" }}</h2>
             <div class="postlist {{ if .Site.Params.gridView }}gridView{{ end }}">
                 {{ range first (.Site.Params.relatedArticlesNum | default 2) $postsList }}
                     {{- partial "article_card.html" . -}}

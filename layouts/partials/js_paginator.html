@@ -1,9 +1,10 @@
 <script>
     function renderTags(tags) {
         if (tags.length <= 0) return '';
-        let res = '| <span title="tags"> </span>';
+        let res = `| <span title='{{ i18n "tags" | safeJS }}'> </span>`;
         for (let tag of tags) {
-            res += `<a href="/tags/${tag}">#${tag}</a>`;
+            //                                        regular space
+            res += `<a href="/tags/${tag}">#${tag}</a>&#32;`;
         }
         return res;
     }
@@ -19,7 +20,7 @@
                     <a href="${article.link}">${article.title}</a>
                 </h2>
                 <p class="date">
-                <span title="Date"> </span>
+                <span title='{{ i18n "date" | safeJS }}'> </span>
                 ${article.date}
                 {{ if (.Site.Params.tagsInArticlePreview | default true) }}
                     ${renderTags(article.tags)}
@@ -31,7 +32,7 @@
                 {{ if (site.Params.articleSummary | default true) }}
                     <div class="articlePreview">
                         <p>${article.summary}</p>
-                        <p><a href="${article.link}">Continue reading </a></p>
+                        <p><a href="${article.link}">{{ i18n "continueReading" | safeJS }} </a></p>
                     </div>
                 {{ end }}
             </div>

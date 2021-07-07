@@ -33,7 +33,7 @@
             {{ end }}
     '>
         {{ if .Paginator.HasPrev }}
-            <a href="{{ .Paginator.Prev.URL }}" title="Previous page">
+            <a href="{{ .Paginator.Prev.URL }}" title='{{ i18n "previousPage" }}'>
                 {{ if eq $navtype "circles" }}
                     ←
                 {{ else }}
@@ -53,7 +53,7 @@
             {{ end }}
         {{ end }}
         {{ if .Paginator.HasNext }}
-            <a href="{{ .Paginator.Next.URL }}" title="Next page">
+            <a href="{{ .Paginator.Next.URL }}" title='{{ i18n "nextPage" }}'>
                 {{ if eq $navtype "circles" }}
                     →
                 {{ else }}

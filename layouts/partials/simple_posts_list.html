@@ -4,7 +4,11 @@
     {{ if and (ne $section $title) (ne $section "Tags") (ne $title (printf "%ss" $section)) }}
         {{ $section }}:
     {{ end }}
-    {{ if and (eq $section "Tags") (ne $section $title) }}Tag: #{{ end }}{{ $title }}
+    {{ if and (eq $section "Tags") (eq $section $title) }}
+        {{ i18n "tagsColumn" }}
+    {{ else }}
+        {{ if and (eq $section "Tags") (ne $section $title) }}{{ i18n "tagColumn" }} #{{ end }}{{ $title }}
+    {{ end }}
 </h2>
 <ul class="list">
     {{ if and (eq $section "Tags") (eq $section $title) }}
@@ -19,7 +23,7 @@
             <li>
                 <div>
                     <span class="date">
-                        {{ .Date.Format "2006-01-02" }}
+                        {{- partial "date.html" .Date -}}
                     </span>
                     <span>
                         <a href="{{ .Permalink }}">{{ .Title }}</a>

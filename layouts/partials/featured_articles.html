@@ -12,11 +12,11 @@
             <div class="contentArea">
                 <h2>{{ .Title }}</h2>
                 <p class="date">
-                    <span title="Date"> </span>
-                    {{ .Date.Format "2006-01-02" }}
+                    <span title='{{ i18n "date" }}'> </span>
+                    {{- partial "date.html" .Date -}}
                     {{ if and (site.Params.tagsInArticlePreview | default true) .Params.tags }}
                     <br />
-                    <span title="Tags"> </span>
+                    <span title='{{ i18n "tags" }}'> </span>
                     {{ range sort .Params.tags }}
                         #{{ . }}
                     {{ end }}

@@ -1,13 +1,15 @@
 {{ if site.Params.enableShareOnFediverse | default false }}
-    <a style="margin-bottom: 24px; display: inline-block;" class="shareBtn" onclick="openFediInstanceDialog();">Share on the Fediverse</a>
+    <a style="margin-bottom: 24px; display: inline-block;" class="shareBtn" onclick="openFediInstanceDialog();">
+        {{ i18n "shareOnTheFediverse" }}
+    </a>
     <div id="fediInstanceDialog">
         <div class="bg" onclick="closeFediInstanceDialog();"></div>
         <div class="dialog">
-            <h2>Enter your instance's address</h2>
-            <input id="fediInstanceInput" placeholder="Eg. mastodon.social" type="text" />
+            <h2>{{ i18n "enterFediverseInstanceAddress" }}</h2>
+            <input id="fediInstanceInput" placeholder='{{ i18n "fediverseInstanceExample" }}' type="text" />
             <div class="buttons">
-                <a class="shareBtn" onclick="closeFediInstanceDialog();">Cancel</a>
-                <a class="shareBtn" onclick="shareOnFedi();">Share</a>
+                <a class="shareBtn" onclick="closeFediInstanceDialog();">{{ i18n "cancel" }}</a>
+                <a class="shareBtn" onclick="shareOnFedi();">{{ i18n "share" }}</a>
             </div>
         </div>
     </div>

@@ -206,7 +206,10 @@ subtitle: Some fancy subtitle
 image: /jumbotron_image.svg
 imagePosition: left  # values: left, right, top, bottom
 background: /img/jumbotron_bg.png
-backgroundVideo: /jumbotron_video.webm  # will replace the background image
+backgroundVideo: /jumbotron_video.mp4  # will replace the background image
+# it's best to provide both an mp4 and a web source for the video for better compatibility
+backgroundVideoMp4: /jumbotron_video.mp4
+backgroundVideoWebm: /jumbotron_video.webm
 videoOpacity: 1.0
 textShadow: false
 fullscreen: false

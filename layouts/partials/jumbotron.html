@@ -11,7 +11,14 @@
                 class="jumbotron_video"
                 id="jumbotron_video"
                 src="{{ .Site.Data.jumbotron.backgroundVideo }}"
+                playsinline
                 autoplay mute loop>
+                    {{ if .Site.Data.jumbotron.backgroundVideoMp4 }}
+                        <source src="{{ .Site.Data.jumbotron.backgroundVideoMp4 }}" type="video/mp4">
+                    {{ end }}
+                    {{ if .Site.Data.jumbotron.backgroundVideoWebm }}
+                        <source src="{{ .Site.Data.jumbotron.backgroundVideoWebm }}" type="video/webm">
+                    {{ end }}
             </video>
         </div>
     {{ end }}

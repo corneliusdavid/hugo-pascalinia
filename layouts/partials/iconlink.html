@@ -1,4 +1,7 @@
 <a
+    {{ if eq (lower .Identifier) 'mastodon' }}
+        rel="me"
+    {{ end }}
     target="_blank"
     class="nerdlink"
     href="{{ .URL | safeURL }}">

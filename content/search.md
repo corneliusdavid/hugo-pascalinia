@@ -4,4 +4,5 @@ layout: search
 outputs:
  - "html"
  - "json"
+norss: true
 ---

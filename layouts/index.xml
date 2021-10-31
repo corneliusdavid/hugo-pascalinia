@@ -22,12 +22,12 @@
     <webMaster>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</webMaster>{{end}}{{ with .Site.Copyright }}
     <copyright>{{.}}</copyright>{{end}}{{ if not .Date.IsZero }}
     <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
-    <icon>{{ .Site.Params.Logo | default "/img/icon.svg" | absURL }}</icon>
     {{- with .OutputFormats.Get "RSS" -}}
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end -}}
+    <icon>{{ .Site.Params.Logo | default "/img/icon.svg" | absURL }}</icon>
     {{ range $pages }}
-    {{ if not .Norss }}
+    {{ if not ( .Params.norss | default false) }}
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
@@ -35,8 +35,8 @@
       {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Summary | html }}</description>
-      {{ if .Image }}
-        <media:thumbnail url="{{ .Image | absURL }}" />
+      {{ if .Params.image }}
+        <media:thumbnail url="{{ .Params.image | absURL }}" />
       {{ end }}
     </item>
     {{ end }}

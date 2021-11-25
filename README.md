@@ -222,14 +222,19 @@ links:
     link: /posts
 ```
 
-## Params supported in a post frontmatter
+# Post parameters
 
-| Param | Description |
-|-------|-------------|
-| `tags` | An array of tags, useful for searching similar articles |
-| `description` | A brief description of the post, useful for SEO optimization |
-| `featured` | Boolean, indicate if the post should be shown as featured |
-| `image` | The main image representing the post |
+Every post can have various parameters in the frontmatter, here are some that you may find useful
+
+- `title`: the title of the article
+- `date`: usually automatically populated, holds the date and time of the post creation
+- `description`: a brief description of the post, useful for SEO optimization
+- `tags`: an array of tags, useful for searching similar articles
+- `image`: a link to a feature image for the article, shown in the preview as well
+- `featured`: boolean, indicate if the post should be shown as featured
+- `comments`: boolean, if true it enables comments for the current post, if false it disables them (default is true)
+- `showDate`: boolean, true by default, if false hides the date. Useful for non-article pages where the date isn't important
+- `norss`: boolean, if set to true the page will be skipped in the rss feed
 
 ## Generate icons
 
@@ -265,18 +270,6 @@ Ficurinia supports injecting custom content into the theme. There are several fi
 | `layouts/partials/inject/head.html` | Before closing the `head` tag |
 | `layouts/partials/inject/header-after.html` | Before closing the header |
 | `layouts/partials/inject/header-before.html` | At the beginning of the header |
-
-# Post parameters
-
-Every post can have various parameters in the frontmatter, here are some that you may find useful
-
-- `title`: the title of the article
-- `date`: usually automatically populated, holds the date and time of the post creation
-- `tags`: a list of tags for your post
-- `image`: a link to a feature image for the article, shown in the preview as well
-- `comments`: boolean, if true it enables comments for the current post, if false it disables them (default is true)
-- `showDate`: boolean, true by default, if false hides the date. Useful for non-article pages where the date isn't important
-- `norss`: boolean, if set to true the page will be skipped in the rss feed
 
 # Does *Ficurinia* mean anything?
 

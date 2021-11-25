@@ -122,10 +122,10 @@ table {
         border: 1px solid $stroke_color;
     }
     th {
-        background-color: lighten($bg_color, 10%);
+        background-color: lighten($bg_color, 5%);
     }
     tr:nth-child(even) {
-        background-color: lighten($bg_color, 10%);
+        background-color: lighten($bg_color, 5%);
     }
 }
 

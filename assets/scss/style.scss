@@ -100,15 +100,32 @@ article, .articlePreview {
 code {
     font-family: "Symbols Nerd Font", $mono_font, monospace;
     font-size: .8em;
-    padding: 2px;
     border: 1px solid $stroke_color;
-    border-radius: 3px;
+}
+code, table {
+    padding: 2px;
 }
 
 pre code {
     border: none;
     border-radius: none;
     padding: 0
+}
+
+table {
+    border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+    td, th {
+        padding: 6px;
+        border: 1px solid $stroke_color;
+    }
+    th {
+        background-color: lighten($bg_color, 10%);
+    }
+    tr:nth-child(even) {
+        background-color: lighten($bg_color, 10%);
+    }
 }
 
 .date, .date a {

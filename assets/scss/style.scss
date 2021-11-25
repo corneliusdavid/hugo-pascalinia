@@ -101,6 +101,7 @@ code {
     font-family: "Symbols Nerd Font", $mono_font, monospace;
     font-size: .8em;
     border: 1px solid $stroke_color;
+    border-radius: 3px
 }
 code, table {
     padding: 2px;

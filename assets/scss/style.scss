@@ -11,6 +11,11 @@ $content_width: {{ .Site.Params.contentWidth | default "1000px" }};
 $border_radius: 10px;
 $content_spacing: 25px;
 
+$base_font_size: 16px;
+$title_font_mult: {{ .Site.Params.titleFontSizeMultiplier | default 1.0 }};
+$main_font_mult:  {{ .Site.Params.mainFontSizeMultiplier  | default 1.0 }};
+$mono_font_mult:  {{ .Site.Params.monoFontSizeMultiplier  | default 1.0 }};
+
 ::selection, ::-moz-selection {
     background: $accent_color;
     color: $fg_color;
@@ -22,6 +27,7 @@ a {
 
 body, html {
     font-family: "Symbols Nerd Font", $main_font, monospace;
+    font-size: $base_font_size * $main_font_mult;
     margin: 0;
     padding: 0;
     background-color: $bg_color;
@@ -61,7 +67,7 @@ footer {
         margin-top: (2 * $content_spacing);
     }
     .footerColumns {
-        font-size: .9rem;
+        font-size: .9 * $base_font_size * $main_font_mult;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -70,7 +76,7 @@ footer {
             list-style-type: none;
             padding: 0;
             li > strong {
-                font-size: 1rem;
+                font-size: 1rem * $main_font_mult;
             }
         }
     }
@@ -99,7 +105,7 @@ article, .articlePreview {
 
 code {
     font-family: "Symbols Nerd Font", $mono_font, monospace;
-    font-size: .8em;
+    font-size: $base_font_size * .8 * $mono_font_mult;
     border: 1px solid $stroke_color;
     border-radius: 3px
 }
@@ -184,9 +190,16 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+h1 {font-size: 2.0 * $base_font_size * $title_font_mult;}
+h2 {font-size: 1.5 * $base_font_size * $title_font_mult;}
+h3 {font-size: 1.3 * $base_font_size * $title_font_mult;}
+h4 {font-size: 1.0 * $base_font_size * $title_font_mult;}
+h5 {font-size: 0.8 * $base_font_size * $title_font_mult;}
+h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
+
 .nerd {
-    font-family: "Symbols Nerd Font", $mono_font;
-    font-size: 1.2em;
+    font-family: "Symbols Nerd Font", $main_font;
+    font-size: 1.2 * $base_font_size;
     margin: 5px;
     display: inline-block;
 }
@@ -250,17 +263,17 @@ h1, h2, h3, h4, h5, h6 {
     &.single {
         {{ if (.Site.Params.bigArticleTitle | default false) }}
             h1 {
-                font-size: 2.2em;
+                font-size: 2.2em * $base_font_size * $title_font_mult};
             }
         {{ end }}
     }
 }
 
 .postlist {
-        display: grid;
-        grid-gap: 25px;
-        margin-bottom: $content_spacing;
-        grid-template-columns: 1fr;
+    display: grid;
+    grid-gap: 25px;
+    margin-bottom: $content_spacing;
+    grid-template-columns: 1fr;
     &.gridView {
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         .card {
@@ -433,7 +446,7 @@ ul.list {
 
 .loadMoreButton {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.2em;
     font-weight: bold;
     &.buttonLike {
         a {
@@ -458,7 +471,7 @@ ul.list {
 
     h1 {
         font-weight: normal;
-        font-size: 1.6em;
+        font-size: 1.6 * $base_font_size * $title_font_mult;
         margin: 0;
     }
 
@@ -616,7 +629,7 @@ header {
         }
         #hamburger-menu {
             display: block !important;
-            font-size: 1.2rem;
+            font-size: 1.2em;
             cursor: pointer;
             text-align: center;
             margin: 0;
@@ -838,7 +851,7 @@ header.jumbotronContainer {
     h1 {
         font-weight: 300;
         &.huge {
-            font-size: 4em;
+            font-size: 4 * $base_font_size * $title_font_mult;
         }
     }
     h1, h2 {
@@ -870,7 +883,7 @@ header.jumbotronContainer {
     .jumbotron {
         flex-wrap: wrap;
         h1.huge {
-            font-size: 3em !important;
+            font-size: 3 * $base_font_size * $title_font_mult !important;
         }
         h1, h2 {
             margin: 6px;

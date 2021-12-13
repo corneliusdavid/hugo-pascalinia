@@ -56,9 +56,16 @@ summaryLength = 70  # number of words for article summaries
     articleSummary = true  # show a summary in article preview; default true
 
     navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circles"
+    
     fontFamily = "JetBrains Mono"  # changes the font, default "JetBrains Mono"
     titleFontFamily = "JetBrains Mono"  # font used for titles and headings
     monospaceFontFamily = "JetBrains Mono"  # changes the monospace font for code, default "JetBrains Mono"
+
+    # multipliers applied to font sizes, useful for custom fonts that may be too big or too small
+    titleFontSizeMultiplier = 1.0
+    mainFontSizeMultiplier = 1.0
+    monoFontSizeMultiplier = 1.0
+
     contentWidth = "1000px"  # maximum width of the site content, css syntax
 
     discreteCards = false  # enable discrete card style; default false

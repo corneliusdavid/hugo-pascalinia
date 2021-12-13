@@ -22,7 +22,9 @@ $mono_font_mult:  {{ .Site.Params.monoFontSizeMultiplier  | default 1.0 }};
 }
 
 a {
-    transition: all .15s ease-in-out;
+    transition-property: color, border-color;
+    transition-duration: .15s;
+    transition-timing-function: ease-in-out;
 }
 
 body, html {
@@ -187,6 +189,7 @@ h1, h2, h3, h4, h5, h6 {
     a {
         color: $accent_color;
         {{ if not (.Site.Params.underlineTitleLinks | default false) }}
+                not (.Site.Params.underlineTitleLinks | default false) }}
             border-bottom: none;
         {{ end }}
     }

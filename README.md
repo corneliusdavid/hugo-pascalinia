@@ -82,6 +82,8 @@ summaryLength = 70  # number of words for article summaries
 
     enableFeatured = false  # enable a particular view for articles marked as featured (featured: true in the article frontmatter)
 
+    underlineTitleLinks = false  # show an underline also for links that are titles
+
     # enable comments support with commento using the script from your server
     commento = "https://example.com/js/commento.js"
 

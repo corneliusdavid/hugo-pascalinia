@@ -186,7 +186,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Symbols Nerd Font", $title_font;
     a {
         color: $accent_color;
-        border-bottom: none;
+        {{ if not (.Site.Params.underlineTitleLinks | default false) }}
+            border-bottom: none;
+        {{ end }}
     }
 }
 

@@ -8,10 +8,14 @@ description = "A prickly blog theme for Hugo"
 homepage = "https://gitlab.com/gabmus/hugo-ficurinia"
 tags = ["blog", "dark", "customizable", "simple"]
 features = ["posts", "shortcodes", "comments", "analytics"]
-min_version = "0.80.0"
 
 logo = "/img/logo.png"
 
 [author]
   name = "Gabriele Musco"
   homepage = "https://gabmus.org"
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.80.0"

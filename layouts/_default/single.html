@@ -11,6 +11,10 @@
         {{ if .Params.Image }}
         <img src="{{ .Params.Image }}" alt="" />
         {{ end }}
+        <div class="articleToc">
+            {{ .TableOfContents }}
+            <hr />
+        </div>
         <div>{{ .Content }}</div>
     </article>
     {{ if .Params.tags }}

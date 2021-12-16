@@ -137,7 +137,7 @@ table {
     font-size: .9em;
 }
 
-#pageNavigation, .nerdlink, nav {
+#pageNavigation, .nerdlink, nav:not(#TableOfContents) {
     a {
         border-bottom: none;
         &:hover {
@@ -482,7 +482,7 @@ ul.list {
     }
 }
 
-nav, #links {
+nav:not(#TableOfContents), #links {
     ul {
         list-style-type: none;
         display: flex;
@@ -507,7 +507,7 @@ header {
             justify-content: space-between;
         }
     }
-    nav {
+    nav:not(#TableOfContents) {
         font-size: .9em;
         ul {
             li {
@@ -638,7 +638,7 @@ header {
             padding: ($content_spacing / 4);
             align-self: center;
         }
-        nav {
+        nav:not(#TableOfContents) {
             ul#main-nav {
                 &, li, li a {text-shadow: none !important;}
                 display: none;
@@ -920,7 +920,7 @@ header.jumbotronContainer {
     }};
 
     header {
-        #sidebar_nav {
+        #sidebar_nav, .sidebarToc {
             display: none;
         }
         #wide_nav {
@@ -930,7 +930,7 @@ header.jumbotronContainer {
 
     @media only screen and (min-width: 950px) {
         html{{if .Site.Params.enableJumbotron}}:not(.home){{end}} {
-            overflow-y: hidden;
+            position: fixed; top: 0; bottom: 0; left: 0; right: 0;
             #baseContainer {
                 display: flex;
                 flex-direction: row;
@@ -957,7 +957,7 @@ header.jumbotronContainer {
                         display: block;
                         margin: 12px 0;
                         width: 100%;
-                        nav {
+                        nav:not(#TableOfContents) {
                             font-size: 1.1em;
                             ul#main-nav {
                                 flex-direction: column;
@@ -974,11 +974,25 @@ header.jumbotronContainer {
                     #wide_nav {
                         display: none;
                     }
+                    .sidebarToc {
+                        display: block;
+                        nav#TableOfContents {
+                            ul {
+                                padding-left: 24px;
+                                a:not(:hover) {
+                                    border-color: transparent;
+                                }
+                            }
+                        }
+                    }
                 }
                 #contentContainer {
                     flex-grow: 1;
                     overflow-y: auto;
                 }
+            }
+            .articleToc {
+                display: none;
             }
         }
     }

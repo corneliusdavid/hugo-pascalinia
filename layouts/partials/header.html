@@ -42,6 +42,12 @@
         <div id="sidebar_nav">
             {{- partial "header_navigation.html" . -}}
         </div>
+        {{ if and .IsPage .Params.toc }}
+            <div class="sidebarToc">
+                <hr />
+                {{ .TableOfContents }}
+            </div>
+        {{ end }}
     {{ end }}
     {{- partial "inject/header-after.html" . -}}
     {{- partial "jumbotron.html" . -}}

@@ -117,6 +117,7 @@ summaryLength = 70  # number of words for article summaries
     enableSidebarLayout = false
     sidebarBackgroundColor = "#34363b"
     sidebarForegroundColor = "white"
+    tocInSidebar = false  # if the sidebar is enbabled, show the TOC in the sidebar
 
     # redirect to baseURL if current URL host doesn't match
     # useful if deploying in gitlab pages with custom domain and don't want
@@ -249,8 +250,21 @@ Every post can have various parameters in the frontmatter, here are some that yo
 - `comments`: boolean, if true it enables comments for the current post, if false it disables them (default is true)
 - `showDate`: boolean, true by default, if false hides the date. Useful for non-article pages where the date isn't important
 - `norss`: boolean, if set to true the page will be skipped in the rss feed
+- `toc`: boolean, if set to true a table of contents will be shown for the article
 
-## Generate icons
+## Table of contents settings
+
+You can tweak the TOC settings in your `config.toml`:
+
+```toml
+[markup]
+  [markup.tableOfContents]
+    endLevel = 5
+    ordered = false
+    startLevel = 1
+```
+
+# Generate icons
 
 It's best to use the provided `generate_icons.sh` script to generate all necessary icons for your website. This script requires ImageMagick, that you will need to install separately.
 
@@ -271,7 +285,7 @@ Finally, make sure to edit your config.toml to include the following:
     # ...
 ```
 
-## Inject custom content
+# Inject custom content
 
 Ficurinia supports injecting custom content into the theme. There are several files you can create in `layouts/partials/inject` that will be included inside the theme in different places.
 

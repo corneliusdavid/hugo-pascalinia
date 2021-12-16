@@ -113,6 +113,11 @@ summaryLength = 70  # number of words for article summaries
     strokeColor = "#4f4f4f"
     accentColor = "#db5793"
 
+    # alternative sidebar layout
+    enableSidebarLayout = false
+    sidebarBackgroundColor = "#34363b"
+    sidebarForegroundColor = "white"
+
     # redirect to baseURL if current URL host doesn't match
     # useful if deploying in gitlab pages with custom domain and don't want
     # the username.gitlab.io/website url to persist

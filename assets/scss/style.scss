@@ -21,12 +21,6 @@ $mono_font_mult:  {{ .Site.Params.monoFontSizeMultiplier  | default 1.0 }};
     color: $fg_color;
 }
 
-a {
-    transition-property: color, border-color;
-    transition-duration: .15s;
-    transition-timing-function: ease-in-out;
-}
-
 body, html {
     font-family: "Symbols Nerd Font", $main_font, monospace;
     font-size: $base_font_size * $main_font_mult;
@@ -209,7 +203,6 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
 }
 
 .nerdlink {
-    transition: all .15s ease-in-out;
     @extend .nerd;
     color: $fg_color;
     border-bottom: none;
@@ -220,7 +213,6 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
     align-items: center;
     justify-content: center;
     .pseudofont {
-        transition: all .15s ease-in-out;
         fill: $fg_color;
         display: inline;
         position: relative;
@@ -380,6 +372,7 @@ ul.list {
     #searchbar {
         @extend a;
         width: 100%;
+        min-width: 150px;
         display: inline-block;
         background-color: transparent;
         border-top: none;
@@ -504,12 +497,15 @@ header {
     @include limitWidth;
     padding: 15px;
     margin-bottom: $content_spacing;
-    .titleAndHamburger {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: flex-start;
-        justify-content: space-between;
+    .rightOfLogo {
+        width: 100%;
+        .titleAndHamburger {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
     }
     nav {
         font-size: .9em;
@@ -548,7 +544,10 @@ a.discreteTag {
 }
 
 input {
-    {{ if or (site.Params.discreteCards | default false) (eq (site.Params.navtype | default "standard") "circles") }}
+    {{ if or 
+        (site.Params.discreteCards | default false)
+        (eq (site.Params.navtype | default "standard") "circles")
+    }}
         @include buttonLikeLink;
         &:hover, &:focus, &:active {
             background-color: $highlight_bg_color;
@@ -559,7 +558,6 @@ input {
     padding: 12px;
     color: $fg_color;
     border: 2px solid transparent;
-    transition: .15s border ease-in-out;
     &:focus, &:active {
         border: 2px solid $accent_color;
         outline: none;
@@ -674,7 +672,10 @@ header {
 }
 {{ end }}
 
-{{ if (and (.Site.Params.enableJumbotron | default false) .Site.Data.jumbotron) }}
+{{ if and 
+    (.Site.Params.enableJumbotron | default false)
+    .Site.Data.jumbotron
+}}
 {{
     $jumbo_fullscreen := (or 
         (.Site.Data.jumbotron.fullscreen | default false)
@@ -727,7 +728,10 @@ header.jumbotronContainer {
     padding-bottom: 0;
     padding-top: 0;
     .jumbotron { display: flex; }
-    {{ if and .Site.Data.jumbotron.background (not .Site.Data.jumbotron.backgroundVideo) }}
+    {{ if and
+        .Site.Data.jumbotron.background
+        (not .Site.Data.jumbotron.backgroundVideo)
+    }}
         background:
             linear-gradient(
                 transparentize($bg_color, 0.2),
@@ -827,7 +831,9 @@ header.jumbotronContainer {
     justify-content: center;
     align-items: center;
     align-content: center;
-    {{ $jumbotronImagePosition := (.Site.Data.jumbotron.imagePosition | default "left") }}
+    {{ $jumbotronImagePosition := (
+        .Site.Data.jumbotron.imagePosition | default "left"
+    ) }}
     {{ if (eq $jumbotronImagePosition "left") }}
         flex-direction: row;
     {{ else if (eq $jumbotronImagePosition "right") }}
@@ -903,3 +909,97 @@ header.jumbotronContainer {
     }
 }
 {{ end }}
+
+{{ if .Site.Params.enableSidebarLayout | default false }}
+    $sidebar_width: 350px;
+    $sidebar_bg_color: {{
+        .Site.Params.sidebarBackgroundColor | default "$highlight_bg_color"
+    }};
+    $sidebar_fg_color: {{
+        .Site.Params.sidebarForegroundColor | default "$fg_color"
+    }};
+
+    header {
+        #sidebar_nav {
+            display: none;
+        }
+        #wide_nav {
+            display: block;
+        }
+    }
+
+    @media only screen and (min-width: 950px) {
+        html{{if .Site.Params.enableJumbotron}}:not(.home){{end}} {
+            overflow-y: hidden;
+            #baseContainer {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                max-height: 100vh;
+                header {
+                    margin-left: unset; margin-right: unset;
+                    background-color: $sidebar_bg_color;
+                    max-width: $sidebar_width;
+                    min-width: $sidebar_width;
+                    height: 100vh;
+                    display: block;
+                    overflow: auto;
+                    margin-bottom: 0;
+                    padding: 0 15px;
+                    > *:last-child, > *:first-child {
+                        padding-bottom: 15px;
+                        padding-top: 15px;
+                    }
+                    .rightOfLogo {
+                        align-self: center;
+                    }
+                    #sidebar_nav {
+                        display: block;
+                        margin: 12px 0;
+                        width: 100%;
+                        nav {
+                            font-size: 1.1em;
+                            ul#main-nav {
+                                flex-direction: column;
+                                li {
+                                    border-right: none;
+                                    a {
+                                        padding: 6px;
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    #wide_nav {
+                        display: none;
+                    }
+                }
+                #contentContainer {
+                    flex-grow: 1;
+                    overflow-y: auto;
+                }
+            }
+        }
+    }
+
+{{ end }}
+
+
+// transitions at the end so that loading css doens't cause animations
+
+a {
+    transition-property: color, border-color;
+    transition-duration: .15s;
+    transition-timing-function: ease-in-out;
+}
+
+.nerdlink {
+    &, .pseudofond {
+        transition: all .15s ease-in-out;
+    }
+}
+
+input {
+    transition: .15s border ease-in-out;
+}

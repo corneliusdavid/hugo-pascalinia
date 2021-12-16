@@ -3,45 +3,18 @@
     <div class="titleAndSearchContainer">
         <div id="titleContainer">
             <img src='{{ .Site.Params.Logo | default "/logo.svg" }}' />
-            <div style="width: 100%">
+            <div class="rightOfLogo">
                 <div class="titleAndHamburger">
                     <h1>{{ .Site.Title | default "Ficurinia" }}</h1>
-                    {{ if .Site.Params.mobileHamburgerNav | default false }}
+                    {{ if (.Site.Params.mobileHamburgerNav | default false) }}
                         <label id="hamburger-menu" for="main-nav-toggler">
                             &#xf85b;
                         </label>
                     {{ end }}
                 </div>
-                <nav>
-                    {{ if .Site.Params.mobileHamburgerNav | default false }}
-                        <input type="checkbox" id="main-nav-toggler" />
-                    {{ end }}
-                    <ul id="main-nav">
-                        <li><a href="/">{{ i18n "home" }}</a></li>
-                        {{ if (.Site.Params.showPostsLink | default true) }}
-                            <li><a href="/posts">{{ i18n "posts" }}</a></li>
-                        {{ end }}
-                        {{ range site.Params.extraContentDirs }}
-                            <li><a href="/{{ . }}">{{ . | humanize }}</a></li>
-                        {{ end }}
-                        {{ $pagesDir := .Site.Params.Pages | default (slice "pages") }}
-                        {{ $pagesList := where .Site.RegularPages "Section" "in" $pagesDir }}
-                        {{ range $pagesList }}
-                            <li><a href="{{ .Permalink }}">
-                                {{ or .Params.Button .Title }}
-                            </a></li>
-                        {{ end }}
-                        {{ range .Site.Menus.main }}
-                            <li><a href="{{ .URL | safeURL }}">{{ .Name }}</a></li>
-                        {{ end }}
-                        {{ if (.Site.Params.showTags | default true) }}
-                            <li><a href="/tags">{{ i18n "tags" }}</a></li>
-                        {{ end }}
-                        {{ if and (.Site.Params.searchMenuLink | default false) (.Site.Params.enableSearch | default true) }}
-                            <li><a href="/search">{{ i18n "search" }}</a></li>
-                        {{ end }}
-                    </ul>
-                </nav>
+                <div id="wide_nav">
+                    {{- partial "header_navigation.html" . -}}
+                </div>
             </div>
         </div>
         {{ if and (.Site.Params.searchbarEverywhere | default true) (and (.Site.Params.enableSearch | default true) (not (eq .Title "Search"))) }}
@@ -59,6 +32,17 @@
             {{- partial "iconlink" . -}}
         {{ end }}
     </div>
+    {{ if and
+        (.Site.Params.enableSidebarLayout | default false)
+        (or
+            (not (.Site.Params.enableJumbotron | default false))
+            (not .IsHome)
+        )
+    }}
+        <div id="sidebar_nav">
+            {{- partial "header_navigation.html" . -}}
+        </div>
+    {{ end }}
     {{- partial "inject/header-after.html" . -}}
     {{- partial "jumbotron.html" . -}}
 </header>

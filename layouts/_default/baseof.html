@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html class="{{ if .IsHome }}home{{ end }}">
     {{- partial "head.html" . -}}
     <body>
-        {{- partial "header.html" . -}}
-        <div id="content">
-            <main>
-                {{- block "main" . }}{{- end }}
-            </main>
-            {{- partial "footer.html" . -}}
+        <div id="baseContainer">
+            {{- partial "header.html" . -}}
+            <div id="contentContainer">
+                <div id="content">
+                    <main>
+                        {{- block "main" . }}{{- end }}
+                    </main>
+                    {{- partial "footer.html" . -}}
+                </div>
+            </div>
         </div>
         {{- partial "plausible.html" . -}}
         {{- partial "inject/body.html" . -}}

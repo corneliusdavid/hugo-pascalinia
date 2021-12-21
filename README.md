@@ -49,6 +49,7 @@ summaryLength = 70  # number of words for article summaries
     faviconIco = "/favicon.ico"  # 32x32
     appletouch = "/apple-touch-icon.png"  # 180x180
     svgicon = "/logo.svg"
+    icon512 = "/icon512.png"  # 512x512 png image
 
     showTags = true  # show the Tags menu item; default true
     showRss = true  # show the link for the RSS feed; default true

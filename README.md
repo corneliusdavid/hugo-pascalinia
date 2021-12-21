@@ -22,6 +22,8 @@ These are some parameters you can use in your `config.toml` to customize Ficurin
 baseURL = "https://example.com/"
 theme = "hugo-ficurinia"
 title = "My nice blog"
+languageCode = "en"
+defaultContentLanguage = "en"
 
 # this will be included in the footer after the current year the site is last
 # built, followed by the (c) symbol

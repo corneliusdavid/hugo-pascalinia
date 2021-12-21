@@ -1,6 +1,8 @@
 <a
     {{ if eq (lower .Identifier) "mastodon" }}
         rel="me"
+    {{ else }}
+        rel="noreferrer"
     {{ end }}
     target="_blank"
     class="nerdlink"

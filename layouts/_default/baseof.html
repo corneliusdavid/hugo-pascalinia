@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="{{ if .IsHome }}home{{ end }}">
+<html class="{{ if .IsHome }}home{{ end }}" lang="{{ .Site.LanguageCode }}">
     {{- partial "head.html" . -}}
     <body>
         <div id="baseContainer">

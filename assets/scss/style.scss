@@ -58,6 +58,33 @@ $light_sidebar_fg: {{ $colors.light.sidebar.fg | default "#121211" }};
     {{ end }}
 }
 
+{{ if ($colors.auto_switch | default false) }}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --default_bg:         #{$dark_bg};
+        --default_hl_bg:      #{$dark_hl_bg};
+        --default_fg:         #{$dark_fg};
+        --default_dim_fg:     #{$dark_dim_fg};
+        --default_stroke:     #{$dark_stroke};
+        --default_accent:     #{$dark_accent};
+        --default_sidebar_bg: #{$dark_sidebar_bg};
+        --default_sidebar_fg: #{$dark_sidebar_fg};
+    }
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --default_bg:         #{$light_bg};
+        --default_hl_bg:      #{$light_hl_bg};
+        --default_fg:         #{$light_fg};
+        --default_dim_fg:     #{$light_dim_fg};
+        --default_stroke:     #{$light_stroke};
+        --default_accent:     #{$light_accent};
+        --default_sidebar_bg: #{$light_sidebar_bg};
+        --default_sidebar_fg: #{$light_sidebar_fg};
+    }
+}
+{{ end }}
+
 
 $main_font: {{ .Site.Params.fontFamily | default "JetBrains Mono" }};
 $title_font: {{ .Site.Params.titleFontFamily | default "$main_font" }};

@@ -1,5 +1,5 @@
 default: dark  # light
-auto_switch: false
+auto_switch: false  # set to true to respect the user preference
 dark:
   bg: '#242629'  # main site background
   hl_bg: '#34363b'  # card and circle navigation background color for discrete card mode

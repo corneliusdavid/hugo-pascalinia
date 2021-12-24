@@ -1,12 +1,67 @@
-$bg_color: {{ .Site.Params.backgroundColor | default "#242629" }};
-$fg_color: {{ .Site.Params.foregroundColor | default "white" }};
-$dim_fg_color: {{ .Site.Params.dimForegroundColor | default "#bababa" }};
-$stroke_color: {{ .Site.Params.strokeColor | default "#4f4f4f" }};
-$accent_color: {{ .Site.Params.accentColor | default "#db5793" }};
+{{ $colors := .Site.Data.colors | default dict }}
+
+$dark_bg:          {{ $colors.dark.bg         | default "#242629" }};
+$dark_hl_bg:       {{ $colors.dark.hl_bg      | default "#34363b" }};
+$dark_fg:          {{ $colors.dark.fg         | default "white"   }};
+$dark_dim_fg:      {{ $colors.dark.dim_fg     | default "#bababa" }};
+$dark_stroke:      {{ $colors.dark.stroke     | default "#4f4f4f" }};
+$dark_accent:      {{ $colors.dark.accent     | default "#db5793" }};
+$dark_sidebar_bg:  {{ $colors.dark.sidebar.bg | default "#34363b" }};
+$dark_sidebar_fg:  {{ $colors.dark.sidebar.fg | default "white"   }};
+
+$light_bg:         {{ $colors.light.bg         | default "#f5f5f5" }};
+$light_hl_bg:      {{ $colors.light.hl_bg      | default "#e6e6e6" }};
+$light_fg:         {{ $colors.light.fg         | default "#262625" }};
+$light_dim_fg:     {{ $colors.light.dim_fg     | default "#40403e" }};
+$light_stroke:     {{ $colors.light.stroke     | default "#575754" }};
+$light_accent:     {{ $colors.light.accent     | default "#db5793" }};
+$light_sidebar_bg: {{ $colors.light.sidebar.bg | default "#e6e6e6" }};
+$light_sidebar_fg: {{ $colors.light.sidebar.fg | default "#121211" }};
+
+:root {
+    --dark_bg:          #{$dark_bg};
+    --dark_hl_bg:       #{$dark_hl_bg};
+    --dark_fg:          #{$dark_fg};
+    --dark_dim_fg:      #{$dark_dim_fg};
+    --dark_stroke:      #{$dark_stroke};
+    --dark_accent:      #{$dark_accent};
+    --dark_sidebar_bg:  #{$dark_sidebar_bg};
+    --dark_sidebar_fg:  #{$dark_sidebar_fg};
+
+    --light_bg:         #{$light_bg};
+    --light_hl_bg:      #{$light_hl_bg};
+    --light_fg:         #{$light_fg};
+    --light_dim_fg:     #{$light_dim_fg};
+    --light_stroke:     #{$light_stroke};
+    --light_accent:     #{$light_accent};
+    --light_sidebar_bg: #{$light_sidebar_bg};
+    --light_sidebar_fg: #{$light_sidebar_fg};
+
+    {{ if eq .Site.Data.colors.default "light" }}
+        --default_bg:         #{$light_bg};
+        --default_hl_bg:      #{$light_hl_bg};
+        --default_fg:         #{$light_fg};
+        --default_dim_fg:     #{$light_dim_fg};
+        --default_stroke:     #{$light_stroke};
+        --default_accent:     #{$light_accent};
+        --default_sidebar_bg: #{$light_sidebar_bg};
+        --default_sidebar_fg: #{$light_sidebar_fg};
+    {{ else }}
+        --default_bg:         #{$dark_bg};
+        --default_hl_bg:      #{$dark_hl_bg};
+        --default_fg:         #{$dark_fg};
+        --default_dim_fg:     #{$dark_dim_fg};
+        --default_stroke:     #{$dark_stroke};
+        --default_accent:     #{$dark_accent};
+        --default_sidebar_bg: #{$dark_sidebar_bg};
+        --default_sidebar_fg: #{$dark_sidebar_fg};
+    {{ end }}
+}
+
+
 $main_font: {{ .Site.Params.fontFamily | default "JetBrains Mono" }};
 $title_font: {{ .Site.Params.titleFontFamily | default "$main_font" }};
 $mono_font: {{ .Site.Params.monospaceFontFamily | default "JetBrains Mono" }};
-$highlight_bg_color: {{ .Site.Params.highlightBgColor | default "#34363b" }};
 $content_width: {{ .Site.Params.contentWidth | default "1000px" }};
 $border_radius: 10px;
 $content_spacing: 25px;
@@ -17,8 +72,8 @@ $main_font_mult:  {{ .Site.Params.mainFontSizeMultiplier  | default 1.0 }};
 $mono_font_mult:  {{ .Site.Params.monoFontSizeMultiplier  | default 1.0 }};
 
 ::selection, ::-moz-selection {
-    background: $accent_color;
-    color: $fg_color;
+    background: var(--default_accent);
+    color: var(--default_fg);
 }
 
 body, html {
@@ -26,8 +81,8 @@ body, html {
     font-size: $base_font_size * $main_font_mult;
     margin: 0;
     padding: 0;
-    background-color: $bg_color;
-    color: $fg_color;
+    background-color: var(--default_bg);
+    color: var(--default_fg);
 }
 
 body {
@@ -35,11 +90,11 @@ body {
 }
 
 a {
-    color: $fg_color;
+    color: var(--default_fg);
     text-decoration: none;
-    border-bottom: 2px solid $fg_color;
+    border-bottom: 2px solid var(--default_fg);
     &:hover, &:focus {
-        border-color: $accent_color !important;
+        border-color: var(--default_accent) !important;
     }
 }
 
@@ -55,9 +110,9 @@ a {
 }
 
 footer {
-    color: $dim_fg_color;
+    color: var(--default_dim_fg);
     a {
-        color: $dim_fg_color;
+        color: var(--default_dim_fg);
     }
     hr {
         margin-top: (2 * $content_spacing);
@@ -94,7 +149,7 @@ article, .articlePreview {
     }
     pre {
         padding: 20px;
-        border: 1px solid $stroke_color;
+        border: 1px solid var(--default_stroke);
         border-radius: 3px;
     }
 }
@@ -102,7 +157,7 @@ article, .articlePreview {
 code {
     font-family: "Symbols Nerd Font", $mono_font, monospace;
     font-size: $base_font_size * .8 * $mono_font_mult;
-    border: 1px solid $stroke_color;
+    border: 1px solid var(--default_stroke);
     border-radius: 3px
 }
 code, table {
@@ -121,19 +176,16 @@ table {
     display: block;
     td, th {
         padding: 6px;
-        border: 1px solid $stroke_color;
+        border: 1px solid var(--default_stroke);
     }
-    th {
-        background-color: lighten($bg_color, 5%);
-    }
-    tr:nth-child(even) {
-        background-color: lighten($bg_color, 5%);
+    th, tr:nth-child(even) {
+        filter: brightness(105%);
     }
 }
 
 .date, .date a {
-    color: $dim_fg_color;
-    border-color: $dim_fg_color;
+    color: var(--default_dim_fg);
+    border-color: var(--default_dim_fg);
     font-size: .9em;
 }
 
@@ -149,7 +201,7 @@ table {
 #pageNavigation {
     text-align: right;
     a {
-        color: $accent_color;
+        color: var(--default_accent);
     }
     a, span {
         // appropriately sized tap targets
@@ -169,16 +221,16 @@ table {
             width: 40px;
             height: 40px;
             line-height: 40px;
-            padding: auto;
+            padding: unset;
             border-radius: 100%;
-            background-color: $highlight_bg_color;
-            color: $fg_color;
+            background-color: var(--default_hl_bg);
+            color: var(--default_fg);
         }
         span {
-            background-color: $accent_color;
+            background-color: var(--default_accent);
         }
         a:hover {
-            background-color: $accent_color;
+            background-color: var(--default_accent);
         }
     }
 }
@@ -186,7 +238,7 @@ table {
 h1, h2, h3, h4, h5, h6 {
     font-family: "Symbols Nerd Font", $title_font;
     a {
-        color: $accent_color;
+        color: var(--default_accent);
         {{ if not (.Site.Params.underlineTitleLinks | default false) }}
             border-bottom: none;
         {{ end }}
@@ -209,7 +261,7 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
 
 .nerdlink {
     @extend .nerd;
-    color: $fg_color;
+    color: var(--default_fg);
     border-bottom: none;
     position: relative;
     width: 1em;
@@ -218,7 +270,7 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
     align-items: center;
     justify-content: center;
     .pseudofont {
-        fill: $fg_color;
+        fill: var(--default_fg);
         display: inline;
         position: relative;
         top: 1px;
@@ -229,19 +281,19 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
         left: 50%;
         transform: translateX(-50%);
         padding: 2px;
-        border: 1px solid $stroke_color;
+        border: 1px solid var(--default_stroke);
         border-radius: 3px;
-        color: $fg_color;
+        color: var(--default_fg);
         display: none;
-        background-color: $bg_color;
+        background-color: var(--default_bg);
         z-index: 900;
         text-align: center;
     }
     &:hover {
         .pseudofont {
-            fill: $accent_color;
+            fill: var(--default_accent);
         }
-        color: $accent_color;
+        color: var(--default_accent);
         text-decoration: none;
         border-bottom: none;
         span {
@@ -255,7 +307,7 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
     padding-bottom: 25px;
 
     &.discrete {
-        background-color: $highlight_bg_color;
+        background-color: var(--default_hl_bg);
         border-radius: $border_radius;
         padding: 20px;
         padding-top: 1px;
@@ -322,34 +374,34 @@ ul.list {
 
 #commento {
     margin-top: 25px;
-    color: $fg_color;
+    color: var(--default_fg);
     font-family: "Symbols Nerd Font", $main_font, monospace;
     textarea, #commento-markdown-help-root {
         background: rgba(255, 255, 255, .05);
-        color: $fg_color;
+        color: var(--default_fg);
         border-radius: 0;
         border: none;
         td, td>*, td>*>* {
-            color: $fg_color;
+            color: var(--default_fg);
             pre {
                 font-family: "Symbols Nerd Font", $mono_font, monospace;
-                color: $dim_fg_color;
+                color: var(--default_dim_fg);
             }
         }
     }
     #commento-submit-button-root {
-        background: $accent_color;
-        color: $fg_color;
+        background: var(--default_accent);
+        color: var(--default_fg);
     }
     .commento-name {
-        color: $dim_fg_color;
+        color: var(--default_dim_fg);
     }
     .commento-sort-policy-buttons {
         a {
             border-bottom: none;
         }
         .commento-sort-policy-button-selected {
-            color: $accent_color;
+            color: var(--default_accent);
         }
     }
     .commento-card {
@@ -358,7 +410,7 @@ ul.list {
     }
     .commento-body {
         >*, *>*, >*>*>*, >*>*>*>*, >*>*>*>*>* {
-            color: $fg_color;
+            color: var(--default_fg);
             font-family: "Symbols Nerd Font", $main_font, monospace;
         }
     }
@@ -438,12 +490,13 @@ ul.list {
 @mixin buttonLikeLink {
     display: inline-block;
     border-radius: $border_radius;
-    background-color: $highlight_bg_color;
+    background-color: var(--default_hl_bg);
     padding: ($content_spacing / 2);
     margin: ($content_spacing / 6) 0;
+    transition: background-color .15s ease-in-out;
     border-bottom: none;
     &:hover, &:focus {
-        background-color: $accent_color;
+        background-color: var(--default_accent);
     }
 }
 
@@ -517,13 +570,13 @@ header {
         font-size: .9em;
         ul {
             li {
-                border-right: 1px solid $accent_color;
+                border-right: 1px solid var(--default_accent);
                 &:last-child {
                     border-right: none;
                 }
                 a {
                     padding: 2px 20px;
-                    color: $accent_color;
+                    color: var(--default_accent);
                     &:hover {
                         text-decoration: underline;
                     }
@@ -556,16 +609,16 @@ input {
     }}
         @include buttonLikeLink;
         &:hover, &:focus, &:active {
-            background-color: $highlight_bg_color;
+            background-color: var(--default_hl_bg);
         }
     {{ end }}
     font-family: "Symbols Nerd Font", $main_font;
-    background-color: $highlight_bg_color;
+    background-color: var(--default_hl_bg);
     padding: 12px;
-    color: $fg_color;
+    color: var(--default_fg);
     border: 2px solid transparent;
     &:focus, &:active {
-        border: 2px solid $accent_color;
+        border: 2px solid var(--default_accent);
         outline: none;
     }
 }
@@ -581,7 +634,7 @@ input {
         top: 24px;
         left: 50%; transform: translateX(-50%);
         z-index: 9999;
-        background-color: $bg_color;
+        background-color: var(--default_bg);
         width: 450px;
         max-width: 100%;
         padding: 24px;
@@ -656,8 +709,8 @@ header {
                 {{ if eq .Site.Params.navtype "circles" }}
                     border-radius: $border_radius;
                 {{ end }}
-                border: 2px solid $accent_color;
-                background-color: $highlight_bg_color;
+                border: 2px solid var(--default_accent);
+                background-color: var(--default_hl_bg);
                 flex-direction: column;
                 li {
                     border-right: none !important;
@@ -701,10 +754,10 @@ header.jumbotronContainer {
             color: white !important;
         }
         #main-nav a, .nerdlink:hover {
-            color: $accent_color !important;
+            color: var(--default_accent) !important;
         }
         .nerdlink span {
-            color: $fg_color !important;
+            color: var(--default_fg) !important;
             text-shadow: none;
         }
         #searchbar {
@@ -725,7 +778,7 @@ header.jumbotronContainer {
     {{ end }}
     {{ if (.Site.Data.jumbotron.textShadow | default false) }}
         &, * {
-            text-shadow: 0 0 5px transparentize($fg_color, .3);
+            text-shadow: 0 0 5px transparentize($dark_fg_color, .3);
         }
     {{ end }}
     > *:first-child {
@@ -740,8 +793,8 @@ header.jumbotronContainer {
     }}
         background:
             linear-gradient(
-                transparentize($bg_color, 0.2),
-                transparentize($bg_color, 0.2)
+                transparentize(var(--default_bg), 0.2),
+                transparentize(var(--default_bg), 0.2)
             ),
             url({{ .Site.Data.jumbotron.background }});
         background-size: cover;
@@ -793,7 +846,7 @@ header.jumbotronContainer {
                 }
                 opacity: .7;
                 border-radius: 100%;
-                border: 2px solid $fg_color;
+                border: 2px solid var(--default_fg);
                 padding: 3px;
                 // display: flex; flex-direction: row; justify-content: center;
                 background-color: transparent;
@@ -801,7 +854,7 @@ header.jumbotronContainer {
                 svg {
                     margin-top: 5px;
                     &, * {
-                        fill: $fg_color;
+                        fill: var(--default_fg);
                         transition: fill .15s ease-in-out;
                     }
                     @keyframes bounce {
@@ -816,9 +869,9 @@ header.jumbotronContainer {
 
                 }
                 &:hover, &:focus, &:active {
-                    background-color: $fg_color;
+                    background-color: var(--default_fg);
                     svg, svg * {
-                        fill: $bg_color;
+                        fill: var(--default_bg);
                     }
                 }
             }
@@ -889,7 +942,7 @@ header.jumbotronContainer {
                 {{ if eq .Site.Params.navtype "circles" }}
                     @include buttonLikeLink;
                     background-color: transparent;
-                    border: 2px solid $accent_color;
+                    border: 2px solid var(--default_accent);
                 {{ end }}
             }
         }
@@ -918,12 +971,6 @@ header.jumbotronContainer {
 
 {{ if .Site.Params.enableSidebarLayout | default false }}
     $sidebar_width: 350px;
-    $sidebar_bg_color: {{
-        .Site.Params.sidebarBackgroundColor | default "$highlight_bg_color"
-    }};
-    $sidebar_fg_color: {{
-        .Site.Params.sidebarForegroundColor | default "$fg_color"
-    }};
 
     header {
         #sidebar_nav, .sidebarToc {
@@ -937,6 +984,7 @@ header.jumbotronContainer {
     @media only screen and (min-width: 950px) {
         html{{if .Site.Params.enableJumbotron}}:not(.home){{end}} {
             position: fixed; top: 0; bottom: 0; left: 0; right: 0;
+            color: var(--default_sidebar_fg);
             #baseContainer {
                 display: flex;
                 flex-direction: row;
@@ -944,7 +992,7 @@ header.jumbotronContainer {
                 max-height: 100vh;
                 header {
                     margin-left: unset; margin-right: unset;
-                    background-color: $sidebar_bg_color;
+                    background-color: var(--default_sidebar_bg);
                     max-width: $sidebar_width;
                     min-width: $sidebar_width;
                     height: 100vh;

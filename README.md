@@ -75,7 +75,6 @@ summaryLength = 70  # number of words for article summaries
     discreteTags = false  # enable discrete tag style; default false
     tagsInArticlePreview = true  # enable tags list in the article preview card
     gridView = false  # show post list as a grid. goes well with discreteCards
-    highlightBgColor = "#34363b"  # card and circle navigation background color for discrete card mode
     bigArticleTitle = false  # makes the title in the single article view bigger
 
     enableSearch = true  # enable search page
@@ -109,17 +108,10 @@ summaryLength = 70  # number of words for article summaries
     # ]
 
     # you can customize all of the colors in this theme
-    # the values shown are the defaults
-    backgroundColor = "#242629"
-    foregroundColor = "white"
-    dimForegroundColor = "#bababa"
-    strokeColor = "#4f4f4f"
-    accentColor = "#db5793"
+    # Colors are defined in data/colors.yml
 
     # alternative sidebar layout
     enableSidebarLayout = false
-    sidebarBackgroundColor = "#34363b"
-    sidebarForegroundColor = "white"
     tocInSidebar = false  # if the sidebar is enbabled, show the TOC in the sidebar
 
     # redirect to baseURL if current URL host doesn't match
@@ -187,6 +179,10 @@ For the `[[menu.icons]]` menu. They match identifier, name and url can be whatev
 - twitter
 - xmpp
 - youtube
+
+## Colors
+
+Colors are completely customizable. They are defined in [`data/colors.yml`](data/colors.yml). Just copy that file over to `yoursite/data/colors.yml` and customize it to your liking.
 
 ## Footer columns
 

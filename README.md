@@ -59,6 +59,8 @@ summaryLength = 70  # number of words for article summaries
     articleSummary = true  # show a summary in article preview; default true
 
     navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circles"
+
+    enableShadow = false
     
     fontFamily = "JetBrains Mono"  # changes the font, default "JetBrains Mono"
     titleFontFamily = "JetBrains Mono"  # font used for titles and headings
@@ -249,6 +251,7 @@ Every post can have various parameters in the frontmatter, here are some that yo
 - `comments`: boolean, if true it enables comments for the current post, if false it disables them (default is true)
 - `showDate`: boolean, true by default, if false hides the date. Useful for non-article pages where the date isn't important
 - `norss`: boolean, if set to true the page will be skipped in the rss feed
+- `nosearch`: boolean, if set to true the page won't show up in searches
 - `toc`: boolean, if set to true a table of contents will be shown for the article
 
 ## Table of contents settings

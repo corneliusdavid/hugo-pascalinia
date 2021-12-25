@@ -98,6 +98,12 @@ $title_font_mult: {{ .Site.Params.titleFontSizeMultiplier | default 1.0 }};
 $main_font_mult:  {{ .Site.Params.mainFontSizeMultiplier  | default 1.0 }};
 $mono_font_mult:  {{ .Site.Params.monoFontSizeMultiplier  | default 1.0 }};
 
+{{ if (.Site.Params.enableShadow | default false) }}
+    $shadow: 0 0 5px 0 rgba(0, 0, 0, .2);
+{{ else }}
+    $shadow: 0 0 0 0 transparent;
+{{ end }}
+
 ::selection, ::-moz-selection {
     background: var(--default_accent);
     color: var(--default_fg);
@@ -116,13 +122,19 @@ body {
     min-height: 100vh;
 }
 
-a {
+@mixin linkLike {
     color: var(--default_fg);
     text-decoration: none;
+    background-color: transparent;
+    border-radius: 0;
     border-bottom: 2px solid var(--default_fg);
     &:hover, &:focus {
         border-color: var(--default_accent) !important;
     }
+}
+
+a {
+    @include linkLike;
 }
 
 @mixin limitWidth {
@@ -250,8 +262,10 @@ table {
             line-height: 40px;
             padding: unset;
             border-radius: 100%;
+            transition: background-color .15s ease-in-out;
             background-color: var(--default_hl_bg);
             color: var(--default_fg);
+            box-shadow: $shadow;
         }
         span {
             background-color: var(--default_accent);
@@ -336,6 +350,7 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
     &.discrete {
         background-color: var(--default_hl_bg);
         border-radius: $border_radius;
+        box-shadow: $shadow;
         padding: 20px;
         padding-top: 1px;
     }
@@ -455,17 +470,8 @@ ul.list {
         padding: 0 6px;  // appropriately sized tap targets
     }
     #searchbar {
-        @extend a;
         width: 100%;
         min-width: 150px;
-        display: inline-block;
-        background-color: transparent;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-radius: 0;
-        padding: 6px 0;
-        font-family: "Symbols Nerd Font", $main_font;
         font-size: 1.3em;
         outline: none;
     }
@@ -514,17 +520,19 @@ ul.list {
     }
 }
 
-@mixin buttonLikeLink {
+@mixin roundButtonLike {
     display: inline-block;
     border-radius: $border_radius;
     background-color: var(--default_hl_bg);
+    color: var(--default_fg);
     padding: ($content_spacing / 2);
     margin: ($content_spacing / 6) 0;
-    transition: background-color .15s ease-in-out;
+    transition: background-color .15s ease-in-out !important;
     border-bottom: none;
     &:hover, &:focus {
         background-color: var(--default_accent);
     }
+    box-shadow: $shadow;
 }
 
 .loadMoreButton {
@@ -533,7 +541,7 @@ ul.list {
     font-weight: bold;
     &.buttonLike {
         a {
-            @include buttonLikeLink;
+            @include roundButtonLike;
         }
     }
 }
@@ -618,35 +626,97 @@ header {
 }
 
 a.discreteTag {
-    @include buttonLikeLink;
+    @include roundButtonLike;
 }
 
-.shareBtn {
+@mixin buttonLike {
     {{ if eq (site.Params.navtype | default "standard") "circles" }}
-        @include buttonLikeLink;
+        @include roundButtonLike;
+    {{ else }}
+        @include linkLike;
     {{ end }}
-    font-size: 1.2em;
+    font-size: #{1.2 * $base_font_size};
+}
+
+.cactus-button, .cactus-login-buttons > button {
+    font-family: $main_font;
+    padding: 0;
+    margin: 12px !important;
+    @include buttonLike;
+    transition-property: border-color, background-color !important;
+    transition-duration: .15s;
+    transition-timing-function: ease-in-out;
+    opacity: 1 !important;
+    &[disabled] {
+        opacity: .5 !important;
+        border-color: transparent !important;
+        background-color: transparent !important;
+        box-shadow: none;
+    }
+}
+
+.shareBtn, button {
+    @include buttonLike;
     cursor: pointer;
 }
 
-input {
+input, textarea, textarea.cactus-editor-textarea {
     {{ if or 
         (site.Params.discreteCards | default false)
         (eq (site.Params.navtype | default "standard") "circles")
     }}
-        @include buttonLikeLink;
-        &:hover, &:focus, &:active {
-            background-color: var(--default_hl_bg);
-        }
+        @include buttonLike;
+    {{ else }}
+        border-radius: 0 !important;
     {{ end }}
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 10px;
     font-family: "Symbols Nerd Font", $main_font;
-    background-color: var(--default_hl_bg);
-    padding: 12px;
+    background-color: var(--default_hl_bg) !important;
     color: var(--default_fg);
-    border: 2px solid transparent;
+    padding: 12px;
+    border: 2px solid transparent !important;
+    border-color: transparent;
+    transition: border-color .15s ease-in-out !important;
     &:focus, &:active {
-        border: 2px solid var(--default_accent);
+        border-color: var(--default_accent) !important;
         outline: none;
+    }
+}
+
+.cactus-editor-name {
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 10px;
+}
+
+.cactus-login-form {
+    {{ if (site.Params.discreteCards | default false) }}
+        border-radius: $border_radius;
+    {{ else }}
+        border-radius: 0;
+    {{ end }}
+    {{ if (.Site.Params.enableShadow | default false) }}
+        box-shadow: $shadow;
+    {{ else }}
+        box-shadow: none;
+        border: 2px solid var(--default_stroke);
+    {{ end }}
+    background-color: var(--default_bg) !important;
+    color: var(--default_fg) !important;
+    > a {  // "Use a Matrix client" button
+        @include buttonLike;
+        > button {
+            background-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    }
+    .cactus-login-buttons {
+        margin: 0;
     }
 }
 
@@ -656,6 +726,13 @@ input {
     top: 0; bottom: 0; left: 0; right: 0;
     
     .dialog {
+        {{ if (.Site.Params.enableShadow | default false) }}
+            box-shadow: $shadow;
+        {{ else }}
+            box-shadow: none;
+            border: 2px solid var(--default_stroke);
+        {{ end }}
+        box-sizing: border-box;
         position: absolute;
         display: flex; flex-direction: column;
         top: 24px;
@@ -786,9 +863,6 @@ header.jumbotronContainer {
         .nerdlink span {
             color: var(--default_fg) !important;
             text-shadow: none;
-        }
-        #searchbar {
-            border-color: white !important;
         }
         .arrow {
             border-color: white !important;
@@ -967,7 +1041,7 @@ header.jumbotronContainer {
                     font-size: 1.5em;
                 }
                 {{ if eq .Site.Params.navtype "circles" }}
-                    @include buttonLikeLink;
+                    @include roundButtonLike;
                     background-color: transparent;
                     border: 2px solid var(--default_accent);
                 {{ end }}
@@ -1027,6 +1101,7 @@ header.jumbotronContainer {
                     overflow: auto;
                     margin-bottom: 0;
                     padding: 0 15px;
+                    box-shadow: $shadow;
                     > *:last-child, > *:first-child {
                         padding-bottom: 15px;
                         padding-top: 15px;

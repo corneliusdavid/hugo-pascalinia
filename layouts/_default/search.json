@@ -2,7 +2,8 @@
 {
     {{ $mscratch := newScratch }}
     {{ $mscratch.Add "articles" slice }}
-    {{ range .Site.RegularPages }}
+    {{ $pages := where .Site.RegularPages "Params.nosearch" "!=" "true" }}
+    {{ range $pages }}
         {{ $mscratch.Add "articles" (dict
             "title" .Title
             "date" (.Date.Format "2006-01-02")

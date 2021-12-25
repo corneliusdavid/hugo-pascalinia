@@ -703,10 +703,20 @@ input, textarea, textarea.cactus-editor-textarea {
         box-shadow: none;
         border: 2px solid var(--default_stroke);
     {{ end }}
+    max-width: 600px;
+    min-width: 200px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    transform: none;
+    top: 24px;
+    left: 0; right: 0;
     background-color: var(--default_bg) !important;
     color: var(--default_fg) !important;
+    z-index: 9999;
     > a {  // "Use a Matrix client" button
         @include buttonLike;
+        align-self: flex-end;
         > button {
             background-color: transparent !important;
             border: none !important;
@@ -717,6 +727,11 @@ input, textarea, textarea.cactus-editor-textarea {
     }
     .cactus-login-buttons {
         margin: 0;
+        justify-content: flex-end;
+        > button {
+            flex-grow: 0;
+            white-space: nowrap;  // otherwise labels go 1 line per word
+        }
     }
 }
 

@@ -9,7 +9,7 @@ initComments({
     defaultHomeserverUrl: '{{ site.Params.cactusCommentsHomeserver | default "https://matrix.cactus.chat:8448" }}',
     serverName: '{{ site.Params.cactusCommentsServerName | default "cactus.chat" }}',
     siteName: "{{ site.Params.cactusCommentsSiteName }}",
-    commentSectionId: "{{ .File.UniqueID }}"
+    commentSectionId: "{{ .Permalink }}"
 })
 </script>
 {{ end }}

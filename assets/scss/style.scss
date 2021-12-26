@@ -358,7 +358,7 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
     &.single {
         {{ if (.Site.Params.bigArticleTitle | default false) }}
             h1 {
-                font-size: 2.2em * $base_font_size * $title_font_mult;
+                font-size: #{2.2 * $base_font_size * $title_font_mult};
             }
         {{ end }}
     }

@@ -792,62 +792,62 @@ input, textarea, textarea.cactus-editor-textarea {
 }
 
 {{ if .Site.Params.mobileHamburgerNav | default false }}
-header {
-    #hamburger-menu {
-        @extend .nerdlink;
-        display: none !important;
-    }
-    #main-nav-toggler {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 520px) {
     header {
-        .titleAndSearchContainer {
-            z-index: 9999999 !important;
-        }
         #hamburger-menu {
-            display: block !important;
-            font-size: 1.2em;
-            cursor: pointer;
-            text-align: center;
-            margin: 0;
-            padding: ($content_spacing / 4);
-            align-self: center;
+            @extend .nerdlink;
+            display: none !important;
         }
-        nav:not(#TableOfContents) {
-            ul#main-nav {
-                &, li, li a {text-shadow: none !important;}
-                display: none;
-                position: absolute;
-                z-index: 99999;
-                right: 6px;
-                padding: 12px;
-                width: 120px;
-                {{ if eq .Site.Params.navtype "circles" }}
-                    border-radius: $border_radius;
-                {{ end }}
-                border: 2px solid var(--default_accent);
-                background-color: var(--default_hl_bg);
-                flex-direction: column;
-                li {
-                    border-right: none !important;
-                    display: block;
-                    text-align: center;
-                    a {
+        #main-nav-toggler {
+            display: none;
+        }
+    }
+
+    @media only screen and (max-width: 520px) {
+        header {
+            .titleAndSearchContainer {
+                z-index: 9999999 !important;
+            }
+            #hamburger-menu {
+                display: block !important;
+                font-size: 1.2em;
+                cursor: pointer;
+                text-align: center;
+                margin: 0;
+                padding: ($content_spacing / 4);
+                align-self: center;
+            }
+            nav:not(#TableOfContents) {
+                ul#main-nav {
+                    &, li, li a {text-shadow: none !important;}
+                    display: none;
+                    position: absolute;
+                    z-index: 99999;
+                    right: 6px;
+                    padding: 12px;
+                    width: 120px;
+                    {{ if eq .Site.Params.navtype "circles" }}
+                        border-radius: $border_radius;
+                    {{ end }}
+                    border: 2px solid var(--default_accent);
+                    background-color: var(--default_hl_bg);
+                    flex-direction: column;
+                    li {
+                        border-right: none !important;
                         display: block;
-                        width: 100%;
-                        padding: 0;
+                        text-align: center;
+                        a {
+                            display: block;
+                            width: 100%;
+                            padding: 0;
+                        }
                     }
                 }
-            }
-            #main-nav-toggler:checked ~ #main-nav {
-                display: flex;
+                #main-nav-toggler:checked ~ #main-nav {
+                    display: flex;
+                }
             }
         }
     }
-}
 {{ end }}
 
 {{ if and 

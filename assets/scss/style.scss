@@ -894,7 +894,7 @@ header.jumbotronContainer {
     {{ end }}
     {{ if (.Site.Data.jumbotron.textShadow | default false) }}
         &, * {
-            text-shadow: 0 0 5px transparentize($dark_fg_color, .3);
+            text-shadow: 0 0 5px transparentize($dark_fg, .3);
         }
     {{ end }}
     > *:first-child {

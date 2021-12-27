@@ -57,10 +57,6 @@ summaryLength = 70  # number of words for article summaries
     imageInArticlePreview = false  # show images in article preview; default false
     fitImageInArticlePreview = false  # make article preview images fit the article preview instead of getting cropped
     articleSummary = true  # show a summary in article preview; default true
-
-    navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circles"
-
-    enableShadow = false
     
     fontFamily = "JetBrains Mono"  # changes the font, default "JetBrains Mono"
     titleFontFamily = "JetBrains Mono"  # font used for titles and headings
@@ -78,6 +74,9 @@ summaryLength = 70  # number of words for article summaries
     tagsInArticlePreview = true  # enable tags list in the article preview card
     gridView = false  # show post list as a grid. goes well with discreteCards
     bigArticleTitle = false  # makes the title in the single article view bigger
+    navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circles"
+    enableShadow = false  # shows a shadow around some elements
+    menuStyle = "standard"  # changes the style of the main site navigation menu, available styles are: "standard", "buttons"
 
     enableSearch = true  # enable search page
     searchbarEverywhere = true  # if the searchbar should be shown in every page; requires enableSearch

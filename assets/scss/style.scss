@@ -133,6 +133,30 @@ body {
     }
 }
 
+@mixin roundButtonLike {
+    display: inline-block;
+    border-radius: $border_radius;
+    background-color: var(--default_hl_bg);
+    color: var(--default_fg);
+    padding: ($content_spacing / 2);
+    margin: ($content_spacing / 6) 0;
+    transition: background-color .15s ease-in-out !important;
+    border-bottom: none;
+    &:hover, &:focus {
+        background-color: var(--default_accent);
+    }
+    box-shadow: $shadow;
+}
+
+@mixin buttonLike {
+    {{ if eq (site.Params.navtype | default "standard") "circles" }}
+        @include roundButtonLike;
+    {{ else }}
+        @include linkLike;
+    {{ end }}
+    font-size: #{1.2 * $base_font_size};
+}
+
 a {
     @include linkLike;
 }
@@ -520,21 +544,6 @@ ul.list {
     }
 }
 
-@mixin roundButtonLike {
-    display: inline-block;
-    border-radius: $border_radius;
-    background-color: var(--default_hl_bg);
-    color: var(--default_fg);
-    padding: ($content_spacing / 2);
-    margin: ($content_spacing / 6) 0;
-    transition: background-color .15s ease-in-out !important;
-    border-bottom: none;
-    &:hover, &:focus {
-        background-color: var(--default_accent);
-    }
-    box-shadow: $shadow;
-}
-
 .loadMoreButton {
     text-align: center;
     font-size: 1.2em;
@@ -605,17 +614,41 @@ header {
         font-size: .9em;
         ul {
             li {
-                border-right: 1px solid var(--default_accent);
-                &:last-child {
-                    border-right: none;
-                }
-                a {
-                    padding: 2px 20px;
-                    color: var(--default_accent);
-                    &:hover {
-                        text-decoration: underline;
+                {{ if eq .Site.Params.menuStyle "buttons" }}
+                    margin: 5px 2px;
+                    margin-right: 5px;
+                    &:last-child {
+                        margin-right: none;
                     }
-                }
+                    a {
+                        {{ if eq (site.Params.navtype | default "standard") "circles" }}
+                            @include roundButtonLike;
+                        {{ else }}
+                            font-family: "Symbols Nerd Font", $main_font;
+                            background-color: var(--default_hl_bg);
+                            transition: background-color .15s ease-in-out;
+                            &:hover, &:active {
+                                background-color: var(--default_accent);
+                            }
+                        {{ end }}
+                        box-sizing: border-box;
+                        color: var(--default_fg);
+                        margin: 0;
+                        padding: 8px 15px;
+                    }
+                {{ else }}
+                    border-right: 1px solid var(--default_accent);
+                    &:last-child {
+                        border-right: none;
+                    }
+                    a {
+                        padding: 2px 20px;
+                        color: var(--default_accent);
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                {{ end }}
             }
         }
     }
@@ -627,15 +660,6 @@ header {
 
 a.discreteTag {
     @include roundButtonLike;
-}
-
-@mixin buttonLike {
-    {{ if eq (site.Params.navtype | default "standard") "circles" }}
-        @include roundButtonLike;
-    {{ else }}
-        @include linkLike;
-    {{ end }}
-    font-size: #{1.2 * $base_font_size};
 }
 
 .cactus-button, .cactus-login-buttons > button {
@@ -670,11 +694,11 @@ input, textarea, textarea.cactus-editor-textarea {
         border-radius: 0 !important;
     {{ end }}
     box-sizing: border-box;
-    max-width: 100%;
-    min-width: 10px;
     font-family: "Symbols Nerd Font", $main_font;
     background-color: var(--default_hl_bg) !important;
     color: var(--default_fg);
+    max-width: 100%;
+    min-width: 10px;
     padding: 12px;
     border: 2px solid transparent !important;
     border-color: transparent;
@@ -822,23 +846,27 @@ input, textarea, textarea.cactus-editor-textarea {
                     display: none;
                     position: absolute;
                     z-index: 99999;
-                    right: 6px;
-                    padding: 12px;
+                    right: 15px;
+                    padding: 2px 5px;
                     width: 120px;
                     {{ if eq .Site.Params.navtype "circles" }}
                         border-radius: $border_radius;
                     {{ end }}
-                    border: 2px solid var(--default_accent);
+                    border: 2px solid var(--default_stroke);
                     background-color: var(--default_hl_bg);
                     flex-direction: column;
                     li {
                         border-right: none !important;
                         display: block;
                         text-align: center;
+                        margin: 0;
                         a {
+                            box-shadow: none;
+                            box-sizing: border-box;
                             display: block;
                             width: 100%;
-                            padding: 0;
+                            padding: 10px;
+                            margin: 3px 0;
                         }
                     }
                 }
@@ -1120,7 +1148,7 @@ header.jumbotronContainer {
                     margin-bottom: 0;
                     padding: 0 15px;
                     box-shadow: $shadow;
-                    > *:last-child, > *:first-child {
+                    > *:first-child {
                         padding-bottom: 15px;
                         padding-top: 15px;
                     }
@@ -1138,7 +1166,6 @@ header.jumbotronContainer {
                                 li {
                                     border-right: none;
                                     a {
-                                        padding: 6px;
                                         display: block;
                                     }
                                 }

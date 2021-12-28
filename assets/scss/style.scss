@@ -410,7 +410,12 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
 .postlistitem.card div {
     img {
         height: 250px;
-        min-width: 100%;
+        {{ if (.Site.Params.paperCards | default false) }}
+            min-width: calc(100% + #{2*$margin});
+            margin: 0 #{-$margin};
+        {{ else }}
+            min-width: 100%;
+        {{ end }}
         object-fit:
             {{ if .Site.Params.FitImageInArticlePreview }}
                 contain

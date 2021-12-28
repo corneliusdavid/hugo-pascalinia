@@ -669,7 +669,7 @@ a.buttonTag {
 .cactus-button, .cactus-login-buttons > button {
     font-family: $main_font;
     padding: 0;
-    margin: 5px 2px !important;
+    margin: 5px 0 5px $margin !important;
     @include buttonLike;
     transition-property: border-color, background-color !important;
     transition-duration: .15s;

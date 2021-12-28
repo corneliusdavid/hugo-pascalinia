@@ -372,13 +372,13 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
     display: block;
     padding-bottom: 25px;
 
-    &.discrete {
+    {{ if (.Site.Params.paperCards | default false) }}
         background-color: var(--default_hl_bg);
         border-radius: $border_radius;
         box-shadow: $shadow;
         padding: 20px;
         padding-top: 1px;
-    }
+    {{ end }}
 
     &.single {
         {{ if (.Site.Params.bigArticleTitle | default false) }}
@@ -396,18 +396,16 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
     grid-template-columns: 1fr;
     &.gridView {
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        .card {
-            &.discrete {
-            }
-        }
     }
 }
 
 // only hide hr in cards if they are in the article list
 // cards in list are divs, cards as in full-blown articles use the article tag
-.postlistitem.card.discrete {
-    hr { display: none; }
-}
+{{ if (.Site.Params.paperCards | default false) }}
+    .postlistitem.card {
+        hr { display: none; }
+    }
+{{ end}}
 
 .postlistitem.card div {
     img {
@@ -538,10 +536,10 @@ ul.list {
                 margin: 0;
             }
         }
-        &.discrete {
+        {{ if (.Site.Params.paperCards | default false) }}
             border-radius: $border_radius;
             padding: 0;
-        }
+        {{ end }}
     }
 }
 
@@ -659,7 +657,7 @@ header {
     margin: $content_spacing 0;
 }
 
-a.discreteTag {
+a.buttonTag {
     @include roundButtonLike;
 }
 
@@ -686,10 +684,7 @@ a.discreteTag {
 }
 
 input, textarea, textarea.cactus-editor-textarea {
-    {{ if or 
-        (site.Params.discreteCards | default false)
-        (eq (site.Params.navtype | default "standard") "circles")
-    }}
+    {{ if (site.Params.paperCards | default false) }}
         @include buttonLike;
     {{ else }}
         border-radius: 0 !important;
@@ -717,7 +712,7 @@ input, textarea, textarea.cactus-editor-textarea {
 }
 
 .cactus-login-form {
-    {{ if (site.Params.discreteCards | default false) }}
+    {{ if (.Site.Params.paperCards | default false) }}
         border-radius: $border_radius;
     {{ else }}
         border-radius: 0;
@@ -782,7 +777,7 @@ input, textarea, textarea.cactus-editor-textarea {
         width: 450px;
         max-width: 100%;
         padding: 24px;
-        {{ if site.Params.discreteCards }}
+        {{ if (.Site.Params.paperCards | default false) }}
             border-radius: $border_radius;
         {{ end }}
         h1, h2, h3, h4 {

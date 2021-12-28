@@ -14,7 +14,7 @@
     }
     function renderSingleArticle(article) {
         return `
-        <article class="card postlistitem {{ if .Site.Params.discreteCards }}discrete{{ end }}">
+        <article class="card postlistitem">
             <div>
                 <h2>
                     <a href="${article.link}">${article.title}</a>

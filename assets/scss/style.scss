@@ -92,7 +92,7 @@ $mono_font: {{ .Site.Params.monospaceFontFamily | default "JetBrains Mono" }};
 $symbols_font: "Symbols Nerd Font";
 $content_width: {{ .Site.Params.contentWidth | default "1000px" }};
 $border_radius: 10px;
-$content_spacing: 25px;
+$margin: 15px;
 
 $base_font_size: 16px;
 $title_font_mult: {{ .Site.Params.titleFontSizeMultiplier | default 1.0 }};
@@ -139,8 +139,8 @@ body {
     border-radius: $border_radius;
     background-color: var(--default_hl_bg);
     color: var(--default_fg);
-    padding: ($content_spacing / 2);
-    margin: ($content_spacing / 6) 0;
+    padding: ($margin / 2);
+    margin: ($margin / 6) 0;
     transition: background-color .15s ease-in-out !important;
     border-bottom: none;
     &:hover, &:focus {
@@ -170,7 +170,7 @@ a {
 
 #content {
     @include limitWidth;
-    padding: 15px;
+    padding: $margin;
 }
 
 footer {
@@ -179,7 +179,7 @@ footer {
         color: var(--default_dim_fg);
     }
     hr {
-        margin-top: (2 * $content_spacing);
+        margin-top: (2 * $margin);
     }
     .footerColumns {
         font-size: .9 * $base_font_size * $main_font_mult;
@@ -187,7 +187,7 @@ footer {
         flex-direction: row;
         flex-wrap: wrap;
         ul {
-            margin: ($content_spacing / 2);
+            margin: ($margin / 2);
             list-style-type: none;
             padding: 0;
             li > strong {
@@ -212,7 +212,7 @@ article, .articlePreview {
         overflow: auto;
     }
     pre {
-        padding: 20px;
+        padding: $margin;
         border: 1px solid var(--default_stroke);
         border-radius: 3px;
     }
@@ -370,13 +370,13 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
 
 .card {
     display: block;
-    padding-bottom: 25px;
+    padding-bottom: $margin;
 
     {{ if (.Site.Params.paperCards | default false) }}
         background-color: var(--default_hl_bg);
         border-radius: $border_radius;
         box-shadow: $shadow;
-        padding: 20px;
+        padding: $margin;
         padding-top: 1px;
     {{ end }}
 
@@ -391,11 +391,11 @@ h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
 
 .postlist {
     display: grid;
-    grid-gap: 25px;
-    margin-bottom: $content_spacing;
+    grid-gap: $margin;
+    margin-bottom: $margin;
     grid-template-columns: 1fr;
     &.gridView {
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
     }
 }
 
@@ -438,7 +438,7 @@ ul.list {
 }
 
 #commento {
-    margin-top: 25px;
+    margin-top: $margin;
     color: var(--default_fg);
     font-family: $symbols_font, $main_font, monospace;
     textarea, #commento-markdown-help-root {
@@ -486,7 +486,7 @@ ul.list {
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    margin: 12px 0;
+    margin: $margin 0;
     .nerdlink {
         display: inline-block;
         cursor: pointer;
@@ -527,7 +527,7 @@ ul.list {
         .contentArea {
             position: absolute;
             bottom: 0;
-            padding: 15px;
+            padding: $margin;
             &, h2, .date {color: white;}
             h2 {
                 margin: 0;
@@ -555,7 +555,7 @@ ul.list {
 }
 
 .relatedArticlesContainer {
-    margin: $content_spacing 0;
+    margin: $margin 0;
     #relatedArticles .postlistitem {
         @extend .featuredCard;
     }
@@ -575,7 +575,7 @@ ul.list {
     }
 
     img {
-        margin-right: ($content_spacing / 2);
+        margin-right: ($margin / 2);
         margin-top: 7px;
         align-self: flex-start;
         width: 50px;
@@ -597,8 +597,8 @@ nav:not(#TableOfContents), #links {
 
 header {
     @include limitWidth;
-    padding: 15px;
-    margin-bottom: $content_spacing;
+    padding: $margin;
+    margin-bottom: $margin;
     .rightOfLogo {
         width: 100%;
         .titleAndHamburger {
@@ -633,7 +633,7 @@ header {
                         box-sizing: border-box;
                         color: var(--default_fg);
                         margin: 0;
-                        padding: 8px 15px;
+                        padding: #{$margin/2} $margin;
                     }
                 {{ else }}
                     border-right: 1px solid var(--default_accent);
@@ -641,7 +641,7 @@ header {
                         border-right: none;
                     }
                     a {
-                        padding: 2px 20px;
+                        padding: 2px $margin;
                         color: var(--default_accent);
                         &:hover {
                             text-decoration: underline;
@@ -654,7 +654,7 @@ header {
 }
 
 .articleTagsContainer {
-    margin: $content_spacing 0;
+    margin: $margin 0;
 }
 
 a.buttonTag {
@@ -664,7 +664,7 @@ a.buttonTag {
 .cactus-button, .cactus-login-buttons > button {
     font-family: $main_font;
     padding: 0;
-    margin: 12px !important;
+    margin: 5px 2px !important;
     @include buttonLike;
     transition-property: border-color, background-color !important;
     transition-duration: .15s;
@@ -729,7 +729,7 @@ input, textarea, textarea.cactus-editor-textarea {
     margin: 0 auto;
     box-sizing: border-box;
     transform: none;
-    top: 24px;
+    top: #{$margin*2};
     left: 0; right: 0;
     background-color: var(--default_bg) !important;
     color: var(--default_fg) !important;
@@ -770,13 +770,13 @@ input, textarea, textarea.cactus-editor-textarea {
         box-sizing: border-box;
         position: absolute;
         display: flex; flex-direction: column;
-        top: 24px;
+        top: #{$margin*2};
         left: 50%; transform: translateX(-50%);
         z-index: 9999;
         background-color: var(--default_bg);
         width: 450px;
         max-width: 100%;
-        padding: 24px;
+        padding: $margin;
         {{ if (.Site.Params.paperCards | default false) }}
             border-radius: $border_radius;
         {{ end }}
@@ -790,12 +790,13 @@ input, textarea, textarea.cactus-editor-textarea {
             display: block;
         }
         .buttons {
-            margin: 12px 0;
+            margin: $margin 0;
             display: flex;
             flex-direction: row;
             justify-content: end;
             > * {
-                margin-left: 24px;
+                margin: 5px 2px;
+                display: block;
             }
         }
     }
@@ -833,7 +834,7 @@ input, textarea, textarea.cactus-editor-textarea {
                 cursor: pointer;
                 text-align: center;
                 margin: 0;
-                padding: ($content_spacing / 4);
+                padding: ($margin / 4);
                 align-self: center;
             }
             nav:not(#TableOfContents) {
@@ -842,7 +843,7 @@ input, textarea, textarea.cactus-editor-textarea {
                     display: none;
                     position: absolute;
                     z-index: 99999;
-                    right: 15px;
+                    right: $margin;
                     padding: 2px 5px;
                     width: 120px;
                     {{ if eq .Site.Params.navtype "circles" }}
@@ -925,7 +926,7 @@ header.jumbotronContainer {
         }
     {{ end }}
     > *:first-child {
-        padding-top: 15px;
+        padding-top: $margin;
     }
     padding-bottom: 0;
     padding-top: 0;
@@ -1142,18 +1143,18 @@ header.jumbotronContainer {
                     display: block;
                     overflow: auto;
                     margin-bottom: 0;
-                    padding: 0 15px;
+                    padding: 0 $margin;
                     box-shadow: $shadow;
                     > *:first-child {
-                        padding-bottom: 15px;
-                        padding-top: 15px;
+                        padding-bottom: $margin;
+                        padding-top: $margin;
                     }
                     .rightOfLogo {
                         align-self: center;
                     }
                     #sidebar_nav {
                         display: block;
-                        margin: 12px 0;
+                        margin: $margin 0;
                         width: 100%;
                         nav:not(#TableOfContents) {
                             font-size: 1.1em;

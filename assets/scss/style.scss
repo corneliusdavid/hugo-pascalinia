@@ -89,6 +89,7 @@ $light_sidebar_fg: {{ $colors.light.sidebar.fg | default "#121211" }};
 $main_font: {{ .Site.Params.fontFamily | default "JetBrains Mono" }};
 $title_font: {{ .Site.Params.titleFontFamily | default "$main_font" }};
 $mono_font: {{ .Site.Params.monospaceFontFamily | default "JetBrains Mono" }};
+$symbols_font: "Symbols Nerd Font";
 $content_width: {{ .Site.Params.contentWidth | default "1000px" }};
 $border_radius: 10px;
 $content_spacing: 25px;
@@ -110,7 +111,7 @@ $mono_font_mult:  {{ .Site.Params.monoFontSizeMultiplier  | default 1.0 }};
 }
 
 body, html {
-    font-family: "Symbols Nerd Font", $main_font, monospace;
+    font-family: $symbols_font, $main_font, monospace;
     font-size: $base_font_size * $main_font_mult;
     margin: 0;
     padding: 0;
@@ -218,7 +219,7 @@ article, .articlePreview {
 }
 
 code {
-    font-family: "Symbols Nerd Font", $mono_font, monospace;
+    font-family: $symbols_font, $mono_font, monospace;
     font-size: $base_font_size * .8 * $mono_font_mult;
     border: 1px solid var(--default_stroke);
     border-radius: 3px
@@ -301,7 +302,7 @@ table {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Symbols Nerd Font", $title_font;
+    font-family: $symbols_font, $title_font;
     a {
         color: var(--default_accent);
         {{ if not (.Site.Params.underlineTitleLinks | default false) }}
@@ -318,7 +319,7 @@ h5 {font-size: 0.8 * $base_font_size * $title_font_mult;}
 h6 {font-size: 0.7 * $base_font_size * $title_font_mult;}
 
 .nerd {
-    font-family: "Symbols Nerd Font", $main_font;
+    font-family: $symbols_font, $main_font;
     font-size: 1.2 * $base_font_size;
     margin: 5px;
     display: inline-block;
@@ -441,7 +442,7 @@ ul.list {
 #commento {
     margin-top: 25px;
     color: var(--default_fg);
-    font-family: "Symbols Nerd Font", $main_font, monospace;
+    font-family: $symbols_font, $main_font, monospace;
     textarea, #commento-markdown-help-root {
         background: rgba(255, 255, 255, .05);
         color: var(--default_fg);
@@ -450,7 +451,7 @@ ul.list {
         td, td>*, td>*>* {
             color: var(--default_fg);
             pre {
-                font-family: "Symbols Nerd Font", $mono_font, monospace;
+                font-family: $symbols_font, $mono_font, monospace;
                 color: var(--default_dim_fg);
             }
         }
@@ -477,7 +478,7 @@ ul.list {
     .commento-body {
         >*, *>*, >*>*>*, >*>*>*>*, >*>*>*>*>* {
             color: var(--default_fg);
-            font-family: "Symbols Nerd Font", $main_font, monospace;
+            font-family: $symbols_font, $main_font, monospace;
         }
     }
 }
@@ -624,7 +625,7 @@ header {
                         {{ if eq (site.Params.navtype | default "standard") "circles" }}
                             @include roundButtonLike;
                         {{ else }}
-                            font-family: "Symbols Nerd Font", $main_font;
+                            font-family: $symbols_font, $main_font;
                             background-color: var(--default_hl_bg);
                             transition: background-color .15s ease-in-out;
                             &:hover, &:active {
@@ -694,7 +695,7 @@ input, textarea, textarea.cactus-editor-textarea {
         border-radius: 0 !important;
     {{ end }}
     box-sizing: border-box;
-    font-family: "Symbols Nerd Font", $main_font;
+    font-family: $symbols_font, $main_font;
     background-color: var(--default_hl_bg) !important;
     color: var(--default_fg);
     max-width: 100%;

@@ -800,7 +800,7 @@ input, textarea, textarea.cactus-editor-textarea {
             flex-direction: row;
             justify-content: end;
             > * {
-                margin: 5px 2px;
+                margin: 5px 0 5px $margin;
                 display: block;
             }
         }

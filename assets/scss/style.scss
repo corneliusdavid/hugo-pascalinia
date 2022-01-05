@@ -128,9 +128,12 @@ body {
     text-decoration: none;
     background-color: transparent;
     border-radius: 0;
-    border-bottom: 2px solid var(--default_fg);
+    border-bottom: 2px solid currentcolor;
     &:hover, &:focus {
-        border-color: var(--default_accent) !important;
+        &, &:not([disabled]) {
+            border-color: var(--default_accent) !important;
+            background-color: transparent;
+        }
     }
 }
 

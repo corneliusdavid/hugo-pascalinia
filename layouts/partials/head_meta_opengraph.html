@@ -17,7 +17,7 @@
     <meta property="og:url" content="{{ .Permalink }}" />
     <meta property="og:image"
         content='{{ if .Params.Image }}{{ .Params.Image | absURL }}
-        {{ else }}{{ .Site.Params.Logo | default "/img/icon.svg" | absURL }}
+        {{ else }}{{ .Site.Params.icon512 | default "/img/icon.svg" | absURL }}
     {{ end }}' />
     {{ if .Params.description }}
         <meta property="og:description" content="{{ .Params.description }}" />
@@ -32,5 +32,5 @@
     {{ end }}
     <meta property="og:type" content="blog" />
     <meta property="og:image"
-        content='{{ .Site.Params.Logo | default "/img/icon.svg" | absURL }}' />
+        content='{{ .Site.Params.icon512 | default "/img/icon.svg" | absURL }}' />
 {{ end }}

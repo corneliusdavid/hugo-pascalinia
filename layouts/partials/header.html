@@ -2,10 +2,14 @@
     {{- partial "inject/header-before.html" . -}}
     <div class="titleAndSearchContainer">
         <div id="titleContainer">
-            <img src='{{ .Site.Params.Logo | default "/logo.svg" }}' />
+            <a class="unstyledLink" href="/">
+                <img src='{{ .Site.Params.Logo | default "/logo.svg" }}' />
+            </a>
             <div class="rightOfLogo">
                 <div class="titleAndHamburger">
-                    <h1>{{ .Site.Title | default "Ficurinia" }}</h1>
+                    <h1>
+                        <a class="unstyledLink" href="/">{{ .Site.Title | default "Ficurinia" }}</a>
+                    </h1>
                     {{ if (.Site.Params.mobileHamburgerNav | default false) }}
                         <label id="hamburger-menu" for="main-nav-toggler">
                             &#xf85b;

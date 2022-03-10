@@ -165,6 +165,12 @@ a {
     @include linkLike;
 }
 
+a.unstyledLink {
+    border: none;
+    text-decoration: none;
+    color: var(--default_fg);
+}
+
 @mixin limitWidth {
     max-width: $content_width;
     margin-left: auto;

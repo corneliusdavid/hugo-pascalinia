@@ -16,7 +16,9 @@
         </p>
         {{ if .Site.Params.imageInArticlePreview }}
             {{ if .Params.Image }}
-                <img src="{{ .Params.Image }}" />
+                <a class="unstyledLink" href="{{ .Permalink }}">
+                    <img src="{{ .Params.Image }}" />
+                </a>
             {{ end }}
         {{end}}
         {{ if (site.Params.articleSummary | default true) }}

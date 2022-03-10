@@ -8,9 +8,9 @@
         }
         return res;
     }
-    function renderImage(image) {
+    function renderImage(image, link) {
         if (!image) return '';
-        return `<img src="${image}" />`
+        return `<a href="${link}"><img src="${image}" /></a>`;
     }
     function renderSingleArticle(article) {
         return `
@@ -20,15 +20,15 @@
                     <a href="${article.link}">${article.title}</a>
                 </h2>
                 <p class="date">
-                <span title='{{ i18n "date" | safeJS }}'> </span>
-                ${article.date}
-                {{ if (.Site.Params.tagsInArticlePreview | default true) }}
-                    ${renderTags(article.tags)}
-                {{ end }}
+                    <span title='{{ i18n "date" | safeJS }}'> </span>
+                    ${article.date}
+                    {{ if (.Site.Params.tagsInArticlePreview | default true) }}
+                        ${renderTags(article.tags)}
+                    {{ end }}
                 </p>
                 {{ if .Site.Params.imageInArticlePreview }}
-                    ${renderImage(article.image)}
-                {{end}}
+                    ${renderImage(article.image, article.link)}
+                {{ end }}
                 {{ if (site.Params.articleSummary | default true) }}
                     <div class="articlePreview">
                         <p>${article.summary}</p>

@@ -4,6 +4,12 @@
     {{ $postsDir := .Site.Params.Posts | default (slice "posts" "post") }}
     {{ $allPostsList := where (where site.RegularPages "Section" "in" $postsDir) "Section" "!=" "" }}
     {{- partial "showcase.html" . -}}
-    {{- partial "home_post_list.html" (dict "Ctx" . "AllPostsList" $allPostsList) -}}
+    {{ if and .Site.Params.showSinglePageAsHome (ne .Site.Params.homeSinglePage "") }}
+        {{ with .Site.GetPage .Site.Params.homeSinglePage }}
+            {{- partial "single_post.html" . -}}
+        {{ end }}
+    {{ else }}
+        {{- partial "home_post_list.html" (dict "Ctx" . "AllPostsList" $allPostsList) -}}
+    {{ end }}
 
 {{ end }}

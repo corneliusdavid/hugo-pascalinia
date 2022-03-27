@@ -43,6 +43,12 @@ summaryLength = 70  # number of words for article summaries
     extraContentDirs = []  # other content directories to render similarly to the home page
     showcaseDir = "showcase"  # create a content directory that shows a special showcase section in the home page
 
+    # shows a specified single page as a home page, instead of the traditional articles list
+    # requires setting `homeSinglePage`
+    # goes well with extraContentDirs
+    showSinglePageAsHome = false
+    homeSinglePage = "/home"
+
     # It's best to put these icons in the "static" folder of your site
     logo = "/logo.svg"
     favicon = "/favicon.png"  # 32x32
@@ -249,6 +255,8 @@ Every post can have various parameters in the frontmatter, here are some that yo
 - `featured`: boolean, indicate if the post should be shown as featured
 - `comments`: boolean, if true it enables comments for the current post, if false it disables them (default is true)
 - `showDate`: boolean, true by default, if false hides the date. Useful for non-article pages where the date isn't important
+- `showTitle`: boolean, true by default, if false hides the title.
+- `showShare`: boolean, true by default, if false hides the share button.
 - `norss`: boolean, if set to true the page will be skipped in the rss feed
 - `nosearch`: boolean, if set to true the page won't show up in searches
 - `toc`: boolean, if set to true a table of contents will be shown for the article

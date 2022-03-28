@@ -586,6 +586,15 @@ ul.list {
         font-weight: normal;
         font-size: 1.6 * $base_font_size * $title_font_mult;
         margin: 0;
+        {{ if site.Params.logoRightOfTitle }}
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            > a {
+                margin-right: 12px;
+            }
+        {{ end }}
     }
 
     img {

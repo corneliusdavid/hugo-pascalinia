@@ -57,6 +57,8 @@ summaryLength = 70  # number of words for article summaries
     svgicon = "/logo.svg"
     icon512 = "/icon512.png"  # 512x512 png image
 
+    logoRightOfTitle = false  # positions the logo to the right of the title; default: false
+
     showTags = true  # show the Tags menu item; default true
     showRss = true  # show the link for the RSS feed; default true
 

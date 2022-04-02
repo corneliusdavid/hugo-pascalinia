@@ -108,6 +108,7 @@ summaryLength = 70  # number of words for article summaries
     plausibleDomain = "example.com"
 
     enableShareOnFediverse = false  # enable a button at the end of an article to share it on the fediverse
+    tocBeforeImage = false  # show the table of contents before the main article image; default false
 
     # WARNING: deprecated! Use [[menu.icons]] instead, look below
     # links = [
@@ -254,6 +255,7 @@ Every post can have various parameters in the frontmatter, here are some that yo
 - `description`: a brief description of the post, useful for SEO optimization
 - `tags`: an array of tags, useful for searching similar articles
 - `image`: a link to a feature image for the article, shown in the preview as well
+- `imageCaption`: a markdown text rendered as a caption for the article image described above
 - `featured`: boolean, indicate if the post should be shown as featured
 - `comments`: boolean, if true it enables comments for the current post, if false it disables them (default is true)
 - `showDate`: boolean, true by default, if false hides the date. Useful for non-article pages where the date isn't important

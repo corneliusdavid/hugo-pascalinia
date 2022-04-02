@@ -9,14 +9,21 @@
             {{- partial "date.html" .Date -}}
         </p>
     {{ end }}
-    {{ if .Params.Image }}
-    <img src="{{ .Params.Image }}" alt="" />
+    {{ if and (.Params.toc | default false) (.Site.Params.tocBeforeImage | default false) }}
+        {{- partial "toc.html" . -}}
     {{ end }}
-    {{ if (.Params.toc | default false) }}
-        <div class="articleToc">
-            {{ .TableOfContents }}
-            <hr />
-        </div>
+    {{ if .Params.Image }}
+        <figure style="margin: 0">
+            <img src="{{ .Params.Image }}" alt="" />
+            {{ if .Params.ImageCaption }}
+                <figcaption>
+                    <p>{{ .Params.ImageCaption | markdownify }}</p>
+                </figcaption>
+            {{ end }}
+        </figure>
+    {{ end }}
+    {{ if and (.Params.toc | default false) (not (.Site.Params.tocBeforeImage | default false)) }}
+        {{- partial "toc.html" . -}}
     {{ end }}
     <div>{{ .Content }}</div>
 </article>

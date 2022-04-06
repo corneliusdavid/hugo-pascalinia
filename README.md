@@ -107,6 +107,10 @@ summaryLength = 70  # number of words for article summaries
     plausibleScriptUrl = "https://something.com/..."
     plausibleDomain = "example.com"
 
+    # enable analytics using Umami
+    umamiScriptUrl = "https://something.com/..."
+    umamiWebsiteId = "example-tracking-code"
+
     enableShareOnFediverse = false  # enable a button at the end of an article to share it on the fediverse
     tocBeforeImage = false  # show the table of contents before the main article image; default false
 

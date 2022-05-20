@@ -1084,13 +1084,13 @@ header.jumbotronContainer {
         max-width: 100vw;
         min-width: 200px;
     }
-    h1 {
+    h2 {
         font-weight: 300;
         &.huge {
             font-size: 4 * $base_font_size * $title_font_mult;
         }
     }
-    h1, h2 {
+    h2, h3 {
         margin: 12px;
     }
     ul {
@@ -1121,7 +1121,7 @@ header.jumbotronContainer {
         h1.huge {
             font-size: 3 * $base_font_size * $title_font_mult !important;
         }
-        h1, h2 {
+        h2, h3 {
             margin: 6px;
         }
     }

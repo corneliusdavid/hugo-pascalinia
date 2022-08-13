@@ -960,8 +960,8 @@ header.jumbotronContainer {
     }}
         background:
             linear-gradient(
-                transparentize(dark_bg, 0.2),
-                transparentize(dark_bg, 0.2)
+                transparentize($dark_bg, 0.2),
+                transparentize($dark_bg, 0.2)
             ),
             url({{ .Site.Data.jumbotron.background }});
         background-size: cover;

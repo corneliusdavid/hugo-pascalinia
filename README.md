@@ -43,6 +43,12 @@ summaryLength = 70  # number of words for article summaries
     extraContentDirs = []  # other content directories to render similarly to the home page
     showcaseDir = "showcase"  # create a content directory that shows a special showcase section in the home page
 
+    # shows a specified single page as a home page, instead of the traditional articles list
+    # requires setting `homeSinglePage`
+    # goes well with extraContentDirs
+    showSinglePageAsHome = false
+    homeSinglePage = "/home"
+
     # It's best to put these icons in the "static" folder of your site
     logo = "/logo.svg"
     favicon = "/favicon.png"  # 32x32
@@ -50,6 +56,8 @@ summaryLength = 70  # number of words for article summaries
     appletouch = "/apple-touch-icon.png"  # 180x180
     svgicon = "/logo.svg"
     icon512 = "/icon512.png"  # 512x512 png image
+
+    logoRightOfTitle = false  # positions the logo to the right of the title; default: false
 
     showTags = true  # show the Tags menu item; default true
     showRss = true  # show the link for the RSS feed; default true
@@ -99,7 +107,12 @@ summaryLength = 70  # number of words for article summaries
     plausibleScriptUrl = "https://something.com/..."
     plausibleDomain = "example.com"
 
+    # enable analytics using Umami
+    umamiScriptUrl = "https://something.com/..."
+    umamiWebsiteId = "example-tracking-code"
+
     enableShareOnFediverse = false  # enable a button at the end of an article to share it on the fediverse
+    tocBeforeImage = false  # show the table of contents before the main article image; default false
 
     # WARNING: deprecated! Use [[menu.icons]] instead, look below
     # links = [
@@ -246,9 +259,12 @@ Every post can have various parameters in the frontmatter, here are some that yo
 - `description`: a brief description of the post, useful for SEO optimization
 - `tags`: an array of tags, useful for searching similar articles
 - `image`: a link to a feature image for the article, shown in the preview as well
+- `imageCaption`: a markdown text rendered as a caption for the article image described above
 - `featured`: boolean, indicate if the post should be shown as featured
 - `comments`: boolean, if true it enables comments for the current post, if false it disables them (default is true)
 - `showDate`: boolean, true by default, if false hides the date. Useful for non-article pages where the date isn't important
+- `showTitle`: boolean, true by default, if false hides the title.
+- `showShare`: boolean, true by default, if false hides the share button.
 - `norss`: boolean, if set to true the page will be skipped in the rss feed
 - `nosearch`: boolean, if set to true the page won't show up in searches
 - `toc`: boolean, if set to true a table of contents will be shown for the article

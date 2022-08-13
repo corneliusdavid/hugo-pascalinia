@@ -586,6 +586,15 @@ ul.list {
         font-weight: normal;
         font-size: 1.6 * $base_font_size * $title_font_mult;
         margin: 0;
+        {{ if site.Params.logoRightOfTitle }}
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            > a {
+                margin-right: 12px;
+            }
+        {{ end }}
     }
 
     img {
@@ -915,7 +924,7 @@ header.jumbotronContainer {
             color: var(--default_fg) !important;
         }
         #main-nav a, .nerdlink:hover {
-            color: var(--default_accent) !important;
+            color: var(--default_fg) !important;
         }
         .nerdlink span {
             color: var(--default_fg) !important;
@@ -1075,13 +1084,13 @@ header.jumbotronContainer {
         max-width: 100vw;
         min-width: 200px;
     }
-    h1 {
+    h2 {
         font-weight: 300;
         &.huge {
             font-size: 4 * $base_font_size * $title_font_mult;
         }
     }
-    h1, h2 {
+    h2, h3 {
         margin: 12px;
     }
     ul {
@@ -1112,7 +1121,7 @@ header.jumbotronContainer {
         h1.huge {
             font-size: 3 * $base_font_size * $title_font_mult !important;
         }
-        h1, h2 {
+        h2, h3 {
             margin: 6px;
         }
     }

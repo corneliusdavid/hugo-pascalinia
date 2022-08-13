@@ -27,12 +27,12 @@
             <img src="{{ .Site.Data.jumbotron.image }}" />
         {{ end }}
         <div class="main_box">
-            <h1 class="
+            <h2 class="
                 {{ if (.Site.Data.jumbotron.hugeTitle | default false) }}
                     huge
                 {{ end }}
-            ">{{ .Site.Data.jumbotron.title }}</h1>
-            <h2>{{ .Site.Data.jumbotron.subtitle }}</h2>
+            ">{{ .Site.Data.jumbotron.title }}</h2>
+            <h3>{{ .Site.Data.jumbotron.subtitle }}</h3>
             {{ if .Site.Data.jumbotron.backgroundVideo }}
                 <ul id="play_button_container" style="display: none">
                     <li>

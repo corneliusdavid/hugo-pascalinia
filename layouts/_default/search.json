@@ -8,7 +8,7 @@
             "title" .Title
             "date" (.Date.Format "2006-01-02")
             "tags" (sort (or .Params.tags slice))
-            "summary" .Summary
+            "summary" (or .Params.description .Summary)
             "text" (lower .Plain)
             "link" .Permalink
             "image" (or .Params.Image "")) }}

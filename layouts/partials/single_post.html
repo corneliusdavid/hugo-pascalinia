@@ -14,7 +14,7 @@
     {{ end }}
     {{ if .Params.Image }}
         <figure style="margin: 0">
-            <img src="{{ .Params.Image }}" alt="" />
+            <img src="{{ .Params.Image }}" alt="{{ .Params.Alt }}" />
             {{ if .Params.ImageCaption }}
                 <figcaption>
                     <p>{{ .Params.ImageCaption | markdownify }}</p>

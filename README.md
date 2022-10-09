@@ -259,6 +259,7 @@ Every post can have various parameters in the frontmatter, here are some that yo
 - `description`: a brief description of the post, useful for SEO optimization
 - `tags`: an array of tags, useful for searching similar articles
 - `image`: a link to a feature image for the article, shown in the preview as well
+- `alt`: alternative text to be shown if image is not available or fails to download
 - `imageCaption`: a markdown text rendered as a caption for the article image described above
 - `featured`: boolean, indicate if the post should be shown as featured
 - `comments`: boolean, if true it enables comments for the current post, if false it disables them (default is true)

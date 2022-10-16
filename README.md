@@ -296,6 +296,7 @@ Finally, make sure to edit your config.toml to include the following:
 # ...
 [params]
     logo = "/logo.svg"
+    logoAltText = "Logo"
     favicon = "/favicon.png"
     faviconIco = "/favicon.ico"
     appletouch = "/apple-touch-icon.png"

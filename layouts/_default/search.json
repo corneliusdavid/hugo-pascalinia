@@ -19,7 +19,8 @@
             "summary" (or .Params.description .Summary)
             "text" (lower .Plain)
             "link" .Permalink
-            "image" $image) }}
+            "image" $image
+            "imageAlt" (or .Params.Alt "")) }}
     {{ end }}
     "pages": {{ $mscratch.Get "articles" | jsonify }}
 }

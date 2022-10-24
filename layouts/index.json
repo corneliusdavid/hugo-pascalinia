@@ -25,7 +25,8 @@
             "tags" (sort (or .Params.tags slice))
             "summary" (or .Params.description .Summary)
             "link" .Permalink
-            "image" $image) }}
+            "image" $image
+            "imageAlt" (or .Params.Alt "")) }}
     {{ end }}
     "articles": {{ $mscratch.Get "articles" | jsonify }},
     "test": "{{range $postsList}}{{.Title}}   {{end}}",

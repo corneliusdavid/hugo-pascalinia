@@ -8,9 +8,9 @@
         }
         return res;
     }
-    function renderImage(image, link) {
+    function renderImage(image, link, alt) {
         if (!image) return '';
-        return `<a href="${link}"><img src="${image}" /></a>`;
+        return `<a href="${link}"><img src="${image}" alt="${alt}" /></a>`;
     }
     function renderSingleArticle(article) {
         return `
@@ -27,7 +27,7 @@
                     {{ end }}
                 </p>
                 {{ if .Site.Params.imageInArticlePreview }}
-                    ${renderImage(article.image, article.link)}
+                    ${renderImage(article.image, article.link, article.imageAlt)}
                 {{ end }}
                 {{ if (site.Params.articleSummary | default true) }}
                     <div class="articlePreview">

@@ -11,13 +11,21 @@
     {{ $mscratch := newScratch }}
     {{ $mscratch.Add "articles" slice }}
     {{ range (.Paginate $postsList).Pages }}
+        {{ $image := "" }}
+        {{ if .Params.Image }}
+            {{ if or (hasPrefix .Params.Image "/") (hasPrefix .Params.Image "http://") (hasPrefix .Params.Image "https://") }}
+                {{ $image = .Params.Image }}
+            {{ else }}
+                {{ $image = path.Join (path.Join .File.Dir .Params.Image) }}
+            {{ end }}
+        {{ end }}
         {{ $mscratch.Add "articles" (dict
             "title" .Title
             "date" (.Date.Format "2006-01-02")
             "tags" (sort (or .Params.tags slice))
             "summary" (or .Params.description .Summary)
             "link" .Permalink
-            "image" (or .Params.Image "")) }}
+            "image" $image) }}
     {{ end }}
     "articles": {{ $mscratch.Get "articles" | jsonify }},
     "test": "{{range $postsList}}{{.Title}}   {{end}}",

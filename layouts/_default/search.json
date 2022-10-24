@@ -4,6 +4,14 @@
     {{ $mscratch.Add "articles" slice }}
     {{ $pages := where .Site.RegularPages "Params.nosearch" "!=" "true" }}
     {{ range $pages }}
+        {{ $image := "" }}
+        {{ if .Params.Image }}
+            {{ if or (hasPrefix .Params.Image "/") (hasPrefix .Params.Image "http://") (hasPrefix .Params.Image "https://") }}
+                {{ $image = .Params.Image }}
+            {{ else }}
+                {{ $image = path.Join "/" (path.Join .File.Dir .Params.Image) }}
+            {{ end }}
+        {{ end }}
         {{ $mscratch.Add "articles" (dict
             "title" .Title
             "date" (.Date.Format "2006-01-02")
@@ -11,7 +19,7 @@
             "summary" (or .Params.description .Summary)
             "text" (lower .Plain)
             "link" .Permalink
-            "image" (or .Params.Image "")) }}
+            "image" $image) }}
     {{ end }}
     "pages": {{ $mscratch.Get "articles" | jsonify }}
 }

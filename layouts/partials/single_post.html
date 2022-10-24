@@ -14,7 +14,11 @@
     {{ end }}
     {{ if .Params.Image }}
         <figure style="margin: 0">
-            <img src="{{ .Params.Image }}" alt="" />
+            {{ if or (hasPrefix .Params.Image "/") (hasPrefix .Params.Image "http://") (hasPrefix .Params.Image "https://") }}
+                <img src="{{ .Params.Image }}" />
+            {{ else }}
+                <img src="/{{ path.Join .File.Dir .Params.Image }}" />
+            {{ end }}
             {{ if .Params.ImageCaption }}
                 <figcaption>
                     <p>{{ .Params.ImageCaption | markdownify }}</p>

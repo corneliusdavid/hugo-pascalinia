@@ -17,7 +17,11 @@
         {{ if .Site.Params.imageInArticlePreview }}
             {{ if .Params.Image }}
                 <a class="unstyledLink" href="{{ .Permalink }}">
-                    <img src="{{ .Params.Image }}" />
+                    {{ if or (hasPrefix .Params.Image "/") (hasPrefix .Params.Image "http://") (hasPrefix .Params.Image "https://") }}
+                        <img src="{{ .Params.Image }}" />
+                    {{ else }}
+                        <img src="/{{ path.Join .File.Dir .Params.Image }}" />
+                    {{ end }}
                 </a>
             {{ end }}
         {{end}}

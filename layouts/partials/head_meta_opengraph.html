@@ -20,7 +20,7 @@
         {{ if or (hasPrefix .Params.Image "/") (hasPrefix .Params.Image "http://") (hasPrefix .Params.Image "https://") }}
             {{ $image = .Params.Image }}
         {{ else }}
-            {{ $image = path.Join (path.Join .File.Dir .Params.Image) }}
+            {{ $image = print .Permalink "/" .Params.Image }}
         {{ end }}
     {{ end }}
     <meta property="og:image"

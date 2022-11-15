@@ -175,6 +175,7 @@ summaryLength = 70  # number of words for article summaries
 
 For the `[[menu.icons]]` menu. They match identifier, name and url can be whatever. Here's a list of supported identifiers:
 
+- discord
 - email
 - facebook
 - github

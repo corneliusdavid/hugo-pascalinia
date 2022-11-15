@@ -256,6 +256,12 @@ table {
     }
 }
 
+blockquote {
+    margin: 0;
+    padding-left: ($margin * 2);
+    border-left: 2px solid currentcolor;
+}
+
 .date, .date a {
     color: var(--default_dim_fg);
     border-color: var(--default_dim_fg);

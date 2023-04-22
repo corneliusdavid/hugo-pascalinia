@@ -713,7 +713,7 @@ a.buttonTag {
 }
 
 input, textarea, textarea.cactus-editor-textarea {
-    {{ if (site.Params.paperCards | default false) }}
+    {{ if (eq (site.Params.inputStyle | default "standard") "buttons") }}
         @include buttonLike;
     {{ else }}
         border-radius: 0 !important;
@@ -741,7 +741,7 @@ input, textarea, textarea.cactus-editor-textarea {
 }
 
 .cactus-login-form {
-    {{ if (.Site.Params.paperCards | default false) }}
+   {{ if (eq (site.Params.inputStyle | default "standard") "buttons") }} 
         border-radius: $border_radius;
     {{ else }}
         border-radius: 0;
@@ -806,7 +806,7 @@ input, textarea, textarea.cactus-editor-textarea {
         width: 450px;
         max-width: 100%;
         padding: $margin;
-        {{ if (.Site.Params.paperCards | default false) }}
+        {{ if (eq (site.Params.inputStyle | default "standard") "buttons") }}
             border-radius: $border_radius;
         {{ end }}
         h1, h2, h3, h4 {

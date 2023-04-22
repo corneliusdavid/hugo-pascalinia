@@ -85,6 +85,7 @@ summaryLength = 70  # number of words for article summaries
     navtype = "standard"  # changes the style of the pagination, available styles are: "standard", "circles"
     enableShadow = false  # shows a shadow around some elements
     menuStyle = "standard"  # changes the style of the main site navigation menu, available styles are: "standard", "buttons"
+    inputStyle = "standard" # changes the style of inputs (like the searchbar), available styles are: "standard", "buttons"
 
     enableSearch = true  # enable search page
     searchbarEverywhere = true  # if the searchbar should be shown in every page; requires enableSearch

@@ -41,7 +41,7 @@
                 {{ if site.Params.buttonTags | default false }}
                 class="buttonTag"
                 {{ end }}
-                href="/tags/{{ . | urlize }}">#{{ . }}</a>
+                href="/tags/{{ . | urlize }}/">#{{ . }}</a>
         {{ end }}
     </p>
 {{ end }}

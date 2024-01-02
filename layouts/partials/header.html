@@ -30,7 +30,8 @@
             {{- partial "searchbar.html" . -}}
         {{ end }}
     </div>
-    <div id="links">
+		{{ if .Site.Params.showLinks | default true }}
+      <div id="links">
         {{ if .Site.Params.showRss | default true }}
             {{- partial "iconlink" (dict "Identifier" "rss" "Name" "RSS" "URL" "/index.xml") -}}
         {{ end }}
@@ -40,7 +41,8 @@
         {{ range .Site.Menus.icons }}
             {{- partial "iconlink" . -}}
         {{ end }}
-    </div>
+      </div>
+		{{ end }}
     {{ if and
         (.Site.Params.enableSidebarLayout | default false)
         (or

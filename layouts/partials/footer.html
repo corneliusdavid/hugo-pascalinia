@@ -2,9 +2,11 @@
     <hr />
     {{- partial "inject/footer.html" . -}}
     {{- partial "footer_columns.html" . -}}
+	  {{ if .Site.Copyright }}
     <p><small>
         {{ now.Format "2006" }} &copy; {{ .Site.Copyright | markdownify }}
     </small></p>
+	  {{ end }}
     <p><small>
         {{ i18n "themeCopyrightNotice" | safeHTML }}
     </small></p>

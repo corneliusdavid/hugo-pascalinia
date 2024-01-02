@@ -2,12 +2,12 @@
     <div>
 				procedure Meeting;<br />
         const <br />
-				&nbsp; MeetingTitle = <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>;<br />
-        &nbsp; MeetingMonth = '<strong>{{ partial "date.html" .Date }}</strong>';<br />
+				&nbsp; MeetingTitle = '<strong><a class="TitleLink" href="{{ .Permalink }}">{{ .Title }}</a></strong>';<br />
+        &nbsp; MeetingMonth = <strong class="SummaryText">{{ partial "date.html" .Date }}</strong>;<br />
         {{ if and (site.Params.tagsInArticlePreview | default true) .Params.tags }}
             &nbsp; { tags:
             {{ range sort .Params.tags }}
-                <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
+                <a class="TagLink" href="/tags/{{ . | urlize }}">#{{ . }}</a>
             {{ end }}
 						}
         {{ end }}
@@ -25,7 +25,7 @@
         {{ if (site.Params.articleSummary | default true) }}
             <div class="articlePreview">
 				begin<br />
-				&nbsp; WriteLn('''Summary:<blockquote>
+				&nbsp; WriteLn('''Summary:<blockquote class="SummaryText">
                     {{ if .Params.description }}
                         {{ .Params.description }}
                     {{ else }}
@@ -33,7 +33,7 @@
                     {{ end }}
 				</blockquote>
 				&nbsp; ''');<br />
-				&nbsp; <a href="{{ .Permalink }}">MeetingDetails(MeetingTitle, MeetingMonth)</a>;<br/>
+				&nbsp; <a class="DetailsLink" href="{{ .Permalink }}">MeetingDetails(MeetingTitle, MeetingMonth)</a>;<br/>
 				end;<br />
                 
             </div>

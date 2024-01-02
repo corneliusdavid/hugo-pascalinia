@@ -2,7 +2,7 @@
 
 A theme derived from [Ficurinia](https://gabmus.gitlab.io/hugo-ficurinia) and modified to make entries look like Pascal procedures. 
 
-The rest of this README is copied from the original...
+Most of the rest of this README is copied from the original...
 
 # Customization
 
@@ -12,7 +12,7 @@ These are some parameters you can use in your `config.toml` to customize Ficurin
 
 ```toml
 baseURL = "https://example.com/"
-theme = "hugo-ficurinia"
+theme = "hugo-pascalinia"
 title = "My nice blog"
 languageCode = "en"
 defaultContentLanguage = "en"
@@ -22,12 +22,12 @@ defaultContentLanguage = "en"
 # you can use markdown inside this field
 copyright = "Some copyright notice - [my license](https://example.com/license)"
 
-paginate = 5  # number of articles per page in the index
+paginate = 25  # number of articles per page in the index
 summaryLength = 70  # number of words for article summaries
 
 
 [params]
-    author = "Gabriele Musco"
+    author = "David Cornelius"
     description = "A description for my website"  # this will be added as metadata
 
     posts = "posts"  # content directory where to find home page posts; default searches in "posts" and "post"
@@ -106,13 +106,6 @@ summaryLength = 70  # number of words for article summaries
 
     enableShareOnFediverse = false  # enable a button at the end of an article to share it on the fediverse
     tocBeforeImage = false  # show the table of contents before the main article image; default false
-
-    # WARNING: deprecated! Use [[menu.icons]] instead, look below
-    # links = [
-    #     ["GitLab", "https://gitlab.com/gabmus"],
-    #     ["GNOME", "https://gitlab.gnome.org/gabmus"],
-    #     ["YouTube", "https://youtube.com/TechPillsNet"]
-    # ]
 
     # you can customize all of the colors in this theme
     # Colors are defined in data/colors.yml
@@ -280,7 +273,7 @@ You can tweak the TOC settings in your `config.toml`:
 
 It's best to use the provided `generate_icons.sh` script to generate all necessary icons for your website. This script requires ImageMagick, that you will need to install separately.
 
-For the best results, place your logo in svg format inside the `static` directory of your website, rename it to `logo.svg` and then call `./themes/hugo-ficurinia/generate_icons.sh static/logo.svg`.
+For the best results, place your logo in svg format inside the `static` directory of your website, rename it to `logo.svg` and then call `./themes/hugo-pascalinia/generate_icons.sh static/logo.svg`.
 
 The script will take care of generating all the icons you need.
 
@@ -300,7 +293,7 @@ Finally, make sure to edit your config.toml to include the following:
 
 # Inject custom content
 
-Ficurinia supports injecting custom content into the theme. There are several files you can create in `layouts/partials/inject` that will be included inside the theme in different places.
+Pascalinia supports injecting custom content into the theme. There are several files you can create in `layouts/partials/inject` that will be included inside the theme in different places.
 
 | Partial | Placement |
 |---------|-----------|
@@ -311,7 +304,3 @@ Ficurinia supports injecting custom content into the theme. There are several fi
 | `layouts/partials/inject/head.html` | Before closing the `head` tag |
 | `layouts/partials/inject/header-after.html` | Before closing the header |
 | `layouts/partials/inject/header-before.html` | At the beginning of the header |
-
-# Does *Ficurinia* mean anything?
-
-It's Sicilian for Indian fig, also known as prickly pear cactus.

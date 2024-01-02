@@ -35,7 +35,7 @@ other = "Cancelar"
 other = "Compartir"
 
 [themeCopyrightNotice]
-other = "<a href='https://gitlab.com/gabmus/hugo-ficurinia'>Ficurinia theme</a> para <a href='https://gohugo.io'>Hugo</a> hecho por <a href='https://gabmus.org'>Gabriele Musco</a>. Licenciado bajo <a href='https://www.gnu.org/licenses/agpl-3.0.html'>GNU AGPLv3</a>."
+other = "<a href="https://github.com/corneliusdavid/hugo-pascalinia">Pascalinia theme</a> por David Cornelius derivado de <a href='https://gitlab.com/gabmus/hugo-ficurinia'>Ficurinia</a> para <a href='https://gohugo.io'>Hugo</a> hecho por <a href='https://gabmus.org'>Gabriele Musco</a>. Licenciado bajo <a href='https://www.gnu.org/licenses/agpl-3.0.html'>GNU AGPLv3</a>."
 
 [home]
 other = "Principal"

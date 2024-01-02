@@ -1,16 +1,8 @@
-![logo](static/logo.svg)
+# Pascalinia
 
-# Ficurinia
+A theme derived from [Ficurinia](https://gabmus.gitlab.io/hugo-ficurinia) and modified to make entries look like Pascal procedures. 
 
-A prickly blog theme for Hugo
-
-![](images/tn.png)
-
-# [Demo](https://gabmus.org)
-
-[Code for the demo website](https://gitlab.com/gabmus/gabmus.gitlab.io) (really my personal website)
-
-[Screenshot gallery](https://gabmus.gitlab.io/hugo-ficurinia-screenshots/) showcasing 256 of the possible configurations that Ficurinia offers.
+The rest of this README is copied from the original...
 
 # Customization
 

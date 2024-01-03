@@ -1,15 +1,15 @@
 <article class="card postlistitem">
     <div>
-				procedure Meeting;<br />
+		procedure Meeting;<br />
         const <br />
-				&nbsp; MeetingTitle = '<strong><a class="TitleLink" href="{{ .Permalink }}">{{ .Title }}</a></strong>';<br />
+			&nbsp; MeetingTitle = <strong><a class="TitleLink" href="{{ .Permalink }}">'{{ .Title }}'</a></strong>;<br />
         &nbsp; MeetingMonth = <strong class="SummaryText">{{ partial "date.html" .Date }}</strong>;<br />
         {{ if and (site.Params.tagsInArticlePreview | default true) .Params.tags }}
             &nbsp; { tags:
             {{ range sort .Params.tags }}
                 <a class="TagLink" href="/tags/{{ . | urlize }}">#{{ . }}</a>
             {{ end }}
-						}
+			}
         {{ end }}
         {{ if .Site.Params.imageInArticlePreview }}
             {{ if .Params.Image }}

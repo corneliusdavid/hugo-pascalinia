@@ -21,7 +21,7 @@
     {{ else }}
         {{ range .Pages }}
             <li>                    
-                    <a href="{{ .Permalink }}">{{ .Title }}</a> (<span class="date">{{ partial "date.html" .Date }}</span>)
+                    <a href="{{ .Permalink }}">{{ .Title }}</a> - <span class="date">{{ .Date.Format "January, 2006" }}</span>
             </li>
         {{ end }}
     {{ end }}

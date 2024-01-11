@@ -33,7 +33,12 @@
     {{ if and (.Params.toc | default false) (not (.Site.Params.tocBeforeImage | default false)) }}
         {{- partial "toc.html" . -}}
     {{ end }}
-    <div>{{ .Content }}</div>
+    <div>
+ 	{{ if .Params.showTopic | default true }}
+	<h2 id="topic">TOPIC</h2>
+	{{ end }}
+	{{ .Content }}
+    </div>
 </article>
 {{ if .Params.tags }}
     {{ if not .Site.Params.paperCards }}<hr />{{ end }}
